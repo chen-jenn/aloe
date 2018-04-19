@@ -1,0 +1,11 @@
+<h1><%= @plant.species_name %></h1>
+<% if @plant.common_name %>
+<p>Common names: <%= @plant.common_name %></p>
+<% end %>
+
+<p>Origins: <%= @plant.country.titleize %></p>
+<p>Climate Zone: <%= @plant.climate_zone %></p>
+
+<% if @plant.description %>
+  <p>Description: <%= @plant.description %></p>
+<% end %>
