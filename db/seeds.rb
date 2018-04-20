@@ -1,7 +1,13 @@
-# country, city, species_name, climate_zone, common_name, description
+Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|
+  load seed
+end
+
+# COUNTRIES.each do |country| #a one time seed as this table will never change
+#   Country.create( country_name: country )
+# end
 
 # climate_zones = ['Af', 'Am', 'As', 'Aw', 'BWk', 'BWh', 'BSk', 'BSh', 'Cfa', 'Cfb', 'Cfc', 'Csa', 'Csb', 'Csc', 'Cwa', 'Cwb', 'Cwc', 'Dfa', 'Dfb', 'Dfc', 'Dfd', 'Dsa', 'Dsb', 'Dsc', 'Dsd', 'Dwa', 'Dwb', 'Dwc', 'Dwd', 'EF', 'ET']
-Plant.destroy_all 
+# Plant.destroy_all
 
 plant_list = [
   ['haworthiopsis fasciata', 'Eastern cape', 'south africa', 'BSk'],

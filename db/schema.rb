@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419012133) do
+ActiveRecord::Schema.define(version: 20180420001507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "countries", force: :cascade do |t|
+    t.text "country_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "plants", force: :cascade do |t|
     t.text "species_name"
@@ -23,7 +29,7 @@ ActiveRecord::Schema.define(version: 20180419012133) do
     t.text "climate_zone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "description"
+    t.text "notes"
   end
 
 end
