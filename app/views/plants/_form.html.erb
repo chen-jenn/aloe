@@ -1,0 +1,30 @@
+<%= form_for @plant do |f| %>
+
+  <%= @plant.errors.full_messages.join(', ') %>
+  <div>
+    <%= f.label :species_name %></br>
+    <%= f.text_field :species_name %>
+  </div>
+
+  <div>
+    <%= f.label "Common Name(s)" %></br>
+    <%= f.text_field :common_name %>
+  </div>
+
+  <div>
+    <%= f.label :city %></br>
+    <%= f.text_field :city %>
+  </div>
+
+  <div>
+    <%= f.label "Country" %> <small>(can select multiple)</small></br>
+    <%= f.collection_select :country_ids, Country.order(country_name: :asc), :id, :country_name, {}, {multiple: true, class: 'chosen-select'} %>
+  </div>
+
+  <div>
+    <%= f.label :notes %>(any plant care tips can be listed here)</br>
+    <%= f.text_area :notes %>
+  </div>
+
+  <%= f.submit "Submit" %>
+<% end %>

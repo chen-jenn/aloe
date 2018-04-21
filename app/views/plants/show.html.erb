@@ -5,9 +5,14 @@
 <p>Common names: <%= @plant.common_name %></p>
 <% end %>
 
-<p>Origins: <%= @plant.country.titleize %></p>
+<p>Origins: country </p>
 <p>Climate Zone: <%= @plant.climate_zone %></p>
 
-<% if @plant.description %>
-  <p>Description: <%= @plant.description %></p>
+<% if @plant.notes %>
+  <p>Notes: <%= @plant.notes %></p>
 <% end %>
+
+<!-- Only the admin, mods, and user that created this is allowed to edit -->
+<%= link_to "Edit Record", edit_plant_path(@plant) %>
+|
+<%= link_to "Delete Record", plant_path, method:"delete", data: {confirm: "Are you sure? There's no going back!!"} %>

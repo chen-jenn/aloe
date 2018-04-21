@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180420001507) do
+ActiveRecord::Schema.define(version: 20180421002300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,15 +21,25 @@ ActiveRecord::Schema.define(version: 20180420001507) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "plant_countries", force: :cascade do |t|
+    t.bigint "plant_id"
+    t.bigint "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_plant_countries_on_country_id"
+    t.index ["plant_id"], name: "index_plant_countries_on_plant_id"
+  end
+
   create_table "plants", force: :cascade do |t|
     t.text "species_name"
     t.text "common_name"
     t.string "city"
-    t.string "country"
     t.text "climate_zone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "notes"
   end
 
+  add_foreign_key "plant_countries", "countries"
+  add_foreign_key "plant_countries", "plants"
 end
