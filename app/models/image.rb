@@ -1,9 +1,14 @@
 class Image < ApplicationRecord
   belongs_to :plant
 
+  # Mounts paperclip image
   has_attached_file :file,
-    :path => ":rails_root/public/images/:id/:filename",
-    :url => "/images/:id/:filename"
+    styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :file, content_type: /\Aimage\/.*\z/
 
-  do_not_validate_attachment_file_type :file
+  # #Validates file, file type and file size
+  # validates_attachment :image, presence: true,
+  #   content_type: { content_type: ["image/jpeg", "image/png", "image/gif"] }
+    # size: { in: 0..10.kilobytes }
+
 end

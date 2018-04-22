@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180421222629) do
+ActiveRecord::Schema.define(version: 20180422194151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "common_names", force: :cascade do |t|
+    t.text "name"
+    t.bigint "plant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plant_id"], name: "index_common_names_on_plant_id"
+  end
 
   create_table "countries", force: :cascade do |t|
     t.text "country_name"
@@ -22,10 +30,14 @@ ActiveRecord::Schema.define(version: 20180421222629) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.text "file"
+    t.text "description"
     t.bigint "plant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "file_file_name"
+    t.string "file_content_type"
+    t.integer "file_file_size"
+    t.datetime "file_updated_at"
     t.index ["plant_id"], name: "index_images_on_plant_id"
   end
 
@@ -40,7 +52,6 @@ ActiveRecord::Schema.define(version: 20180421222629) do
 
   create_table "plants", force: :cascade do |t|
     t.text "species_name"
-    t.text "common_name"
     t.string "city"
     t.text "climate_zone"
     t.datetime "created_at", null: false
@@ -48,6 +59,7 @@ ActiveRecord::Schema.define(version: 20180421222629) do
     t.text "notes"
   end
 
+  add_foreign_key "common_names", "plants"
   add_foreign_key "images", "plants"
   add_foreign_key "plant_countries", "countries"
   add_foreign_key "plant_countries", "plants"

@@ -1,4 +1,4 @@
-<%= form_for @plant do |f| %>
+<%= form_for @plant, html: { multipart: true } do |f| %>
 
   <%= @plant.errors.full_messages.join(', ') %>
   <div>
@@ -7,12 +7,14 @@
   </div>
 
   <div>
-    <%= f.label "Common Name(s)" %></br>
-    <%= f.text_field :common_name %>
+    Common name
+    <%= f.fields_for :common_names do |c| %></br>
+      <%= c.text_field :name %>
+    <% end %>
   </div>
 
   <div>
-    <%= f.label :city %></br>
+    <%= f.label "City or Region" %></br>
     <%= f.text_field :city %>
   </div>
 
@@ -21,15 +23,21 @@
     <%= f.collection_select :country_ids, Country.order(country_name: :asc), :id, :country_name, {}, {multiple: true, class: 'chosen-select'} %>
   </div>
 
+<!-- only admin and moderators can edit this as it should be automatically generated -->
   <div>
-    <%= f.label :notes %>(any plant care tips can be listed here)</br>
+    <%= f.label "Climate Zone" %></br>
+    <%= f.text_field :climate_zone %>
+  </div>
+
+  <div>
+    <%= f.label :notes %><small>(any plant care tips can be listed here)</small></br>
     <%= f.text_area :notes %>
   </div>
 
   <%= f.fields_for :image do |t| %>
     <div>
-      <%= f.label "Images" %></br>
-      <%= file_field_tag "files[]", type: :file, multiple: true %>
+      <%= f.label "Upload Images" %></br>
+      <%= f.file_field :file, :multiple => true %>
     </div>
   <% end %>
 

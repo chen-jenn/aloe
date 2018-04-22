@@ -1,4 +1,7 @@
 class Plant < ApplicationRecord
+  has_many :common_names
+  accepts_nested_attributes_for :common_names
+
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images
 
@@ -7,7 +10,7 @@ class Plant < ApplicationRecord
 
   before_validation :capitalize
   validates :species_name, presence: true, uniqueness: true
-  validates :common_name, presence: true
+  validates_associated :common_names
 
   private
   def capitalize

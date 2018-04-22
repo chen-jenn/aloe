@@ -1,0 +1,2 @@
+class CommonNamesController < ApplicationController
+end
