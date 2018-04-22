@@ -36,6 +36,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'font-awesome-rails'
 gem 'chosen-rails'
+gem 'mini_magick'
+gem 'paperclip'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

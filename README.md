@@ -2,12 +2,11 @@
 
 Aloe App that helps you get your plants watered in a timely manner according to specific species needs. Who needs a green thumb now?
 
-Things you may want to cover:
-
 * Ruby 2.4.1
 
-* System dependencies: requires Rails to be installed
+## Initial Setup After Cloning
+System dependencies: requires Rails and bundler to be installed
 
-* Database creation: rails db:create
-
-* Database initialization: rails db:seed
+1. Navigate to the project directory and run `bundle`
+2. Database creation: `rails db:create`
+3. Seeding data: `rails db:seed`

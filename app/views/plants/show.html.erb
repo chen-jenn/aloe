@@ -5,7 +5,9 @@
 <p>Common names: <%= @plant.common_name %></p>
 <% end %>
 
-<p>Origins: country </p>
+<p>Origins:
+  <%= @countries.map { |country| country.country_name }.join(', ') %>
+</p>
 <p>Climate Zone: <%= @plant.climate_zone %></p>
 
 <% if @plant.notes %>

@@ -26,5 +26,12 @@
     <%= f.text_area :notes %>
   </div>
 
+  <%= f.fields_for :image do |t| %>
+    <div>
+      <%= f.label "Images" %></br>
+      <%= file_field_tag "files[]", type: :file, multiple: true %>
+    </div>
+  <% end %>
+
   <%= f.submit "Submit" %>
 <% end %>

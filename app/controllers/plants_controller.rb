@@ -6,6 +6,7 @@ class PlantsController < ApplicationController
   end
 
   def show
+    @countries = @plant.countries
   end
 
   def new
@@ -17,6 +18,15 @@ class PlantsController < ApplicationController
     @plant = Plant.new plant_params
 
     if @plant.save
+      if params[:files]
+        params[:files].each {|file|
+          @plant.images.create(file: file)
+        }
+      # params[:image]['file'].each do |img|
+      #   @image = @plant.images.create(:file => img)
+      # end
+      end
+      flash[:success] = 'Plant added!'
       redirect_to plant_path(@plant)
     else
       render :new
@@ -26,8 +36,7 @@ class PlantsController < ApplicationController
   def edit
   end
 
-  def update #only admins and the user that created it
-    #keeps rolling back
+  def update #only admins, moderators, or the user that created it
     if @plant.update plant_params
       redirect_to plant_path(@plant)
     else
@@ -37,7 +46,7 @@ class PlantsController < ApplicationController
 
   def destroy #only moderators or admins permitted
     @plant.destroy
-    redirect_to plant_path
+    redirect_to plants_path
   end
 
   private
@@ -46,6 +55,6 @@ class PlantsController < ApplicationController
   end
 
   def plant_params
-    params.require(:plant).permit([:species_name, :common_name, :city, :notes, { country_ids: [] }])
+    params.require(:plant).permit([ :species_name, :common_name, :city, :notes, { country_ids: [] }, image_attributes: [:file] ])
   end
 end
