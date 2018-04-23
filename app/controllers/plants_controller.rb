@@ -19,7 +19,6 @@ class PlantsController < ApplicationController
   def create #after the plant with valid parameters gets sent and saved to the database, the application should then populate the climate_zone field
     #do the update/patch before rendering the page so that when it is directed to show page, the field will be populated
     @plant = Plant.new plant_params
-    # @image = Image.new
 
     if @plant.save
       # if params[:files]
@@ -65,7 +64,7 @@ class PlantsController < ApplicationController
       :climate_zone,
       :notes,
       { country_ids: [] },
-      image_attributes: [:file_file_name],
-      common_names_attributes: [:name] ])
+      image_attributes: [:id, :description, :file_file_name],
+      common_names_attributes: [:id, :name] ])
   end
 end

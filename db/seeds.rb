@@ -24,6 +24,17 @@ plant_list = [
   ['Epipremnum aureum', 'Mo\'orea', 'Af'] # Devil's ivy
 ]
 
-plant_list.each do |species, city, zone|
-  Plant.create( species_name: species, city: city, climate_zone: zone )
-end
+# plant_list.each do |species, city, zone|
+#   Plant.create( species_name: species, city: city, climate_zone: zone )
+# end
+
+# Creating one record sample
+# p = Plant.create(
+#   species_name: "Doggo doggos",
+#   city: "Vancouver",
+#   climate_zone: "Dfa",
+#   notes: Faker::HitchHikersGuideToTheGalaxy.quote
+# )
+#
+# p.plant_countries.create(country_id: 17)
+# p.common_names.create(name: Faker::Pokemon.name)

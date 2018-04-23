@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-
+  #ability to delete images right on the plant show page
   def create
     @plant = Plant.find params[:plant_id]
     @image = Image.new image_params

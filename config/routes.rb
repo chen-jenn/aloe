@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resource :session, only: [:new, :create, :destroy]
+  resources :users, except: [:index] #include index when you add admin priveleges to view all existing users 
+
   resources :plants, shallow:true do
     resources :images, only: [:create, :destroy]
     resources :common_names, only: [:create, :destroy, :update]

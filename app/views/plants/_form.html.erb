@@ -2,15 +2,18 @@
 
   <%= @plant.errors.full_messages.join(', ') %>
   <div>
-    <%= f.label :species_name %></br>
+    <%= f.label :species_name %>*</br>
     <%= f.text_field :species_name %>
   </div>
 
   <div>
     Common name
-    <%= f.fields_for :common_names do |c| %></br>
-      <%= c.text_field :name %>
+    <!-- if there are no common names associated, there is no input field on the edit page? -->
+    <%= f.fields_for :common_names do |common_name| %>*</br>
+      <%= common_name.text_field :name %>
     <% end %>
+
+
   </div>
 
   <div>
@@ -19,11 +22,12 @@
   </div>
 
   <div>
-    <%= f.label "Country" %> <small>(can select multiple)</small></br>
+    <!-- will need to restrict chosen fields later -->
+    <%= f.label "Country" %>*<small>(select up to two)</small></br>
     <%= f.collection_select :country_ids, Country.order(country_name: :asc), :id, :country_name, {}, {multiple: true, class: 'chosen-select'} %>
   </div>
 
-<!-- only admin and moderators can edit this as it should be automatically generated -->
+<!-- only admin and moderators can edit this as it should be automatically generated, remove this later -->
   <div>
     <%= f.label "Climate Zone" %></br>
     <%= f.text_field :climate_zone %>
@@ -34,12 +38,10 @@
     <%= f.text_area :notes %>
   </div>
 
-  <%= f.fields_for :image do |t| %>
-    <div>
-      <%= f.label "Upload Images" %></br>
-      <%= f.file_field :file, :multiple => true %>
-    </div>
-  <% end %>
+  <div>
+    <%= f.label "Upload Images" %></br>
+    <%= f.file_field :file, :multiple => true %>
+  </div>
 
   <%= f.submit "Submit" %>
 <% end %>
