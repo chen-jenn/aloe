@@ -9,10 +9,8 @@
     <% end %>
   </div>
 
-  <div>
-    <%= f.label "City or Region" %></br>
-    <%= f.text_field :city %>
-  </div>
+  <%= f.input :city, label: 'City or Region', as: :string, required: false %>
+
 
   <div>
     <!-- will need to restrict chosen fields later -->
@@ -21,20 +19,13 @@
   </div>
 
 <!-- only admin and moderators can edit this as it should be automatically generated, remove this later -->
-  <div>
-    <%= f.label "Climate Zone" %></br>
-    <%= f.text_field :climate_zone %>
-  </div>
-
-  <div>
-    <%= f.label :notes %><small>(any plant care tips can be listed here)</small></br>
-    <%= f.text_area :notes %>
-  </div>
+  <%= f.input :climate_zone, as: :string, required: false %>
+  <%= f.input :notes, label: 'Notes (list any plant care tips here)' %>
 
   <div>
     <%= f.label "Upload Images" %></br>
     <%= f.file_field :file, :multiple => true %>
   </div>
 
-  <%= f.submit "Submit" %>
+  <%= f.submit "Submit", class:'btn btn-primary' %>
 <% end %>

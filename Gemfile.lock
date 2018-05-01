@@ -74,6 +74,8 @@ GEM
       sort_alphabetical (~> 1.0)
     cowsay (0.3.0)
     crass (1.0.4)
+    domain_name (0.5.20180417)
+      unf (>= 0.0.5, < 1.0.0)
     erubi (1.7.1)
     execjs (2.7.0)
     faker (1.8.7)
@@ -81,9 +83,12 @@ GEM
     ffi (1.9.23)
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
+    geocoder (1.4.7)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hirb (0.7.3)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     i18n (1.0.0)
       concurrent-ruby (~> 1.0)
     i18n_data (0.8.0)
@@ -115,6 +120,7 @@ GEM
     money (6.11.1)
       i18n (>= 0.6.4, < 1.1)
     multi_json (1.13.1)
+    netrc (0.11.0)
     nio4r (2.3.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -162,6 +168,10 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     ruby_dep (1.5.0)
     sass (3.5.6)
       sass-listen (~> 4.0.0)
@@ -204,6 +214,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.9)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.5)
     unicode_utils (1.4.0)
     web-console (3.6.0)
       actionview (>= 5.0)
@@ -228,6 +241,7 @@ DEPENDENCIES
   cowsay
   faker
   font-awesome-rails
+  geocoder
   hirb
   jbuilder (~> 2.5)
   jquery-rails
@@ -238,6 +252,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.7)
   rails (~> 5.1.6)
+  rest-client
   sass-rails (~> 5.0)
   simple_form
   spring

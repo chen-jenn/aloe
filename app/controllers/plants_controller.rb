@@ -34,7 +34,8 @@ class PlantsController < ApplicationController
     @plant.common_names.build unless @plant.common_names.any?
   end
 
-  def update #only admins, moderators, or the user that created it
+  #only admins, moderators, or the user that created it
+  def update
     if @plant.update plant_params
       flash[:notice] = "Record updated"
       redirect_to plant_path(@plant)
@@ -44,7 +45,8 @@ class PlantsController < ApplicationController
     end
   end
 
-  def destroy #only moderators or admins permitted
+  #only moderators or admins permitted
+  def destroy
     @plant.destroy
     redirect_to plants_path
   end
@@ -52,7 +54,17 @@ class PlantsController < ApplicationController
   private
 
   def climate_api_response
-    'Aaa'
+    #convert city and country into lat and long using geocoder?
+    lat = 40.8539645 # hard coded for now
+    long = 14.1765625
+    # make request
+    response = RestClient::Request.execute(
+      method: :get,
+      url: "http://climateapi.scottpinkelman.com/api/v1/location/#{lat}/#{long}"
+    )
+    parsed = JSON.parse(response)
+    # extract climate zone data from json response
+    parsed["return_values"][0]["koppen_geiger_zone"]
   end
 
   def find_plant
