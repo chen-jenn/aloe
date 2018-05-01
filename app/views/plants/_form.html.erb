@@ -1,17 +1,13 @@
 <%= simple_form_for @plant, html: { multipart: true } do |f| %>
 
   <!-- <%= @plant.errors.full_messages.join(', ') %> -->
-  <%= f.input :species_name, required: false %>\
+  <%= f.input :species_name, as: :string, required: false %>
 
   <div>
     Common name
-    <!-- if there are no common names associated, there is no input field on the edit page? -->
-
     <%= f.fields_for :common_names do |common_name| %>*</br>
       <%= common_name.text_field :name %>
     <% end %>
-
-
   </div>
 
   <div>
