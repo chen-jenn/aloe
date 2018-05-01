@@ -13,7 +13,7 @@ class PlantsController < ApplicationController
 
   def new
     @plant = Plant.new
-    @plant.common_names.new
+    @common_name = @plant.common_names.new
   end
 
   def create #after the plant with valid parameters gets sent and saved to the database, the application should then populate the climate_zone field
@@ -34,6 +34,8 @@ class PlantsController < ApplicationController
   end
 
   def edit
+    # but you need options to give multiple common names 
+    @plant.common_names.build unless @plant.common_names.any?
   end
 
   def update #only admins, moderators, or the user that created it
