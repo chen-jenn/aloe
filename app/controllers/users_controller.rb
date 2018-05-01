@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy #delete account: user and admins in rare occasions 
+  def destroy #delete account: user and admins in rare occasions
   end
 
   private
@@ -39,6 +39,8 @@ class UsersController < ApplicationController
       :username,
       :first_name,
       :last_name,
+      :city,
+      :country, 
       :email,
       :password,
       :password_confirmation
