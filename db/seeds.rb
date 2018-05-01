@@ -28,6 +28,39 @@ plant_list = [
 #   Plant.create( species_name: species, city: city, climate_zone: zone )
 # end
 
+User.destroy_all
+
+PASSWORD = 'password'
+
+super_user = User.create(
+  username: 'jonsnow',
+  first_name: 'Jon',
+  last_name: 'Snow',
+  email: 'js@winterfell.gov',
+  city: 'Vancouver',
+  country: 'Canada',
+  password: PASSWORD
+)
+
+10.times.each do
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+
+  User.create(
+    username: Faker::Internet.user_name,
+    first_name: first_name,
+    last_name: last_name,
+    email: "#{first_name.downcase}.#{last_name.downcase}@example.com",
+    city: Faker::Address.city,
+    country: Faker::Address.country,
+    password: PASSWORD
+  )
+end
+
+users = User.all
+puts Cowsay.say "Created #{users.count} users", :tux
+puts "Login with  #{super_user.email} and password of '#{PASSWORD}'"
+
 # Creating one record sample
 # p = Plant.create(
 #   species_name: "Doggo doggos",

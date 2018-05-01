@@ -19,13 +19,9 @@ class PlantsController < ApplicationController
   def create #after the plant with valid parameters gets sent and saved to the database, the application should then populate the climate_zone field
     #do the update/patch before rendering the page so that when it is directed to show page, the field will be populated
     @plant = Plant.new plant_params
+    @plant.climate_zone = climate_api_response
 
     if @plant.save
-      # if params[:files]
-      #   params[:files].each {|file|
-      #     @plant.images.create(file: file)
-      #   }
-      # end
       flash[:success] = 'Plant added!'
       redirect_to plant_path(@plant)
     else
@@ -34,7 +30,7 @@ class PlantsController < ApplicationController
   end
 
   def edit
-    # but you need options to give multiple common names 
+    # but you need options to give multiple common names
     @plant.common_names.build unless @plant.common_names.any?
   end
 
@@ -54,6 +50,11 @@ class PlantsController < ApplicationController
   end
 
   private
+
+  def climate_api_response
+    'Aaa'
+  end
+
   def find_plant
     @plant = Plant.find params[:id]
   end
