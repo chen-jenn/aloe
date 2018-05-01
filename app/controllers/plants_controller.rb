@@ -22,7 +22,7 @@ class PlantsController < ApplicationController
     @plant.user = current_user
     @plant.climate_zone = climate_api_response
 
-    if @plant.save!
+    if @plant.save
       flash[:success] = 'Plant added!'
       redirect_to plant_path(@plant)
     else

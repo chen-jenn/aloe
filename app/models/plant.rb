@@ -14,7 +14,13 @@ class Plant < ApplicationRecord
   validates_associated :common_names
   # validates_associated :images
 
-  # before_validation :capitalize
+  before_validation :capitalize
+  # geocoded_by :location
+  # after_validation :geocode
+
+  def location #need to fix this method
+    "#{city}, #{[countries][0][country_name]}"
+  end
 
   private
   def capitalize
@@ -27,4 +33,5 @@ class Plant < ApplicationRecord
       errors.add(:plant, "needs at least one country")
     end
   end
+
 end
