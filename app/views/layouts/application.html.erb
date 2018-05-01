@@ -18,6 +18,15 @@
       <%= link_to "Plants Database", plants_path %>
       |
       <%= link_to "Add Species", new_plant_path %>
+      <% if current_user.present? %>
+      |
+      <%= link_to "Sign Out", session_path, method: :delete %><br>
+      Signed in as: <%= current_user.username %>
+      <% else %>
+      |
+      <%= link_to "Sign In", new_session_path %>
+      <% end %>
+
     </nav>
 
     <div class="container-fluid">
