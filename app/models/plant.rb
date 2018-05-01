@@ -14,7 +14,7 @@ class Plant < ApplicationRecord
   validates_associated :common_names
   # validates_associated :images
 
-  before_validation :capitalize
+  # before_validation :capitalize
 
   private
   def capitalize

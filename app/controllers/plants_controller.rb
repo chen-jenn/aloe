@@ -19,9 +19,10 @@ class PlantsController < ApplicationController
   def create #after the plant with valid parameters gets sent and saved to the database, the application should then populate the climate_zone field
     #do the update/patch before rendering the page so that when it is directed to show page, the field will be populated
     @plant = Plant.new plant_params
+    @plant.user = current_user
     @plant.climate_zone = climate_api_response
 
-    if @plant.save
+    if @plant.save!
       flash[:success] = 'Plant added!'
       redirect_to plant_path(@plant)
     else
@@ -55,7 +56,7 @@ class PlantsController < ApplicationController
 
   def climate_api_response
     #convert city and country into lat and long using geocoder?
-    lat = 40.8539645 # hard coded for now
+    lat = 40.8539645
     long = 14.1765625
     # make request
     response = RestClient::Request.execute(
