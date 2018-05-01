@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap', '~>4.0.0'
+gem 'cancancan'
 gem 'chosen-rails'
 gem 'cowsay'
 gem 'faker'
