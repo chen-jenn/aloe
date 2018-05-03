@@ -20,12 +20,19 @@ class PlantsController < ApplicationController
     #do the update/patch before rendering the page so that when it is directed to show page, the field will be populated
     @plant = Plant.new plant_params
     @plant.user = current_user
-    @plant.climate_zone = climate_api_response(@plant)
+
+    #it's ok to have a plant without a climate_zone field 
+    if @plant.save
+      @plant.climate_zone = climate_api_response(@plant)
+    else
+      flash[:alert] = "error"
+    end
 
     if @plant.save
       flash[:success] = 'Plant added!'
       redirect_to plant_path(@plant)
     else
+      flash[:alert] = 'Error occurred'
       render :new
     end
   end
@@ -55,12 +62,6 @@ class PlantsController < ApplicationController
   private
 
   def climate_api_response(plant)
-    # might not be doing the request in order or quickly enough
-    # lat and long is being saved into db correctly!
-    # might need to do a separate custom method
-    # lat = plant.latitude
-    # long = plant.longitude
-
     # make request
     response = RestClient::Request.execute(
       method: :get,
