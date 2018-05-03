@@ -15,11 +15,15 @@ class Plant < ApplicationRecord
   # validates_associated :images
 
   before_validation :capitalize
-  # geocoded_by :location
-  # after_validation :geocode
+  geocoded_by :location
+  after_validation :geocode
 
-  def location #need to fix this method
-    "#{city}, #{[countries][0][country_name]}"
+  def location #need to account for inaccurate city-country combos
+    if city && city!= 'N/A' && countries.length > 0
+      geocoded = "#{city}, #{countries[0].country_name}"
+    else
+      p "Unable to get geocoding location"
+    end
   end
 
   private
