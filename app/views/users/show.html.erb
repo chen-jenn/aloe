@@ -1,2 +1,6 @@
 <h1>Your Plants</h1>
+<small><%= @user.username %></small><br>
+
 <%= link_to "Edit Info", edit_user_path(current_user) %>
+|
+<%= link_to "Delete Account", user_path(current_user), method: :delete %>

@@ -29,11 +29,17 @@ class UsersController < ApplicationController
     end
   end
 
-  # only the user (or admin) can see their own profile 
+  # only the user (or admins) can see their own profile
   def show
+    @user = current_user
   end
 
   def destroy #delete account: user and admins in rare occasions
+    @user = current_user
+    @user.destroy
+    session[:user_id] = nil
+    flash[:notice] = "Account has been deleted"
+    redirect_to plants_path
   end
 
   private
