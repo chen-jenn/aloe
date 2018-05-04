@@ -29,6 +29,10 @@ class UsersController < ApplicationController
     end
   end
 
+  # only the user (or admin) can see their own profile 
+  def show
+  end
+
   def destroy #delete account: user and admins in rare occasions
   end
 
@@ -40,7 +44,7 @@ class UsersController < ApplicationController
       :first_name,
       :last_name,
       :city,
-      :country, 
+      :country,
       :email,
       :password,
       :password_confirmation

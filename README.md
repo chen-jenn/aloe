@@ -21,4 +21,4 @@ System dependencies:
 
 
 ### Disclaimer
-While this app helps generate general plant care information based on user experience and Koppen-Geiger climate classification algorithms, it must also be noted that there are many more variables that need to be taken into account to calculate the optimal temperature or watering frequency of a plant (e.g. soil pH, soil volume, humidity, precipitation, and downright genetics). This app does not claim to have the highest scientific accuracy and is best used only as a general guideline for houseplant care.
+While this app helps generate general plant care information based on user experience and Koppen-Geiger climate classification algorithms, it must also be noted that there are many more variables that need to be taken into account to calculate the optimal temperature or watering frequency of a plant (e.g. soil pH, soil volume, humidity, precipitation, and of course, genetics). This app does not claim to have the highest scientific accuracy and is best used only as a general guideline for houseplant care.
