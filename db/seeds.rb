@@ -1,16 +1,27 @@
+require 'csv'
+
 Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|
   load seed
 end
 
+# Country Table Generated Once
 # COUNTRIES.each do |country| #a one time seed as this table will never change
 #   Country.create( country_name: country )
 # end
 
 # climate_zones = ['Af', 'Am', 'As', 'Aw', 'BWk', 'BWh', 'BSk', 'BSh', 'Cfa', 'Cfb', 'Cfc', 'Csa', 'Csb', 'Csc', 'Cwa', 'Cwb', 'Cwc', 'Dfa', 'Dfb', 'Dfc', 'Dfd', 'Dsa', 'Dsb', 'Dsc', 'Dsd', 'Dwa', 'Dwb', 'Dwc', 'Dwd', 'EF', 'ET']
+
+# Zone comparison table Generated Once
+CSV.foreach(Rails.root.join('db/seeds/zone_comparison.csv'), headers:true) do |row|
+  ZoneComparison.create do |instance|
+    instance.user_zone = row[0]
+    instance.plant_zone = row[1]
+    instance.water_freq = row[2]
+    instance.opt_temp = row[3]
+  end
+end
+
 # Plant.destroy_all
-
-# in order: countries [south africa, saudi arabia, tanzania, colombia, brazil, mozambique, mexico, southeast asia, west indies, french polynesia]
-
 plant_list = [
   ['haworthiopsis fasciata', 'Eastern cape', 'BSk'],
   ['aloe vera', 'Arabian peninsula', 'BWh'],
