@@ -1,31 +1,32 @@
 <%= simple_form_for @plant, html: { multipart: true } do |f| %>
+<%= f.input :species_name, as: :string, required: false %>
+<div>
+  <!-- change to simple form -->
+  Common name
+  <%= f.fields_for :common_names do |common_name| %>*</br>
+  <%= common_name.text_field :name %>
+  <% end %>
+</div>
 
-  <%= f.input :species_name, as: :string, required: false %>
+<%= f.input :city, label: 'City or Region', as: :string, required: false %>
 
-  <div>
-    Common name
-    <%= f.fields_for :common_names do |common_name| %>*</br>
-      <%= common_name.text_field :name %>
-    <% end %>
-  </div>
-
-  <%= f.input :city, label: 'City or Region', as: :string, required: false %>
-
-
-  <div>
-    <!-- will need to restrict chosen fields later -->
-    <%= f.label "Country" %>*<small>(select up to two)</small></br>
-    <%= f.collection_select :country_ids, Country.order(country_name: :asc), :id, :country_name, {}, {multiple: true, class: 'chosen-select'} %>
-  </div>
+<div>
+  <%= f.association :countries, label_method: :country_name, input_html: {class:'chosen-select'}, hint: 'Select up to 2' %>
+</div>
 
 <!-- only admin and moderators can edit this as it should be automatically generated, remove this later -->
-  <%= f.input :climate_zone, as: :string, required: false %>
-  <%= f.input :notes, label: 'Notes (list any plant care tips here)' %>
+<%= f.input :climate_zone, as: :string, required: false %>
+<%= f.input :notes, label: 'Notes (list any plant care tips here)' %>
 
-  <div>
-    <%= f.label "Upload Images" %></br>
-    <%= f.file_field :file, :multiple => true %>
-  </div>
+<!-- fix this with proper nested associations -->
+<div>
+  <%= f.label "Upload Images" %></br>
+  <%= f.file_field :file, :multiple => true %>
+</div>
 
-  <%= f.submit "Submit", class:'btn btn-primary' %>
+<%= f.submit "Submit", class:'btn btn-primary' %>
 <% end %>
+
+<script>
+$('.chosen-select').chosen({max_selected_options: 2});
+</script>
