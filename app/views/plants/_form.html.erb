@@ -1,12 +1,14 @@
 <%= simple_form_for @plant, html: { multipart: true } do |f| %>
 <%= f.input :species_name, as: :string, required: false %>
-<div>
-  <!-- change to simple form -->
-  Common name
-  <%= f.fields_for :common_names do |common_name| %>*</br>
-  <%= common_name.text_field :name %>
+
+  <%= f.simple_fields_for :common_names do |c| %>
+    <%= render 'common_name_fields', f: c %>
   <% end %>
-</div>
+  <div class="links">
+    <%= link_to_add_association 'Add Another', f, :common_names %>
+  </div>
+
+<hr>
 
 <%= f.input :city, label: 'City or Region', as: :string, required: false %>
 

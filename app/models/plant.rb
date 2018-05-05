@@ -6,7 +6,7 @@ class Plant < ApplicationRecord
   has_many :countries, through: :plant_countries
 
   accepts_nested_attributes_for :images
-  accepts_nested_attributes_for :common_names
+  accepts_nested_attributes_for :common_names, reject_if: :all_blank, allow_destroy: true 
 
   validate :has_at_least_one_country
   validates :species_name, presence: true, uniqueness: true
