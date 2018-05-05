@@ -34,11 +34,12 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def destroy #delete account: user and admins in rare occasions
+  #delete account: user and admins in rare occasions
+  def destroy
     @user = current_user
     @user.destroy
     session[:user_id] = nil
-    flash[:notice] = "Account has been deleted"
+    flash[:alert] = "Account has been deleted"
     redirect_to plants_path
   end
 

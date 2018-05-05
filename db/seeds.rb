@@ -17,7 +17,6 @@ CSV.foreach(Rails.root.join('db/seeds/zone_comparison.csv'), headers:true) do |r
     instance.user_zone = row[0]
     instance.plant_zone = row[1]
     instance.water_freq = row[2]
-    instance.opt_temp = row[3]
   end
 end
 
@@ -35,9 +34,9 @@ plant_list = [
   ['Epipremnum aureum', 'Mo\'orea', 'Af'] # Devil's ivy
 ]
 
-# plant_list.each do |species, city, zone|
-#   Plant.create( species_name: species, city: city, climate_zone: zone )
-# end
+plant_list.each do |species, city, zone|
+  Plant.create( species_name: species, city: city, climate_zone: zone )
+end
 
 User.destroy_all
 

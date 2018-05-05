@@ -4,7 +4,6 @@ class CreateZoneComparisons < ActiveRecord::Migration[5.1]
       t.string :user_zone
       t.string :plant_zone
       t.string :water_freq
-      t.string :opt_temp
 
       t.timestamps
     end

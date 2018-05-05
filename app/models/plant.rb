@@ -12,7 +12,7 @@ class Plant < ApplicationRecord
   validates :species_name, presence: true, uniqueness: true
   validates_length_of :climate_zone, maximum: 3, allow_blank: true
   validates_associated :common_names
-  # validates_associated :images
+  validates_associated :images
 
   before_validation :capitalize
   geocoded_by :location

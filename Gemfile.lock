@@ -50,6 +50,10 @@ GEM
     builder (3.2.3)
     byebug (10.0.2)
     cancancan (2.2.0)
+    carrierwave (1.2.2)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     chosen-rails (1.8.3)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
@@ -226,6 +230,7 @@ DEPENDENCIES
   bootstrap (~> 4.0.0)
   byebug
   cancancan
+  carrierwave
   chosen-rails
   cocoon
   coffee-rails (~> 4.2)

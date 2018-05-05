@@ -30,6 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap', '~>4.0.0'
 gem 'cancancan'
+gem 'carrierwave'
 gem 'chosen-rails'
 gem 'cocoon'
 gem 'country_select'
