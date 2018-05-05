@@ -9,7 +9,7 @@ class Ability
     else
       can :read, :all
     end
-    
+
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
@@ -28,7 +28,7 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
-    can([:create, :update], Plant) do |plant|
+    can([:create, :read, :update], Plant) do |plant|
       user == plant.user
     end
   end

@@ -1,5 +1,7 @@
 class PlantsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :find_plant, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user!, only: [:edit, :update, :destroy]
 
   def index
     @plants = Plant.order(species_name: :asc)
@@ -21,11 +23,11 @@ class PlantsController < ApplicationController
     @plant = Plant.new plant_params
     @plant.user = current_user
 
-    #it's ok to have a plant without a climate_zone field 
+    #it's ok to have a plant without a climate_zone field
     if @plant.save
       @plant.climate_zone = climate_api_response(@plant)
     else
-      flash[:alert] = "error"
+      flash[:alert] = "API retrieval error"
     end
 
     if @plant.save
@@ -38,7 +40,6 @@ class PlantsController < ApplicationController
   end
 
   def edit
-    # but you need options to give multiple common names
     @plant.common_names.build unless @plant.common_names.any?
   end
 
@@ -53,7 +54,7 @@ class PlantsController < ApplicationController
     end
   end
 
-  #only moderators or admins permitted
+  #only users with admin rights permitted
   def destroy
     @plant.destroy
     redirect_to plants_path
@@ -86,5 +87,12 @@ class PlantsController < ApplicationController
       { country_ids: [] },
       image_attributes: [:id, :description, :file_file_name],
       common_names_attributes: [:id, :name] ])
+  end
+
+  def authorize_user!
+    unless can?([:create, :read, :update], @plant)
+      flash[:alert] = 'Access Denied'
+      redirect_to plant_path(@plant)
+    end
   end
 end

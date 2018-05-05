@@ -49,7 +49,8 @@ super_user = User.create(
   email: 'js@winterfell.gov',
   city: 'Vancouver',
   country: 'Canada',
-  password: PASSWORD
+  password: PASSWORD,
+  is_admin: true 
 )
 
 10.times.each do
