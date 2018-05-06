@@ -1,7 +1,31 @@
 <div class="biggest-div">
-  <h1>Your Plants</h1>
+  <h2>Account Info</h2>
   <small><%= @user.username %></small><br>
 
+  <hr>
+  <h2 style="font-family: 'Open Sans', sans-serif">Your Plants</h2>
+    <% if @individual_plants.count > 0 %>
+      <% @individual_plants.each do |plant| %>
+        <div class="card">
+          <div class="thumb" style="background-image: url(<%= plant.photo.url(:medium) %>)"></div>
+          <article>
+            <h1><strong><%= plant.individual_name %></strong></h1>
+            <p>Species: <%= plant.species_name %><br>
+            Common name: <%= plant.common_name %></p>
+            <span>Next watering day: </span>
+          </article>
+        </div>
+      <% end %>
+    <% else %>
+      <p>Hmm, it appears your gallery is empty</p>
+    <% end %>
+
+
+  <br>
+  <%= link_to 'Add Plant', new_individual_plant_path %>
+
+  <!-- put this in the footer -->
+  <hr>
   <%= link_to "Edit Info", edit_user_path(current_user) %>
   |
   <%= link_to "Delete Account", user_path(current_user), method: :delete %>

@@ -1,0 +1,11 @@
+<div class='biggest-div'>
+  <h2>Add one of your plants!</h2>
+  <%= simple_form_for @individual_plant do |f| %>
+    <%= f.input :species_name %>
+    <%= f.input :common_name %>
+    <%= f.input :individual_name %>
+    <%= f.input :description %>
+    <%= f.input :photo %>
+    <%= f.submit "Submit", class:'btn btn-dark' %>
+  <% end %>
+</div>

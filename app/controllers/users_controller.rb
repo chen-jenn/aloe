@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   # only the user (or admins) can see their own profile
   def show
     @user = current_user
+    @individual_plants = @user.individual_plants
   end
 
   #delete account: user and admins in rare occasions
