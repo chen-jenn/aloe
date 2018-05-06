@@ -4,21 +4,26 @@
 
   <hr>
   <h2 style="font-family: 'Open Sans', sans-serif">Your Plants</h2>
+  <div class="card-container">
     <% if @individual_plants.count > 0 %>
       <% @individual_plants.each do |plant| %>
-        <div class="card">
+        <div class="card-indv">
           <div class="thumb" style="background-image: url(<%= plant.photo.url(:medium) %>)"></div>
           <article>
             <h1><strong><%= plant.individual_name %></strong></h1>
-            <p>Species: <%= plant.species_name %><br>
+            <p>Species: <i><%= plant.species_name %></i><br>
             Common name: <%= plant.common_name %></p>
+            <!-- if next watering day is the same as current day, display as red -->
             <span>Next watering day: </span>
+            <hr>
+            <small><%= link_to 'Edit', edit_individual_plant_path(plant) %></small>
           </article>
         </div>
       <% end %>
     <% else %>
       <p>Hmm, it appears your gallery is empty</p>
     <% end %>
+  </div>
 
 
   <br>
