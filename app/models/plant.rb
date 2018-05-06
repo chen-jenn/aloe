@@ -10,7 +10,7 @@ class Plant < ApplicationRecord
 
   validate :has_at_least_one_country
   validates :species_name, presence: true, uniqueness: true
-  validates :latitude, :longitude, presence: true 
+  validates :latitude, :longitude, :sunlight, presence: true 
   validates_length_of :climate_zone, maximum: 3, allow_blank: true
   validates_associated :common_names
   validates_associated :images

@@ -1,6 +1,7 @@
 <%= simple_form_for @plant, html: { multipart: true } do |f| %>
-<%= f.input :species_name, as: :string, required: false %>
 
+<h2>Taxonomy</h2>
+<%= f.input :species_name, as: :string, required: false %>
   <%= f.simple_fields_for :common_names do |c| %>
     <%= render 'common_name_fields', f: c %>
   <% end %>
@@ -10,14 +11,22 @@
 
 <hr>
 
+<h2>Habitat</h2>
 <%= f.input :city, label: 'City or Region', as: :string, required: false %>
 
 <div>
   <%= f.association :countries, label_method: :country_name, input_html: {class:'chosen-select'}, hint: 'Select up to 2' %>
 </div>
 
-<!-- only admin and moderators can edit this as it should be automatically generated, remove this later -->
-<%= f.input :climate_zone, as: :string, required: false %>
+<%= f.input :sunlight, collection: ['full', 'partial', 'shade'] %>
+<p>Temperature (in &#176;C)</p>
+<div style="display:flex;">
+  <%= f.input :temp_min, label: 'Min' %>
+  <%= f.input :temp_max, label: 'Max' %>
+</div>
+
+<hr>
+<h2>Other</h2>
 <%= f.input :notes, label: 'Notes (list any plant care tips here)' %>
 
 <!-- fix this with proper nested associations -->

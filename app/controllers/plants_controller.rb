@@ -34,7 +34,6 @@ class PlantsController < ApplicationController
       flash[:success] = 'Plant added!'
       redirect_to plant_path(@plant)
     else
-      flash[:alert] = 'Error occurred'
       render :new
     end
   end
@@ -84,6 +83,9 @@ class PlantsController < ApplicationController
       :city,
       :climate_zone,
       :notes,
+      :sunlight,
+      :temp_min,
+      :temp_max,
       { country_ids: [] },
       image_attributes: [:id, :description, :file_file_name],
       common_names_attributes: [:id, :name] ])

@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email]) #how to include finding by username?
 
     if user&.authenticate(params[:session][:password])
-      flash[:notice] = "Thank you for signing in"
       session[:user_id] = user.id
       redirect_to home_path
     else
@@ -17,7 +16,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    flash[:notice] = "Signed out!"
     redirect_to home_path
   end
 end
