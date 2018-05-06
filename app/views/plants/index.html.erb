@@ -1,8 +1,25 @@
 <div class="biggest-div">
-  <h1>Plants List</h1>
+  <div style="font-family: 'Open Sans', sans-serif; margin-bottom:10px; font-size:30px;">PLANT SEARCH</div>
+
+  <div class="row mb-2">
+    <div class="col-lg-6">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Go!</button>
+        </span>
+      </div>
+    </div>
+  </div>
 
   <% @plants.each do |plant|%>
-    <%= link_to plant.species_name, plant_path(plant.id), class:"italic" %>
-    <hr>
+    <div class="card mb-2">
+      <div class="card-header">
+        <strong><%= link_to plant.species_name, plant_path(plant.id), class:"italic" %></strong>
+      </div>
+      <div class="card-body">
+        <p class="card-text"><%= plant.common_names.map { |c| c.name }.to_sentence %></p>
+      </div>
+    </div>
   <% end %>
 </div>
