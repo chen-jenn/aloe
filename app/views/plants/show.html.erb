@@ -1,34 +1,36 @@
-<div style="height:300px;width:300px;background-color:lightgrey;color:white;">
-  <% if @images %>
-    <% @images.each do |image| %>
-     <!-- so this will eventually need to be the actual saved image file!! -->
-     <!-- and only one picture for the showcase, everything else can be found in the gallery -->
-      <%= image.description %>
+<div class="biggest-div">
+  <div style="height:300px;width:300px;background-color:lightgrey;color:white;">
+    <% if @images %>
+      <% @images.each do |image| %>
+       <!-- so this will eventually need to be the actual saved image file!! -->
+       <!-- and only one picture for the showcase, everything else can be found in the gallery -->
+        <%= image.description %>
+      <% end %>
     <% end %>
+  </div>
+
+
+  <h3><i><%= @plant.species_name %></i></h3>
+  <p>Common names: <%= @common_names.map { |common_name| common_name.name }.join(', ') %></p>
+
+
+  <h4>Origins</h4>
+  City/Region: <%= @plant.city %></br>
+  Country:  <%= @countries.map { |country| country.country_name }.join(', ') %>
+
+  <p>Climate Zone: <%= @plant.climate_zone %></p>
+
+  <% if @plant.notes %>
+    <h4>Notes</h4>
+    <p><%= @plant.notes %></p>
   <% end %>
+
+  <h4>Gallery</h4>
+  <%= @images.map { |image| image.description }.join(', ') %>
+
+  <!-- Only the admin, mods, and user that created this is allowed to edit -->
+  <hr>
+  <%= link_to "Edit Record", edit_plant_path(@plant) %>
+  |
+  <%= link_to "Delete Record", plant_path, method:"delete", data: {confirm: "Are you sure? There's no going back!!"} %>
 </div>
-
-
-<h3><i><%= @plant.species_name %></i></h3>
-<p>Common names: <%= @common_names.map { |common_name| common_name.name }.join(', ') %></p>
-
-
-<h4>Origins</h4>
-City/Region: <%= @plant.city %></br>
-Country:  <%= @countries.map { |country| country.country_name }.join(', ') %>
-
-<p>Climate Zone: <%= @plant.climate_zone %></p>
-
-<% if @plant.notes %>
-  <h4>Notes</h4>
-  <p><%= @plant.notes %></p>
-<% end %>
-
-<h4>Gallery</h4>
-<%= @images.map { |image| image.description }.join(', ') %>
-
-<!-- Only the admin, mods, and user that created this is allowed to edit -->
-<hr>
-<%= link_to "Edit Record", edit_plant_path(@plant) %>
-|
-<%= link_to "Delete Record", plant_path, method:"delete", data: {confirm: "Are you sure? There's no going back!!"} %>

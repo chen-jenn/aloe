@@ -1,10 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
 #cssmenu {
-  background: #a1ca53;
-  width: auto;
+  background: #539857;
+  width: 75vw;
   border-radius: 5px;
-  margin-left: 10px;
-  margin-right: 10px; 
+  margin: auto;
 }
 #cssmenu ul {
   list-style: none;
@@ -120,4 +119,24 @@
   #cssmenu ul li a:before {
     display: none;
   }
+}
+
+.biggest-div{
+  background-color: #f1ffb8;
+  width: 75vw;
+  height: auto; 
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.alert-div{
+  width: 75vw;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
 }

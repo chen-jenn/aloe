@@ -1,6 +1,8 @@
-<h1>Plants List</h1>
+<div class="biggest-div">
+  <h1>Plants List</h1>
 
-<% @plants.each do |plant|%>
-  <%= link_to plant.species_name, plant_path(plant.id), class:"italic" %>
-  <hr>
-<% end %>
+  <% @plants.each do |plant|%>
+    <%= link_to plant.species_name, plant_path(plant.id), class:"italic" %>
+    <hr>
+  <% end %>
+</div>
