@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :plants, dependent: :nullify
+  has_many :individual_plants, dependent: :destroy 
   has_secure_password
 
   VALID_USERNAME_REGEX = /\A[a-zA-Z0-9]+\z/

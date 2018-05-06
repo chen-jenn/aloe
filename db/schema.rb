@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180505181812) do
+ActiveRecord::Schema.define(version: 20180506160752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,21 @@ ActiveRecord::Schema.define(version: 20180505181812) do
     t.datetime "updated_at", null: false
     t.string "file"
     t.index ["plant_id"], name: "index_images_on_plant_id"
+  end
+
+  create_table "individual_plants", force: :cascade do |t|
+    t.string "species_name"
+    t.string "common_name"
+    t.string "individual_name"
+    t.text "description"
+    t.string "ranking"
+    t.string "optimal_temp"
+    t.string "sunlight"
+    t.string "water_frequency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_individual_plants_on_user_id"
   end
 
   create_table "plant_countries", force: :cascade do |t|
@@ -85,6 +100,7 @@ ActiveRecord::Schema.define(version: 20180505181812) do
 
   add_foreign_key "common_names", "plants"
   add_foreign_key "images", "plants"
+  add_foreign_key "individual_plants", "users"
   add_foreign_key "plant_countries", "countries"
   add_foreign_key "plant_countries", "plants"
   add_foreign_key "plants", "users"

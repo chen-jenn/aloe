@@ -3,7 +3,7 @@ class Admin::DashboardController < ApplicationController
   before_action :authorize_admin!
 
   def index
-    @users = User.order(username: :asc)
+    @users = User.order(id: :asc)
   end
 
   private
@@ -13,5 +13,5 @@ class Admin::DashboardController < ApplicationController
       redirect_to home_path
     end
   end
-  
+
 end

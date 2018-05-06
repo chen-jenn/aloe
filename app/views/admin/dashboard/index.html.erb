@@ -1,5 +1,27 @@
-<h1>User Index</h1>
+<div class='biggest-div'>
+  <table id="users">
+    <tr>
+      <th>ID</th>
+      <th>Full Name</th>
+      <th>Username</th>
+      <th>E-mail</th>
+      <th>Admin</th>
+      <th>Plants Added</th>
+    </tr>
 
-<% @users.each do |user| %>
-  <%= user.full_name %><br>
-<% end %>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.full_name %></td>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <% if user.is_admin? %>
+          <td>Yes</td>
+        <% else %>
+          <td>No</td>
+        <% end %>
+        <td><%= user.plants.count %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

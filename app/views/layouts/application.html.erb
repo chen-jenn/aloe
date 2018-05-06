@@ -20,6 +20,9 @@
          <li><%= link_to "Add Species", new_plant_path %></li>
          <% if current_user.present? %>
           <li><%= link_to "Your Profile", user_path(current_user) %></li>
+          <% if current_user.is_admin? %>
+            <li><%= link_to "Admin Panel", admin_dashboard_index_path %></li>
+          <% end %>
           <li class="last"><%= link_to "Sign Out", session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Sign In", new_session_path %></li>

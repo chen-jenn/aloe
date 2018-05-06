@@ -124,7 +124,7 @@
 .biggest-div{
   background-color: #f1ffb8;
   width: 75vw;
-  height: auto; 
+  height: auto;
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -139,4 +139,31 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
+}
+
+#users{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#users td, #users th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#users tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+#users tr:hover {
+  background-color: #ddd;
+}
+
+#users th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #32573d;
+  color: white;
 }
