@@ -29,6 +29,8 @@ class IndividualPlantsController < ApplicationController
   end
 
   def destroy
+    @individual_plant.destroy
+    redirect_to user_path(@individual_plant.user)
   end
 
   private

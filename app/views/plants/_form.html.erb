@@ -2,12 +2,12 @@
 
 <h2>Taxonomy</h2>
 <%= f.input :species_name, as: :string, required: false %>
-  <%= f.simple_fields_for :common_names do |c| %>
-    <%= render 'common_name_fields', f: c %>
-  <% end %>
-  <div class="links">
-    <%= link_to_add_association 'Add Another', f, :common_names %>
-  </div>
+<%= f.simple_fields_for :common_names do |c| %>
+  <%= render 'common_name_fields', f: c %>
+<% end %>
+<div class="links">
+  <%= link_to_add_association 'Add Another', f, :common_names %>
+</div>
 
 <hr>
 
@@ -31,8 +31,12 @@
 
 <!-- fix this with proper nested associations -->
 <div>
-  <%= f.label "Upload Images" %></br>
-  <%= f.file_field :file, :multiple => true %>
+  <%= f.simple_fields_for :images do |image| %>
+    <%= render 'image_fields', f: image %>
+  <% end %>
+  <div class="links">
+    <%= link_to_add_association 'Add a Photo', f, :images %>
+  </div>
 </div>
 
 <%= f.submit "Submit", class:'btn btn-dark' %>

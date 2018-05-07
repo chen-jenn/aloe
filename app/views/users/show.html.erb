@@ -18,7 +18,11 @@
             <!-- if next watering day is the same as current day, display as red -->
             <span>Next watering day: </span>
             <hr>
-            <small><%= link_to 'Edit', edit_individual_plant_path(plant) %></small>
+            <small>
+              <%= link_to 'Edit', edit_individual_plant_path(plant) %>
+              |
+              <%= link_to 'Remove', individual_plant_path(plant), method: :delete, data: {confirm: 'Are you sure?'} %>
+            </small>
           </article>
         </div>
       <% end %>

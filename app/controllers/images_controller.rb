@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
     if @image.save
       redirect_to plant_path(@plant)
     else
-      render plain: "image did not save"
+      flash[:alert] "Image did not save"
     end
   end
 
@@ -20,6 +20,6 @@ class ImagesController < ApplicationController
 
   private
   def image_params
-    params.require(:image).permit(:file)
+    params.require(:image).permit(:file, :description)
   end
 end

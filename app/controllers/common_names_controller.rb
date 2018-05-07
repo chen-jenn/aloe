@@ -1,5 +1,5 @@
 class CommonNamesController < ApplicationController
-  #technically don't need this controller?? creation of common name is during creation of plant record
+
   def create
     @plant = Plant.find(params[:plant_id])
     @common_name = CommonName.new(common_name_params)

@@ -87,7 +87,7 @@ class PlantsController < ApplicationController
       :temp_min,
       :temp_max,
       { country_ids: [] },
-      image_attributes: [:id, :description, :file_file_name],
+      image_attributes: [:description, :file],
       common_names_attributes: [:id, :name] ])
   end
 
