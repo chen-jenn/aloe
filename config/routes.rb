@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :users, except: [:index] #include index when you add admin priveleges to view all existing users
 
-  resources :individual_plants, except: [:index, :show] #the index is on user profile, and the show should be in a modal 
+  resources :individual_plants, except: [:index, :show] #the index is on user profile, and the show should be in a modal
 
   resources :plants, shallow:true do
     resources :images, only: [:create, :destroy]
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   get '/contact_us', to:'welcome#contact_us'
+  get '/climate_zones', to:'welcome#climate_zones'
   get '/', to:'welcome#index', as:'home'
 
 end
