@@ -23,14 +23,8 @@ class PlantsController < ApplicationController
     @plant = Plant.new plant_params
     @plant.user = current_user
 
-    #it's ok to have a plant without a climate_zone field
-    if @plant.save
-      @plant.climate_zone = climate_api_response(@plant)
-    else
-      flash[:alert] = "API retrieval error"
-    end
-
-    if @plant.save
+    # #it's ok to have a plant without a climate_zone field
+    if @plant.save!
       flash[:success] = 'Plant added!'
       redirect_to plant_path(@plant)
     else
@@ -60,18 +54,6 @@ class PlantsController < ApplicationController
   end
 
   private
-
-  def climate_api_response(plant)
-    # make request
-    response = RestClient::Request.execute(
-      method: :get,
-      url: "http://climateapi.scottpinkelman.com/api/v1/location/#{plant.latitude}/#{plant.longitude}"
-    )
-    parsed = JSON.parse(response)
-    # extract climate zone data from json response
-    parsed["return_values"][0]["koppen_geiger_zone"]
-  end
-
   def find_plant
     @plant = Plant.find params[:id]
   end
