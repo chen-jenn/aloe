@@ -2,7 +2,7 @@ class Plant < ApplicationRecord
   belongs_to :user
   has_many :common_names, dependent: :destroy
   has_many :images, dependent: :destroy
-  has_many :plant_countries, dependent: :destroy #plant record destroyed removes the plant_country relation
+  has_many :plant_countries, dependent: :destroy
   has_many :countries, through: :plant_countries
 
   accepts_nested_attributes_for :images

@@ -5,7 +5,8 @@ class PlantsController < ApplicationController
 
   def index
     # @plants = Plant.order(species_name: :asc)
-    @plants = Plant.search(params[:term])
+    @plants = Plant.paginate(:page => params[:page], :per_page => 10)
+    # @plants = Plant.search(params[:term])
   end
 
   def show
@@ -19,7 +20,7 @@ class PlantsController < ApplicationController
     @common_name = @plant.common_names.new
   end
 
-  def create 
+  def create
     @plant = Plant.new plant_params
     @plant.user = current_user
 

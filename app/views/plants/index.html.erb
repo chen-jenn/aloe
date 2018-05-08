@@ -1,11 +1,14 @@
 <div class="biggest-div">
   <div style="font-family: 'Open Sans', sans-serif; margin-bottom:10px; font-size:30px;">PLANT SEARCH</div>
 
-        <%= form_tag(plants_path, method: :get) do %>
-          <%= text_field_tag :term, params[:term] %>
-          <%= submit_tag 'Search', name: nil %>
+  <%= form_tag(plants_path, method: :get, class:'mb-2') do %>
+    <%= text_field_tag :term, params[:term] %>
+    <%= submit_tag 'Search', name: nil %>
+  <% end %>
 
-        <% end %>
+  <div class="paginate-div">
+    <%= will_paginate @plants %>
+  </div>
 
   <% @plants.each do |plant|%>
     <div class="card mb-2">
