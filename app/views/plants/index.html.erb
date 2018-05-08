@@ -1,16 +1,11 @@
 <div class="biggest-div">
   <div style="font-family: 'Open Sans', sans-serif; margin-bottom:10px; font-size:30px;">PLANT SEARCH</div>
 
-  <div class="row mb-2">
-    <div class="col-lg-6">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for...">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">Go!</button>
-        </span>
-      </div>
-    </div>
-  </div>
+        <%= form_tag(plants_path, method: :get) do %>
+          <%= text_field_tag :term, params[:term] %>
+          <%= submit_tag 'Search', name: nil %>
+
+        <% end %>
 
   <% @plants.each do |plant|%>
     <div class="card mb-2">

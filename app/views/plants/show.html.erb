@@ -20,7 +20,7 @@
 
   <p>Climate Zone: <%= @plant.climate_zone %></p>
 
-  <% if @plant.notes.length > 0 %>
+  <% if @plant.notes && @plant.notes.length > 0 %>
     <h4>Notes</h4>
     <p><%= @plant.notes %></p>
   <% end %>

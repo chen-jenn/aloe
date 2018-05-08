@@ -4,7 +4,8 @@ class PlantsController < ApplicationController
   before_action :authorize_user!, only: [:edit, :update, :destroy]
 
   def index
-    @plants = Plant.order(species_name: :asc)
+    # @plants = Plant.order(species_name: :asc)
+    @plants = Plant.search(params[:term])
   end
 
   def show
@@ -18,16 +19,16 @@ class PlantsController < ApplicationController
     @common_name = @plant.common_names.new
   end
 
-  def create #after the plant with valid parameters gets sent and saved to the database, the application should then populate the climate_zone field
-    #do the update/patch before rendering the page so that when it is directed to show page, the field will be populated
+  def create 
     @plant = Plant.new plant_params
     @plant.user = current_user
 
     # #it's ok to have a plant without a climate_zone field
-    if @plant.save!
+    if @plant.save
       flash[:success] = 'Plant added!'
       redirect_to plant_path(@plant)
     else
+      flash[:alert] = "Error occurred"
       render :new
     end
   end
@@ -60,6 +61,7 @@ class PlantsController < ApplicationController
 
   def plant_params
     params.require(:plant).permit([
+      :term,
       :species_name,
       :common_name,
       :city,
@@ -70,7 +72,8 @@ class PlantsController < ApplicationController
       :temp_max,
       { country_ids: [] },
       image_attributes: [:description, :file],
-      common_names_attributes: [:id, :name] ])
+      common_names_attributes: [:id, :name] ]
+    )
   end
 
   def authorize_user!
