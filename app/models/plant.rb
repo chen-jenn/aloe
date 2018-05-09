@@ -8,17 +8,17 @@ class Plant < ApplicationRecord
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :common_names, reject_if: :all_blank, allow_destroy: true
 
-  # validate :has_at_least_one_country
+  validate :has_at_least_one_country
   validates :species_name, presence: true, uniqueness: true
   validates :latitude, :longitude, :sunlight, presence: true
   validates_length_of :climate_zone, maximum: 3, allow_blank: true
   validates_associated :common_names
   validates_associated :images
 
-  # geocoded_by :location
-  # before_validation :geocode
+  geocoded_by :location
+  before_validation :geocode
   before_validation :capitalize
-  # after_validation :send_request
+  after_validation :send_request
 
   def location #need to account for inaccurate city-country combos (if you type something like Seattle, China, it will just geocode Seattle)
     if city && city!= 'N/A' && countries.length > 0

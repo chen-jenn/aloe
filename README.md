@@ -11,7 +11,7 @@ System dependencies:
 
 1. Navigate to the project directory and run `bundle`
 2. Database creation: `rails db:create`
-3. Seeding data: `rails db:seed`
+3. Seeding data: `rails db:seed` 
 
 ## How It Works
 1. User adds a new plant that they own, for example, named 'George'

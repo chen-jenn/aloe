@@ -50,12 +50,8 @@ super_user = User.create(
   )
 end
 
-users = User.all
-puts Cowsay.say "Created #{users.count} users", :tux
-puts "Login with  #{super_user.email} and password of '#{PASSWORD}'"
-
 CSV.foreach(Rails.root.join('db/seeds/plants.csv'), headers:true) do |row|
-  Plant.create do |instance|
+  pl = Plant.create do |instance|
     instance.species_name = row[0]
     instance.city = row[1]
     instance.climate_zone = row[2]
@@ -65,8 +61,18 @@ CSV.foreach(Rails.root.join('db/seeds/plants.csv'), headers:true) do |row|
     instance.temp_min = row[6]
     instance.temp_max = row[7]
     instance.user = super_user
+    instance.notes = Faker::HitchhikersGuideToTheGalaxy.quote
   end
+
+  pl.plant_countries.create(country_id: 39) # YOU ALL BELONG TO CANADA NOW
+  pl.common_names.create(name: Faker::Pokemon.name)
 end
+
+plants = Plant.all
+users = User.all
+puts Cowsay.say "Created #{users.count} users", :tux
+puts Cowsay.say "Added #{plants.count} plants!", :dragon
+puts "Login with  #{super_user.email} and password of '#{PASSWORD}'"
 
 # Creating one record sample
 # p = Plant.create(
