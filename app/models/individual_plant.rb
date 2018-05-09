@@ -4,7 +4,6 @@ class IndividualPlant < ApplicationRecord
 
   mount_uploader :photo, ImageUploader
 
-
   def get_water_freq(user_zone, plant_zone)
     (ZoneComparison.where({ user_zone: user_zone, plant_zone: plant_zone }).pluck :water_freq)[0]
   end

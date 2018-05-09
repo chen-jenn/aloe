@@ -5,8 +5,7 @@ class PlantsController < ApplicationController
 
   def index
     # @plants = Plant.order(species_name: :asc)
-    @plants = Plant.paginate(:page => params[:page], :per_page => 10)
-    # @plants = Plant.search(params[:term])
+    @plants = Plant.paginate(:page => params[:page], :per_page => 10).search(params[:term])
   end
 
   def show
@@ -17,20 +16,20 @@ class PlantsController < ApplicationController
 
   def new
     @plant = Plant.new
-    @common_name = @plant.common_names.new
+    @common_name = @plant.common_names.build
+    @image = @plant.images.build
   end
 
   def create
     @plant = Plant.new plant_params
     @plant.user = current_user
-    @image = @plant.images.build # look into this 
+    #it's ok to have a plant without a climate_zone field
 
-    # #it's ok to have a plant without a climate_zone field
     if @plant.save
       flash[:success] = 'Plant added!'
       redirect_to plant_path(@plant)
     else
-      flash[:alert] = "Error occurred"
+      flash[:alert] = "Plant did not save"
       render :new
     end
   end
@@ -73,8 +72,8 @@ class PlantsController < ApplicationController
       :temp_min,
       :temp_max,
       { country_ids: [] },
-      image_attributes: [:description, :file],
-      common_names_attributes: [:id, :name] ]
+      images_attributes: [:id, :plant_id, :description, :file],
+      common_names_attributes: [:id, :name, :_destroy] ]
     )
   end
 

@@ -6,12 +6,12 @@ end
 
 # climate_zones = ['Af', 'Am', 'As', 'Aw', 'BWk', 'BWh', 'BSk', 'BSh', 'Cfa', 'Cfb', 'Cfc', 'Csa', 'Csb', 'Csc', 'Cwa', 'Cwb', 'Cwc', 'Dfa', 'Dfb', 'Dfc', 'Dfd', 'Dsa', 'Dsb', 'Dsc', 'Dsd', 'Dwa', 'Dwb', 'Dwc', 'Dwd', 'EF', 'ET']
 
-# 1. Country Table Generated Once
+# 1. Country Table Generated Once (static reference table)
 # COUNTRIES.each do |country| #a one time seed as this table will never change
 #   Country.create( country_name: country )
 # end
 
-# 2. Zone comparison table Generated Once
+# 2. Zone comparison table Generated Once (static reference table)
 # CSV.foreach(Rails.root.join('db/seeds/zone_comparison.csv'), headers:true) do |row|
 #   ZoneComparison.create do |instance|
 #     instance.user_zone = row[0]

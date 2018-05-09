@@ -1,11 +1,9 @@
 <div class="biggest-div">
   <div style="height:300px;width:300px;background-color:lightgrey;color:white;">
-    <% if @images %>
-      <% @images.each do |image| %>
-       <!-- so this will eventually need to be the actual saved image file!! -->
-       <!-- and only one picture for the showcase, everything else can be found in the gallery -->
-        <%= image.description %>
-      <% end %>
+    <% if @images.length > 0 %>
+      <div style="background-image: url(<%= @images[0].file.url(:large) %>); height:300px;width:300px;">
+      </div>
+      <%= @images[0].description %>
     <% end %>
   </div>
 
@@ -24,6 +22,13 @@
   <% end %>
 
   <h4>Gallery</h4>
+  <% if @images %>
+    <% @images.each do |image| %>
+      <div style="background-image: url(<%= image.file.url(:medium) %>); height:200px;width:200px;">
+      </div>
+    <% end %>
+  <% end %>
+
   <%= @images.map { |image| image.description }.join(', ') %>
 
   <!-- Only the admin, mods, and user that created this is allowed to edit -->

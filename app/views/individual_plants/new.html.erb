@@ -1,12 +1,15 @@
 <div class='biggest-div'>
-  <h2>Add one of your plants!</h2>
-  <%= simple_form_for @individual_plant do |f| %>
-   <!-- make a note to user to check that the spelling of species name is exactly the same as in the db -->
-    <%= f.input :species_name %>
-    <%= f.input :common_name %>
-    <%= f.input :individual_name %>
-    <%= f.input :description %>
-    <%= f.input :photo %>
-    <%= f.submit "Submit", class:'btn btn-dark' %>
-  <% end %>
+  <div class="card mx-auto" style="width: 50rem;border-radius:5px;background-color:white;border:solid rgb(168, 154, 69) 1px;">
+    <div class="card-body">
+      <h2>Add one of your plants!</h2>
+      <%= simple_form_for @individual_plant do |f| %>
+        <%= f.input :species_name, hint: 'Make sure the species name spelling is exactly the same as in the database' %>
+        <%= f.input :common_name %>
+        <%= f.input :individual_name %>
+        <%= f.input :description %>
+        <%= f.input :photo %>
+        <%= f.submit "Submit", class:'btn btn-dark' %>
+      <% end %>
+    </div>
+  </div> 
 </div>

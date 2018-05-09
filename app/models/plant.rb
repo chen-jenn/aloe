@@ -1,4 +1,4 @@
-class Plant < ApplicationRecord
+class Plant < ApplicationRecord 
   belongs_to :user
   has_many :common_names, dependent: :destroy
   has_many :images, dependent: :destroy
