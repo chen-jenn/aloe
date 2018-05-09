@@ -31,5 +31,9 @@ class Ability
     can([:create, :read, :update], Plant) do |plant|
       user == plant.user
     end
+
+    can([:update, :read, :destroy], User) do |user|
+      user == current_user
+    end
   end
 end

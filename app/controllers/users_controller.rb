@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authorize_user!, only: [:edit, :update, :destroy, :show]
+
   def new
     @user = User.new
   end
@@ -57,5 +59,13 @@ class UsersController < ApplicationController
       :password,
       :password_confirmation
     )
+  end
+
+  def authorize_user!
+    @user = current_user
+    unless can?([:update, :read, :destroy], @user)
+      flash[:alert] = 'Access Denied'
+      redirect_to plants_path
+    end
   end
 end

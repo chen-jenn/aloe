@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :plants, dependent: :nullify
-  has_many :individual_plants, dependent: :destroy 
+  has_many :individual_plants, dependent: :destroy
   has_secure_password
 
   VALID_USERNAME_REGEX = /\A[a-zA-Z0-9]+\z/
@@ -17,6 +17,15 @@ class User < ApplicationRecord
     presence: true,
     uniqueness: true,
     format: VALID_EMAIL_REGEX
+
+  geocoded_by :location
+  before_validation :geocode
+
+  def location
+    if city && city!= 'N/A' && countries.length > 0
+      geocoded = "#{city}, #{countries[0].country_name}"
+    end
+  end
 
   def full_name
     "#{first_name} #{last_name}"

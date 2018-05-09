@@ -21,15 +21,21 @@
     <p><%= @plant.notes %></p>
   <% end %>
 
-  <h4>Gallery</h4>
-  <% if @images %>
-    <% @images.each do |image| %>
-      <div style="background-image: url(<%= image.file.url(:medium) %>); height:200px;width:200px;">
-      </div>
+  <hr>
+  <h2 style="font-family: 'Open Sans', sans-serif">GALLERY</h2>
+  <div class="card-container">
+    <% if @images.count > 0 %>
+      <% @images.each do |image| %>
+        <div class="card-indv">
+          <div class="thumb" style="background-image: url(<%= image.file.url(:medium) %>)"></div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>Hmm, it appears this gallery is empty</p>
     <% end %>
-  <% end %>
+  </div>
 
-  <%= @images.map { |image| image.description }.join(', ') %>
+
 
   <!-- Only the admin, mods, and user that created this is allowed to edit -->
   <hr>

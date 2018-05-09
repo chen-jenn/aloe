@@ -1,7 +1,7 @@
 class PlantsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_plant, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_user!, only: [:edit, :update, :destroy]
+  before_action :authorize_user!, only: [:edit, :update] # only admins allowed to destroy 
 
   def index
     # @plants = Plant.order(species_name: :asc)
@@ -18,6 +18,7 @@ class PlantsController < ApplicationController
     @plant = Plant.new
     @common_name = @plant.common_names.build
     @image = @plant.images.build
+    # @images = @plant.images.all.order('id desc')
   end
 
   def create
