@@ -4,42 +4,24 @@ Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|
   load seed
 end
 
-# Country Table Generated Once
+# climate_zones = ['Af', 'Am', 'As', 'Aw', 'BWk', 'BWh', 'BSk', 'BSh', 'Cfa', 'Cfb', 'Cfc', 'Csa', 'Csb', 'Csc', 'Cwa', 'Cwb', 'Cwc', 'Dfa', 'Dfb', 'Dfc', 'Dfd', 'Dsa', 'Dsb', 'Dsc', 'Dsd', 'Dwa', 'Dwb', 'Dwc', 'Dwd', 'EF', 'ET']
+
+# 1. Country Table Generated Once
 # COUNTRIES.each do |country| #a one time seed as this table will never change
 #   Country.create( country_name: country )
 # end
 
-# climate_zones = ['Af', 'Am', 'As', 'Aw', 'BWk', 'BWh', 'BSk', 'BSh', 'Cfa', 'Cfb', 'Cfc', 'Csa', 'Csb', 'Csc', 'Cwa', 'Cwb', 'Cwc', 'Dfa', 'Dfb', 'Dfc', 'Dfd', 'Dsa', 'Dsb', 'Dsc', 'Dsd', 'Dwa', 'Dwb', 'Dwc', 'Dwd', 'EF', 'ET']
-
-# Zone comparison table Generated Once
-CSV.foreach(Rails.root.join('db/seeds/zone_comparison.csv'), headers:true) do |row|
-  ZoneComparison.create do |instance|
-    instance.user_zone = row[0]
-    instance.plant_zone = row[1]
-    instance.water_freq = row[2]
-  end
-end
-
-# Plant.destroy_all
-plant_list = [
-  ['haworthiopsis fasciata', 'Eastern cape', 'BSk'],
-  ['aloe vera', 'Arabian peninsula', 'BWh'],
-  ['saintpaulia ionantha', '', 'Dfa'],
-  ['Spathiphyllum wallisii', '', 'Cfb'], # peace lily
-  ['Calathea makoyana', 'State of Amazonas', 'Af'], #peacock plant, cathedral windows
-  ['Crassula ovata', '', 'Aw'], #jade plant
-  ['Beaucarnea recurvata', 'Tamaullipa', 'BSh'], #ponytail palm
-  ['Phalaenopsis amabilis', '', 'Cwa'],
-  ['Philodendron bipinnatifidum', '', 'Dfa'],
-  ['Epipremnum aureum', 'Mo\'orea', 'Af'] # Devil's ivy
-]
-
-plant_list.each do |species, city, zone|
-  Plant.create( species_name: species, city: city, climate_zone: zone )
-end
+# 2. Zone comparison table Generated Once
+# CSV.foreach(Rails.root.join('db/seeds/zone_comparison.csv'), headers:true) do |row|
+#   ZoneComparison.create do |instance|
+#     instance.user_zone = row[0]
+#     instance.plant_zone = row[1]
+#     instance.water_freq = row[2]
+#   end
+# end
 
 User.destroy_all
-
+Plant.destroy_all
 PASSWORD = 'password'
 
 super_user = User.create(
@@ -50,7 +32,7 @@ super_user = User.create(
   city: 'Vancouver',
   country: 'Canada',
   password: PASSWORD,
-  is_admin: true 
+  is_admin: true
 )
 
 10.times.each do
@@ -71,6 +53,20 @@ end
 users = User.all
 puts Cowsay.say "Created #{users.count} users", :tux
 puts "Login with  #{super_user.email} and password of '#{PASSWORD}'"
+
+CSV.foreach(Rails.root.join('db/seeds/plants.csv'), headers:true) do |row|
+  Plant.create do |instance|
+    instance.species_name = row[0]
+    instance.city = row[1]
+    instance.climate_zone = row[2]
+    instance.latitude = row[3]
+    instance.longitude = row[4]
+    instance.sunlight = row[5]
+    instance.temp_min = row[6]
+    instance.temp_max = row[7]
+    instance.user = super_user
+  end
+end
 
 # Creating one record sample
 # p = Plant.create(
