@@ -1,6 +1,7 @@
 <div class='biggest-div'>
   <h2>Add one of your plants!</h2>
   <%= simple_form_for @individual_plant do |f| %>
+   <!-- make a note to user to check that the spelling of species name is exactly the same as in the db -->
     <%= f.input :species_name %>
     <%= f.input :common_name %>
     <%= f.input :individual_name %>

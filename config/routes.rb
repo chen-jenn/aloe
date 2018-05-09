@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users, except: [:index] #include index when you add admin priveleges to view all existing users
 
   resources :individual_plants, except: [:index, :show] #the index is on user profile, and the show should be in a modal
+  patch '/individual_plants/:id/generate', to:'individual_plants#generate_data', as: 'generate_data'
 
   resources :plants, shallow:true do
     resources :images, only: [:create, :destroy]

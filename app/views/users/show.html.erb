@@ -13,7 +13,11 @@
             <h1><strong><%= plant.individual_name %></strong></h1>
             <p>
               <%= plant.common_name %><br>
-              Species: <i><%= plant.species_name %></i>
+              Species: <i><%= plant.species_name %></i><br>
+              <% if plant.sunlight %>
+                Sunlight: <%= plant.sunlight %><br>
+                Optimal Temperature: <%= plant.optimal_temp %>&deg;C
+              <% end %>
             </p>
             <!-- if next watering day is the same as current day, display as red -->
             <span>Next watering day: </span>
@@ -23,7 +27,7 @@
               |
               <%= link_to 'Remove', individual_plant_path(plant), method: :delete, data: {confirm: 'Are you sure?'} %><br>
               <% if plant.water_frequency == nil %>
-                <%= link_to 'Generate Data!', home_path %>
+                <%= link_to 'Generate Data!', generate_data_path(plant), method: :patch %>
               <% end %>
             </small>
           </article>

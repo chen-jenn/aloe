@@ -13,7 +13,7 @@ class IndividualPlant < ApplicationRecord
     # average of all existing rankings for that particular plant
   end
 
-  def get_sunlight(plant) # usage: get_sunlight(@individual_plant.species_name)
+  def get_sunlight(plant)
     (Plant.where({ species_name: plant }).pluck :sunlight)[0]
   end
 
