@@ -48,7 +48,8 @@ class IndividualPlantsController < ApplicationController
       ])
   end
 
-  # for generating the 4 columns. Maybe just have a button on the individual plant modal that says 'Generate data!' And populate these fields after the records already exist in the db 
+  # for generating the 4 columns. Maybe just have a button on the individual plant modal that says 'Generate watering schedule!' And populate these fields after the records already exist in the db
+  # After clicking 'Generate watering schedule!', a pop-up should say how often they should water this specific plant and automatically set that time frame starting from the day they clicked the button  
   def get_water_freq(user_zone, plant_zone)
     (ZoneComparison.where({ user_zone: user_zone, plant_zone: plant_zone }).pluck :water_freq)[0]
   end

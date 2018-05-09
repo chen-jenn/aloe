@@ -21,7 +21,10 @@
             <small>
               <%= link_to 'Edit', edit_individual_plant_path(plant) %>
               |
-              <%= link_to 'Remove', individual_plant_path(plant), method: :delete, data: {confirm: 'Are you sure?'} %>
+              <%= link_to 'Remove', individual_plant_path(plant), method: :delete, data: {confirm: 'Are you sure?'} %><br>
+              <% if plant.water_frequency == nil %>
+                <%= link_to 'Generate Data!', home_path %>
+              <% end %>
             </small>
           </article>
         </div>
