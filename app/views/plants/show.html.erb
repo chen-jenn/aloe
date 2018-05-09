@@ -9,10 +9,8 @@
     <% end %>
   </div>
 
-
   <h3><i><%= @plant.species_name %></i></h3>
   <p>Common names: <%= @common_names.map { |common_name| common_name.name }.join(', ') %></p>
-
 
   <h4>Origins</h4>
   City/Region: <%= @plant.city %></br>

@@ -12,7 +12,7 @@ class PlantsController < ApplicationController
   def show
     @countries = @plant.countries
     @common_names = @plant.common_names
-    @images = @plant.images
+    @images = @plant.images.all
   end
 
   def new
@@ -23,6 +23,7 @@ class PlantsController < ApplicationController
   def create
     @plant = Plant.new plant_params
     @plant.user = current_user
+    @image = @plant.images.build # look into this 
 
     # #it's ok to have a plant without a climate_zone field
     if @plant.save
