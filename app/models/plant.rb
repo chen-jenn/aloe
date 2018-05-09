@@ -34,6 +34,7 @@ class Plant < ApplicationRecord
     end
   end
 
+
   private
   #to populate the climate_zone column before saving record
   def send_request
