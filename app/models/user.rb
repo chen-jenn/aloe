@@ -22,9 +22,7 @@ class User < ApplicationRecord
   before_validation :geocode
 
   def location
-    if city && city!= 'N/A' && countries.length > 0
-      geocoded = "#{city}, #{countries[0].country_name}"
-    end
+      "#{city}, #{country}"
   end
 
   def full_name
