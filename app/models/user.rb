@@ -46,4 +46,16 @@ class User < ApplicationRecord
     end
   end
 
+  def send_text(plant)
+    account_sid = ENV['TWILIO_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    message = @client.messages.create(
+        body: "Reminder to water #{plant.individual_name} today!",
+        to: "#{self.phone}",
+        from: ENV['TWILIO_NUMBER'])
+    "Reminder has been sent"
+  end
+
 end
