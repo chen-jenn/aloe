@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update, :destroy, :show]
 
   def new
@@ -61,9 +62,12 @@ class UsersController < ApplicationController
     )
   end
 
+  def find_user
+    @user = User.find params[:id]
+  end
+
   def authorize_user!
-    @user = current_user
-    unless can?([:update, :read, :destroy], @user)
+    unless can?(:manage_self, @user)
       flash[:alert] = 'Access Denied'
       redirect_to plants_path
     end

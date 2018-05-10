@@ -51,10 +51,15 @@ class PlantsController < ApplicationController
     end
   end
 
-  #only users with admin rights permitted
+
   def destroy
-    @plant.destroy
-    redirect_to plants_path
+    if current_user.is_admin?
+      @plant.destroy
+      redirect_to plants_path
+    else
+      flash[:alert] = "Only admins can delete"
+      redirect_to plant_path(@plant)
+    end
   end
 
   private
@@ -100,7 +105,7 @@ class PlantsController < ApplicationController
   end
 
   def authorize_user!
-    unless can?([:create, :read, :update], @plant)
+    unless can?(:crud, @plant)
       flash[:alert] = 'Access Denied'
       redirect_to plant_path(@plant)
     end

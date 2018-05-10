@@ -43,6 +43,7 @@ gem 'pry-rails'
 gem 'rest-client'
 gem 'simple_form'
 gem 'turbolinks'
+gem 'twilio-ruby'
 gem 'will_paginate'
 
 # Use Capistrano for deployment

@@ -11,10 +11,10 @@ class RankingsController < ApplicationController
     end
   end
 
-  def update # need to fix this to take into account 3 possibilities 
-    ranking = Ranking.find params[:id]
-    ranking.update()
-    redirect_to plant_path(ranking.plant), notice: "Input changed"
+  def update # need to fix this to take into account 3 possibilities
+    # ranking = Ranking.find params[:id]
+    # ranking.update()
+    # redirect_to plant_path(ranking.plant), notice: "Input changed"
   end
 
   def destroy

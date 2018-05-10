@@ -1,8 +1,13 @@
 class IndividualPlant < ApplicationRecord
   belongs_to :user
+  before_validation :capitalize
   validates :species_name, :individual_name, presence: true
 
   mount_uploader :photo, ImageUploader
+  
+  def capitalize
+    species_name.capitalize!
+  end
 
   def get_water_freq(user_zone, plant_species)
     plant_zone = (Plant.where({ species_name: plant_species }).pluck :climate_zone)[0]
