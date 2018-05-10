@@ -11,7 +11,7 @@ class User < ApplicationRecord
     uniqueness: true,
     format: { with: VALID_USERNAME_REGEX, message: 'No special characters, only letters, numbers, and daashes and is between 5-20 characters' }
 
-  validates :first_name, :last_name, :city, :country, presence: true
+  validates :first_name, :last_name, :city, :country, :latitude, :longitude, presence: true
 
   validates :email,
     presence: true,
@@ -20,6 +20,8 @@ class User < ApplicationRecord
 
   geocoded_by :location
   before_validation :geocode
+  after_validation :send_request
+
 
   def location
       "#{city}, #{country}"
@@ -28,4 +30,18 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def send_request
+    if latitude && longitude
+      response = RestClient::Request.execute(
+        method: :get,
+        url: "http://climateapi.scottpinkelman.com/api/v1/location/#{latitude}/#{longitude}"
+      )
+      parsed = JSON.parse(response)
+      self.climate_zone = parsed["return_values"][0]["koppen_geiger_zone"]
+    else
+      p "Unable to get geocoding location"
+    end
+  end
+
 end
