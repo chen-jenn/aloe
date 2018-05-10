@@ -14,9 +14,14 @@
             <p>
               <%= plant.common_name %><br>
               Species: <i><%= plant.species_name %></i><br>
+
               <% if plant.sunlight %>
                 Sunlight: <%= plant.sunlight %><br>
-                Optimal Temperature: <%= plant.optimal_temp %>&deg;C
+                Optimal Temperature: <%= plant.optimal_temp %>&deg;C<br>
+                Watering Frequency:
+                <% if plant.water_frequency %>
+                <%= plant.water_frequency %>
+                <% end %>
               <% end %>
             </p>
             <!-- if next watering day is the same as current day, display as red -->

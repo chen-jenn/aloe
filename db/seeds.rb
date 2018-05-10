@@ -44,9 +44,10 @@ super_user = User.create(
     first_name: first_name,
     last_name: last_name,
     email: "#{first_name.downcase}.#{last_name.downcase}@example.com",
-    city: Faker::Address.city,
-    country: Faker::Address.country,
+    city: 'Vancouver',
+    country: 'Canada',
     password: PASSWORD
+    #comment out after_validation :send_request in user.rb because don't need to send API request when seeding
   )
 end
 

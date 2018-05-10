@@ -35,13 +35,13 @@ class IndividualPlantsController < ApplicationController
 
   def generate_data
     i = IndividualPlant.find params[:id]
-    # i.water_frequency = i.get_water_freq(i.user.climate_zone, i.climate_zone)
+    i.water_frequency = i.get_water_freq(i.user.climate_zone, i.species_name)
     # i.ranking = i.get_ranking(i.species_name)
     i.sunlight = i.get_sunlight(i.species_name)
     i.optimal_temp = i.get_optimal_temp(i.species_name)
     i.save
     redirect_to user_path(i.user)
-    
+
     # After clicking 'Generate watering schedule!', a pop-up should say how often they should water this specific plant and automatically set that time frame starting from the day they clicked the button
     # set reminder timer
   end
