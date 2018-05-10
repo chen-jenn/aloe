@@ -67,13 +67,13 @@ class PlantsController < ApplicationController
     moderate = helper('moderate')
     hard = helper('hard')
 
-    array = [easy, moderate, hard]
+    tallied = [easy, moderate, hard]
 
-    if array.max == easy
+    if tallied.max == easy
       'easy'
-    elsif array.max == moderate
+    elsif tallied.max == moderate
       'moderate'
-    elsif array.max == hard
+    elsif tallied.max == hard
       'hard'
     end
   end

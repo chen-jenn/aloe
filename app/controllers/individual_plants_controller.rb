@@ -36,7 +36,7 @@ class IndividualPlantsController < ApplicationController
   def generate_data
     i = IndividualPlant.find params[:id]
     i.water_frequency = i.get_water_freq(i.user.climate_zone, i.species_name)
-    # i.ranking = i.get_ranking(i.species_name)
+    i.ranking = i.get_ranking
     i.sunlight = i.get_sunlight(i.species_name)
     i.optimal_temp = i.get_optimal_temp(i.species_name)
     i.save

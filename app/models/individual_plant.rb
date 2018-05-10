@@ -9,9 +9,38 @@ class IndividualPlant < ApplicationRecord
     (ZoneComparison.where({ user_zone: user_zone, plant_zone: plant_zone }).pluck :water_freq)[0]
   end
 
-  def get_ranking(plant)
-    # average of all existing rankings for that particular plant
-    
+  def get_ranking
+    # average of all existing rankings for that particular plant species
+    i = self.species_name
+    plant_id = (Plant.where({species_name: i}).pluck :id)[0]
+    rankings = Ranking.where({plant_id: plant_id}).pluck :ease_of_care
+
+    # Make into an array and count up each instance of a easy, moderate, hard
+    easy = 0
+    moderate = 0
+    hard = 0
+
+    rankings.each do |e|
+      if e == 'easy'
+        easy += 1
+      elsif e == 'moderate'
+        moderate += 1
+      elsif e == 'hard'
+        hard += 1
+      end
+    end
+
+    tallied = [easy,moderate,hard]
+
+    if tallied.max == easy && easy != 0
+      'easy'
+    elsif tallied.max == moderate && moderate != 0
+      'moderate'
+    elsif tallied.max == hard && hard != 0
+      'hard'
+    else
+      'Not enough data'
+    end
   end
 
   def get_sunlight(plant)
