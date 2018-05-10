@@ -15,6 +15,18 @@
   Country:  <%= @countries.map { |country| country.country_name }.join(', ') %>
 
   <p>Climate Zone: <%= @plant.climate_zone %></p>
+  <p>Sunlight Needs: <%= @plant.sunlight %></p>
+  <p>Temperature Range: <%= @plant.temp_min %>-<%= @plant.temp_max %>&deg;C</p>
+
+  <p>Ease of Care (average):
+    <% if @plant.rankings.length > 0 %>
+      <%= @rank %>
+    <% else %>
+      Not enough data
+    <% end %>
+  </p>
+
+  <p>You ranked this plant as ___ to take care of</p>
 
   <% if @plant.notes && @plant.notes.length > 0 %>
     <h4>Notes</h4>
@@ -34,8 +46,6 @@
       <p>Hmm, it appears this gallery is empty</p>
     <% end %>
   </div>
-
-
 
   <!-- Only the admin, mods, and user that created this is allowed to edit -->
   <hr>

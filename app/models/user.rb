@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :rankings, dependent: :nullify
+  has_many :ranked_plants, through: :rankings, source: :plant
   has_many :plants, dependent: :nullify
   has_many :individual_plants, dependent: :destroy
   has_secure_password
@@ -9,7 +11,7 @@ class User < ApplicationRecord
   validates :username,
     presence: true,
     uniqueness: true,
-    format: { with: VALID_USERNAME_REGEX, message: 'No special characters, only letters, numbers, and daashes and is between 5-20 characters' }
+    format: { with: VALID_USERNAME_REGEX, message: 'No special characters, only letters, numbers, and dashes and is between 5-20 characters' }
 
   validates :first_name, :last_name, :city, :country, :latitude, :longitude, presence: true
 

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   patch '/individual_plants/:id/generate', to:'individual_plants#generate_data', as: 'generate_data'
 
   resources :plants, shallow:true do
+    resources :rankings, only: [:create, :destroy, :update]
     resources :images, only: [:create, :destroy]
     resources :common_names, only: [:create, :destroy, :update]
   end

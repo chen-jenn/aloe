@@ -1,5 +1,8 @@
-class Plant < ApplicationRecord 
+class Plant < ApplicationRecord
   belongs_to :user
+
+  has_many :rankings, dependent: :destroy
+  has_many :rankers, through: :rankings, source: :user
   has_many :common_names, dependent: :destroy
   has_many :images, dependent: :destroy
   has_many :plant_countries, dependent: :destroy

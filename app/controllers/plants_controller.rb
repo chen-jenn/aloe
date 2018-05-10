@@ -1,7 +1,7 @@
 class PlantsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :find_plant, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_user!, only: [:edit, :update] # only admins allowed to destroy 
+  before_action :find_plant, only: [:show, :edit, :update, :destroy, :rank_count]
+  before_action :authorize_user!, only: [:edit, :update] # only admins allowed to destroy
 
   def index
     # @plants = Plant.order(species_name: :asc)
@@ -12,6 +12,7 @@ class PlantsController < ApplicationController
     @countries = @plant.countries
     @common_names = @plant.common_names
     @images = @plant.images.all
+    @rank = rank_count
   end
 
   def new
@@ -57,6 +58,26 @@ class PlantsController < ApplicationController
   end
 
   private
+  def rank_count
+    def helper(rank)
+      @plant.rankings.where({ease_of_care: rank}).count
+    end
+
+    easy = helper('easy')
+    moderate = helper('moderate')
+    hard = helper('hard')
+
+    array = [easy, moderate, hard]
+
+    if array.max == easy
+      'easy'
+    elsif array.max == moderate
+      'moderate'
+    elsif array.max == hard
+      'hard'
+    end
+  end
+
   def find_plant
     @plant = Plant.find params[:id]
   end

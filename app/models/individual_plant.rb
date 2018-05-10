@@ -9,8 +9,9 @@ class IndividualPlant < ApplicationRecord
     (ZoneComparison.where({ user_zone: user_zone, plant_zone: plant_zone }).pluck :water_freq)[0]
   end
 
-  def get_ranking
+  def get_ranking(plant)
     # average of all existing rankings for that particular plant
+    
   end
 
   def get_sunlight(plant)
