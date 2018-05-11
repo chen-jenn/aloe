@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :reminders, dependent: :destroy
   has_many :rankings, dependent: :nullify
   has_many :ranked_plants, through: :rankings, source: :plant
   has_many :plants, dependent: :nullify

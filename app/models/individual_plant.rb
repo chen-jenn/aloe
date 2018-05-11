@@ -1,5 +1,6 @@
 class IndividualPlant < ApplicationRecord
   belongs_to :user
+  has_one :reminder, dependent: :destroy # active record still creates a second reminder for the same plant; fix later 
   before_validation :capitalize
   validates :species_name, :individual_name, presence: true
 
@@ -23,7 +24,7 @@ class IndividualPlant < ApplicationRecord
     # Make into an array and count up each instance of a easy, moderate, hard
     easy = 0
     moderate = 0
-    hard = 0 
+    hard = 0
 
     rankings.each do |e|
       if e == 'easy'
