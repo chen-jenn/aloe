@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   end
 
   resource :session, only: [:new, :create, :destroy]
-  resources :users, except: [:index] #include index when you add admin priveleges to view all existing users
+  resources :users, except: [:index]
 
-  resources :individual_plants, except: [:index, :show] #the index is on user profile, and the show should be in a modal
+  #the index is on user profile, and the show should be in a modal
+  resources :individual_plants, except: [:index, :show]
   patch '/individual_plants/:id/generate', to:'individual_plants#generate_data', as: 'generate_data'
+  patch '/individual_plants/:id/set_reminder', to:'individual_plant#set_reminder', as: 'set_reminder' # what request?? 
 
   resources :plants, shallow:true do
     resources :rankings, only: [:create, :destroy, :update]

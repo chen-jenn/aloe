@@ -1,5 +1,5 @@
 class IndividualPlantsController < ApplicationController
-  before_action :find_individual_plant, only: [:edit, :update, :destroy]
+  before_action :find_individual_plant, except: [:new, :create]
 
   def new
     @individual_plant = IndividualPlant.new
@@ -44,6 +44,16 @@ class IndividualPlantsController < ApplicationController
 
     # After clicking 'Generate watering schedule!', a pop-up should say how often they should water this specific plant and automatically set that time frame starting from the day they clicked the button
     # set reminder timer
+  end
+
+  def set_reminder
+    if @individual_plant.water_freq == 'low'
+      puts "sends a reminder text once a week from day of setting reminder"
+    elsif @individual_plant.water_freq == 'med'
+      puts "sends a reminder text every three days"
+    elsif @individual_plant.water_freq == 'high'
+      puts "sends a reminder every other day"
+    end
   end
 
   private

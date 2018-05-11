@@ -4,7 +4,7 @@ class IndividualPlant < ApplicationRecord
   validates :species_name, :individual_name, presence: true
 
   mount_uploader :photo, ImageUploader
-  
+
   def capitalize
     species_name.capitalize!
   end
@@ -56,6 +56,18 @@ class IndividualPlant < ApplicationRecord
     min = (Plant.where({ species_name: plant }).pluck :temp_min)[0]
     max = (Plant.where({ species_name: plant }).pluck :temp_max)[0]
     "#{min}-#{max}"
+  end
+
+  def send_text(plant)
+    account_sid = ENV['TWILIO_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    message = @client.messages.create(
+        body: "Reminder to water #{plant.individual_name} today!",
+        to: "#{self.user.phone}",
+        from: ENV['TWILIO_NUMBER'])
+    "Reminder has been sent"
   end
 
 end

@@ -32,7 +32,8 @@ super_user = User.create(
   city: 'Vancouver',
   country: 'Canada',
   password: PASSWORD,
-  is_admin: true
+  is_admin: true,
+  phone: '+12505550149' #fake phone number 
 )
 
 10.times.each do
