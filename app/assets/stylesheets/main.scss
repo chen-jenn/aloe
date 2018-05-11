@@ -28,12 +28,23 @@
 
 .status-item{
   margin: 1px;
-  // border: 1px solid red;
   padding: 8px;
   border-radius: 2px;
   width: 100px;
   text-align: center;
   vertical-align: middle;
+}
+
+.easy{
+  border: 1.5px solid green;
+}
+
+.moderate{
+  border: 1.5px solid orange;
+}
+
+.hard{
+  border: 1.5px solid red;
 }
 
 a:hover{

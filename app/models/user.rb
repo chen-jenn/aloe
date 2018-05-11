@@ -32,6 +32,10 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def ranking_for(plant)
+    rankings.find_by_plant_id(plant)
+  end
+
   def send_request
     if latitude && longitude
       response = RestClient::Request.execute(
