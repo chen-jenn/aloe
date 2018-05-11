@@ -48,11 +48,11 @@ class IndividualPlantsController < ApplicationController
 
   def set_reminder
     if @individual_plant.water_freq == 'low'
-      puts "sends a reminder text once a week from day of setting reminder"
+      SmsReminderJob.set(wait: 1.week).perform_later(args)
     elsif @individual_plant.water_freq == 'med'
-      puts "sends a reminder text every three days"
+      SmsReminderJob.set(wait: 3.days).perform_later(args)
     elsif @individual_plant.water_freq == 'high'
-      puts "sends a reminder every other day"
+      SmsReminderJob.set(wait: 2.days).perform_later(args)
     end
   end
 

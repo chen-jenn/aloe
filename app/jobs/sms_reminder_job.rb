@@ -1,5 +1,5 @@
 class SmsReminderJob < ApplicationJob
-  queue_as :urgent
+  queue_as :default
 
   def perform(*args)
     # Do something later
