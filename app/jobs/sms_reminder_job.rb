@@ -3,5 +3,6 @@ class SmsReminderJob < ApplicationJob
 
   def perform(*args)
     # Do something later
+
   end
 end

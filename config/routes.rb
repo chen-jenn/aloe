@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   resources :users, except: [:index]
 
   #the index is on user profile, and the show should be in a modal
-  resources :individual_plants, except: [:index, :show]
+  resources :individual_plants, except: [:index, :show], shallow:true do
+    resources :recurring_events, only: [:create, :destroy]
+  end
   patch '/individual_plants/:id/generate', to:'individual_plants#generate_data', as: 'generate_data'
-  patch '/individual_plants/:id/set_reminder', to:'individual_plant#set_reminder', as: 'set_reminder' # what request?? 
+  # patch '/individual_plants/:id/set_reminder', to:'individual_plant#set_reminder', as: 'set_reminder' # what request??
 
   resources :plants, shallow:true do
     resources :rankings, only: [:create, :destroy, :update]

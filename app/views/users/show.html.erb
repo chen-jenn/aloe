@@ -23,7 +23,7 @@
               <% end %>
             </p>
             <!-- if next watering day is the same as current day, display as red -->
-            <span>Next watering day: <%= link_to 'Set Reminder', set_reminder_path(plant), method: :patch %></span>
+            <span>Next watering day: <%= link_to 'Set Reminder', home_path %></span>
             <hr>
             <small>
               <%= link_to 'Edit', edit_individual_plant_path(plant) %>

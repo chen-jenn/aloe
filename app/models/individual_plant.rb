@@ -1,5 +1,6 @@
 class IndividualPlant < ApplicationRecord
   belongs_to :user
+  has_one :recurring_event 
   before_validation :capitalize
   validates :species_name, :individual_name, presence: true
 
