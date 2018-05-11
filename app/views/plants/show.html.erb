@@ -26,7 +26,21 @@
     <% end %>
   </p>
 
+<!-- remove this line later, just highlight the one the user selected -->
   <p>You ranked this plant as ___ to take care of</p>
+  <div class="status-bar">
+    <div>
+      <%= link_to 'Easy', home_path %>
+    <div>
+
+    <div>
+      <%= link_to 'Moderate', home_path %>
+    </div>
+
+    <div>
+      <%= link_to 'Hard', home_path %>
+    </div>
+  </div>
 
   <% if @plant.notes && @plant.notes.length > 0 %>
     <h4>Notes</h4>
