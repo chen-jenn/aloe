@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180510191427) do
+ActiveRecord::Schema.define(version: 20180511175840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,27 @@ ActiveRecord::Schema.define(version: 20180510191427) do
     t.index ["user_id"], name: "index_rankings_on_user_id"
   end
 
+  create_table "recurring_events", force: :cascade do |t|
+    t.string "reminder"
+    t.string "time"
+    t.integer "day"
+    t.bigint "individual_plant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["individual_plant_id"], name: "index_recurring_events_on_individual_plant_id"
+  end
+
+  create_table "reminders", force: :cascade do |t|
+    t.string "frequency"
+    t.datetime "last_reminder"
+    t.bigint "user_id"
+    t.bigint "individual_plant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["individual_plant_id"], name: "index_reminders_on_individual_plant_id"
+    t.index ["user_id"], name: "index_reminders_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "first_name"
@@ -124,4 +145,7 @@ ActiveRecord::Schema.define(version: 20180510191427) do
   add_foreign_key "plants", "users"
   add_foreign_key "rankings", "plants"
   add_foreign_key "rankings", "users"
+  add_foreign_key "recurring_events", "individual_plants"
+  add_foreign_key "reminders", "individual_plants"
+  add_foreign_key "reminders", "users"
 end
