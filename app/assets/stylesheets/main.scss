@@ -22,6 +22,29 @@
   margin-bottom: auto;
 }
 
+.status-bar{
+  display: flex;
+}
+
+.status-item{
+  margin: 1px;
+  // border: 1px solid red;
+  padding: 8px;
+  border-radius: 2px;
+  width: 100px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+a:hover{
+  text-decoration: none;
+  color: #475B63;
+}
+
+a{
+  color: rgb(38, 38, 38);
+}
+
 /*remove the number arrows*/
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
