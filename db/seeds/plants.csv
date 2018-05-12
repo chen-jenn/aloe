@@ -1,39 +1,30 @@
 species_name,city,climate_zone,latitude,longitude,sunlight,temp_min,temp_max
-Haworthiopsis fasciata,eastern cape,BSk,-32.464405,26.517603,full,18,26
-aloe vera,arabian peninsula,BWh,22.704788,45.604600,full,10,25
-Calathea makoyana,State of Amazonas,Af,-5.175967,-65.314439,partial,18,27
-Beaucarnea recurvata,Tamaullipa,BSh,23.573929,-98.679794,full,16,21
-hyacinthus orientalis,Kayseri,Csb,38.723380,35.487008,full,10,19
-hosta sieboldiana,Seoul,Dwa,37.546509,126.975810,shade,10,20
-carex buchananii,Christchurch,Cfb,-43.549884,172.599758,full,0,25
-ginkgo biloba,Kyoto,Cfa,34.981097,135.734123,full,10,25
-Pachira aquatica,Bogota,Cfb,4.586620,-74.092692,partial,0,37
-Oxalis triangularis,State of Amazonas,Af,-5.175967,-65.314439,partial,15,25
-Opuntia microdasys,Monterrey,BSh,25.568295,-100.220571,full,21,37
-Philodendron hederaceum,Bayamo,Aw,20.162871,-76.494723,partial,24,27
-Nephrolepis cordifolia,Honolulu,As,21.310161,-157.845653,partial,15,25
-Dracaena sanderiana,Cameroon,Aw,7.390665,12.434711,partial,16,24
-Dionaea muscipula,south carolina,Cfa,34.106939,-81.087422,partial,5,35
-Acer saccharum,nova scotia,Dfb,44.397128,-65.212657,full,-10,30
-Acer palmatum,Tokyo,Cfa,35.704492,139.684289,full,-10,30
-Adromischus cristatus,eastern cape,BSk,-32.464405,26.517603,full,10,30
-Agave ovatifolia,Nuevo Leon,BSh,25.580723,-99.973995,full,15,30
-Aeonium arboreum,Canary Islands,Csb,28.294842,-16.507460,full,4,38
-Aeonium davidbramwellii,Canary Islands,Csb,28.294842,-16.507460,shade,18,24
-Aglaonema commutatum,Sulawesi,Af,-1.886120,120.482277,shade,15,24
-Allium schoenoprasum,Prague,Cfb,50.032658,14.504150,full,15,20
-Aloe aristata,Eastern Cape,BSk,-32.464405,26.517603,full,8,25
-Anacampseros rufescens,eastern cape,BSk,-32.464405,26.517603,partial,15,30
-Anthurium andraeanum,Quito,Cfb,-0.871918,-78.021019,partial,18,27
-Artemisia dracunculus,
-Asparagus densiflorus,,,,partial,18,24
-Aspidistra elatior,,,,shade,7,29
-Coriandrum sativum,
-Cotyledon orbiculata,
-Crassula ovata,
-Crassula tetragona,
-Dieffenbachia oerstedii,,,,partial,18,27
-Dracaena marginata,,,,,full,18,24
+Acer saccharum,nova scotia,Dfb,44.397128,-65.212657,full,-10,30,sugar maple
+Acer palmatum,Tokyo,Cfa,35.704492,139.684289,full,-10,30,Japanese maple
+Adromischus cristatus,eastern cape,BSk,-32.464405,26.517603,full,10,30,crinkle leaf plant
+Agave ovatifolia,Nuevo Leon,BSh,25.580723,-99.973995,full,15,30,whale's tongue agave
+Aeonium arboreum,Canary Islands,Csb,28.294842,-16.507460,full,4,38,tree aeonium
+Aeonium davidbramwellii,Canary Islands,Csb,28.294842,-16.507460,shade,18,24,sunburst aeonium
+Aglaonema commutatum,Sulawesi,Af,-1.886120,120.482277,shade,15,24,Philippine evergreen
+Allium schoenoprasum,Prague,Cfb,50.032658,14.504150,full,15,20,chives
+Aloe aristata,Eastern Cape,BSk,-32.464405,26.517603,full,8,25,Guinea-fowl aloe
+Aloe vera,arabian peninsula,BWh,22.704788,45.604600,full,10,25,aloe
+Anacampseros rufescens,eastern cape,BSk,-32.464405,26.517603,partial,15,30,anacampseros rufescens
+Anthurium andraeanum,Quito,Cfb,-0.871918,-78.021019,partial,18,27,flamingo flower
+Artemisia dracunculus,Moscow,Dfb,55.698996,37.666574,full,-44,44,tarragon
+Asparagus densiflorus,Cape of good Hope,Csb,-34.353399,18.475476,partial,18,24,foxtail fern
+Aspidistra elatior,Hualien County,Cfb,23.972359,121.459102,shade,7,29,cast-iron-plant
+Beaucarnea recurvata,Tamaullipa,BSh,23.573929,-98.679794,full,16,21,ponytail palm
+Calathea makoyana,State of Amazonas,Af,-5.175967,-65.314439,partial,18,27,peacock plant
+Carex buchananii,Christchurch,Cfb,-43.549884,172.599758,full,0,25,red rooster
+Coriandrum sativum,Agrinio,Csa,38.611983,21.423456,partial,15,25,coriander
+Cotyledon orbiculata,Cape Town,Csb,-34.221006,18.437603,full,15,25,round-leafed navel-wort
+Crassula ovata,cape town,Csb,-34.221006,18.437603,full,15,25,jade plant
+Crassula tetragona,cape town,Csb,-34.221006,18.437603,full,15,25,minature pine tree
+Dieffenbachia oerstedii,Merida,Aw,20.998002,-89.643220,partial,18,27,dumb cane
+Dionaea muscipula,south carolina,Cfa,34.106939,-81.087422,partial,5,35,Venus flytrap
+Dracaena marginata,Antananarivo,Cwb,-18.879544,47.511825,full,18,24,Madagascar dragon tree
+Dracaena sanderiana,Cameroon,Aw,7.390665,12.434711,partial,16,24,lucky bamboo
 Dypsis lutescens,
 Echeveria agavoides,
 Echeveria colorata,
@@ -52,12 +43,16 @@ Euphorbia trigona,
 Ficus benjamina,,,,,,partial,18,24
 Gasteria brevifolia,
 Gasteria fuscopunctata,
+Ginkgo biloba,Kyoto,Cfa,34.981097,135.734123,full,10,25,ginkgo
 Haworthia acuminata,
 Haworthia coarctata,
 Haworthia reinwardtii,
 Haworthia retusa,
+Haworthiopsis fasciata,eastern cape,BSk,-32.464405,26.517603,full,18,26,zebra haworthia
 Hedera helix,,,,,,full,12,21
+Hosta sieboldiana,Seoul,Dwa,37.546509,126.975810,shade,10,20,hosta elegans
 Huernia zebrina,
+Hyacinthus orientalis,Kayseri,Csb,38.723380,35.487008,full,10,19,hyacinth
 Kalanchoe blossfeldiana,
 Kalanchoe farinacea,
 Kalanchoe fedtschenkoi,
@@ -73,14 +68,19 @@ Maranta leuconeura,
 Melissa officinalis,
 Mentha piperita,
 Monstera deliciosa,
+Nephrolepis cordifolia,Honolulu,As,21.310161,-157.845653,partial,15,25,sword fern
 Ocimum basilicum,
+Opuntia microdasys,Monterrey,BSh,25.568295,-100.220571,full,21,37,bunny ear cactus
 Origanum vulgare,
+Oxalis triangularis,State of Amazonas,Af,-5.175967,-65.314439,partial,15,25,false shamrock
+Pachira aquatica,Bogota,Cfb,4.586620,-74.092692,partial,0,37,guiana chestnut
 Parodia magnifica,
 Peperomia pellucida,,,,shade,15,24
 Persea americana,
 Petroselinum crispum,
 Phalaenopsis amabilis,
 Phalaenopsis pulcherrima,
+Philodendron hederaceum,Bayamo,Aw,20.162871,-76.494723,partial,24,27,heartleaf philodendron
 Rosmarinus officinalis,
 Salvia officinalis,
 Sansevieria laurentii,

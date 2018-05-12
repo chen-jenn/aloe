@@ -12,7 +12,7 @@
   </head>
 
   <body style="background-color:#8ebe86;">
-    <div id='cssmenu'>
+    <div class='topnav' id='navbar'>
       <ul>
          <li><%= link_to "Home", home_path %></li>
          <li><%= link_to "Contact Us", contact_us_path %></li>
@@ -46,5 +46,16 @@
 
       <%= yield %>
     </div>
+
+    <script>
+      function myFunction() {
+        var x = document.getElementById("navbar");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+      }
+    </script>
   </body>
 </html>

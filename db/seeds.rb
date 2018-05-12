@@ -33,7 +33,7 @@ super_user = User.create(
   country: 'Canada',
   password: PASSWORD,
   is_admin: true,
-  phone: '+12505550149' #fake phone number 
+  phone: '+12505550149' #fake phone number
 )
 
 10.times.each do
@@ -67,7 +67,7 @@ CSV.foreach(Rails.root.join('db/seeds/plants.csv'), headers:true) do |row|
   end
 
   pl.plant_countries.create(country_id: 39) # YOU ALL BELONG TO CANADA NOW
-  pl.common_names.create(name: Faker::Pokemon.name)
+  pl.common_names.create(name: row[8])
 end
 
 plants = Plant.all
