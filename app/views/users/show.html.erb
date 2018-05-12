@@ -22,10 +22,10 @@
                 <strong>Ease of Care:</strong> <%= plant.ranking %>
               <% end %>
             </p>
-            <!-- if next watering day is the same as current day, display as red -->
             <% if plant.reminder == nil %>
               <span><%= link_to 'Add Reminder', user_reminders_path(current_user, plant), method: :post %></span>
             <% else %>
+            <!-- if next watering day is the same as current day, display as red -->
               <span>Next watering day:<br>
                  day has been set</span>
             <% end %>

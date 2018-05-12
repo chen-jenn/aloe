@@ -1,6 +1,6 @@
 class IndividualPlant < ApplicationRecord
   belongs_to :user
-  has_one :reminder, dependent: :destroy # active record still creates a second reminder for the same plant; fix later 
+  has_one :reminder, dependent: :destroy # active record still creates a second reminder for the same plant; fix later
   before_validation :capitalize
   validates :species_name, :individual_name, presence: true
 
@@ -21,7 +21,7 @@ class IndividualPlant < ApplicationRecord
     plant_id = (Plant.where({species_name: i}).pluck :id)[0]
     rankings = Ranking.where({plant_id: plant_id}).pluck :ease_of_care
 
-    # Make into an array and count up each instance of a easy, moderate, hard
+    # Make into an array and count up each instance of easy, moderate, hard
     easy = 0
     moderate = 0
     hard = 0

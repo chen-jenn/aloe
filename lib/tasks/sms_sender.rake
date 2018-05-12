@@ -1,6 +1,7 @@
 namespace :sms_sender do
-  task :send_all do
-    SmsReminder.all.each  do |reminder|
+  task :send_all => :environment do
+    Reminder.all.each do |reminder|
+      # need to have delayed_job running alongside your server or somethiing (see docs)
       SmsReminderJob.perform_later(reminder)
     end
   end
