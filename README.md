@@ -19,6 +19,12 @@ System dependencies:
 3. An algorithm determines the watering interval and tells the user that they should water 'George' every ___ days. This is automatically set up with their text messaging system
 4. On the 'George' show page, data from the three fields are also listed  
 
+## Resources
+#### Climate Zone API (http://climateapi.scottpinkelman.com/)
+Used by this application to retrieve the Koppen-Geiger climate zone data for a particular plant species, based on the latitude and longitude of their native habitats.
+
+#### Twilio API
+Used to set up reminder texts for individual plants and when to water them next 
 
 ### Disclaimer
 While this app helps generate general plant care information based on user experience and Koppen-Geiger climate classification algorithms, it must also be noted that there are many more variables that need to be taken into account to calculate the optimal temperature or watering frequency of a plant (e.g. soil pH, soil volume, humidity, precipitation, and of course, genetics). This app does not claim to have the highest scientific accuracy and is best used only as a general guideline for houseplant care.
