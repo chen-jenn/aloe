@@ -22,14 +22,20 @@
                 <strong>Ease of Care:</strong> <%= plant.ranking %>
               <% end %>
             </p>
+
+            <!-- if next watering day is the same as current day, display as red -->
+            <!-- Refactor!! -->
             <% if plant.reminder == nil %>
               <span><%= link_to 'Add Reminder', user_reminders_path(current_user, plant), method: :post %></span>
-            <% else %>
-            <!-- if next watering day is the same as current day, display as red -->
-              <span>Next watering day:<br>
-                 day has been set</span>
+            <% elsif plant.reminder.frequency == 'once a week'  %>
+              <span>Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*7).strftime("%B %d, %Y") %></span>
+            <% elsif plant.reminder.frequency == 'twice a week' %>
+              <span>Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*3).strftime("%B %d, %Y") %></span>
+            <% elsif plant.reminder.frequency == 'every other day' %>
+              <span>Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*2).strftime("%B %d, %Y") %></span>
             <% end %>
             <hr>
+
             <small>
               <%= link_to 'Edit', edit_individual_plant_path(plant) %>
               |
