@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="html">
   <head>
     <title>Aloe</title>
     <%= csrf_meta_tags %>
@@ -11,7 +11,11 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body style="background-color:#8ebe86;">
+  <body>
+    <div class="top-banner">
+
+    </div>
+
     <div class='topnav' id='navbar'>
       <ul>
          <li><%= link_to "Home", home_path %></li>
@@ -46,6 +50,9 @@
 
       <%= yield %>
     </div>
+
+    <footer>
+    </footer>
 
     <script>
       function myFunction() {

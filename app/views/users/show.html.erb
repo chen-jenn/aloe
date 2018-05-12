@@ -28,12 +28,22 @@
             <% if plant.reminder == nil %>
               <span><%= link_to 'Add Reminder', user_reminders_path(current_user, plant), method: :post %></span>
             <% elsif plant.reminder.frequency == 'once a week'  %>
-              <span>Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*7).strftime("%B %d, %Y") %></span>
+              <span>
+                Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*7).strftime("%B %d, %Y") %><br>
+                <small><%= link_to 'Remove Reminder', reminder_path(plant.reminder), method: :delete %></small>
+              </span>
             <% elsif plant.reminder.frequency == 'twice a week' %>
-              <span>Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*3).strftime("%B %d, %Y") %></span>
+              <span>
+                Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*3).strftime("%B %d, %Y") %><br>
+                <small><%= link_to 'Remove Reminder', reminder_path(plant.reminder), method: :delete %></small>
+              </span>
             <% elsif plant.reminder.frequency == 'every other day' %>
-              <span>Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*2).strftime("%B %d, %Y") %></span>
+              <span>
+                Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*2).strftime("%B %d, %Y") %><br>
+                <small><%= link_to 'Remove Reminder', reminder_path(plant.reminder), method: :delete %></small>
+              </span>
             <% end %>
+
             <hr>
 
             <small>

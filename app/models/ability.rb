@@ -23,5 +23,9 @@ class Ability
     can(:crud, IndividualPlant) do |plant|
       user == plant.user
     end
+
+    can(:crud, Reminder) do |reminder|
+      user == reminder.user 
+    end
   end
 end

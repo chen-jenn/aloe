@@ -1,5 +1,25 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
 
+#html {
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+}
+
+body{
+  background-color:#BACDB0;
+}
+
+.top-banner{
+  width:100vw;
+  height: 60px;
+  background-color: #2E2C2F;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 10px;
+}
+
 .biggest-div{
   background-color: #f1ffb8;
   width: 75vw;
@@ -10,7 +30,6 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
-  border-radius: 5px;
   padding: 10px;
 }
 
@@ -170,9 +189,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 /*Nav bar*/
 .topnav {
-  background: #539857;
+  // background: #539857;
+  background-color: #729B79;
   width: 75vw;
-  border-radius: 5px;
   margin: auto;
 }
 .topnav ul {
@@ -219,7 +238,7 @@ input[type=number]::-webkit-outer-spin-button {
   transition: color .25s;
 }
 .topnav ul li a:hover {
-  color: #333333;
+  color: #2E2C2F;
 }
 .topnav ul li a:hover:before {
   width: 100%;
@@ -243,7 +262,7 @@ input[type=number]::-webkit-outer-spin-button {
   bottom: 0;
   height: 3px;
   width: 0;
-  background: #333333;
+  background: #2E2C2F;
   -webkit-transition: width .25s;
   -moz-transition: width .25s;
   -ms-transition: width .25s;
@@ -255,7 +274,7 @@ input[type=number]::-webkit-outer-spin-button {
   display: none;
 }
 .topnav ul li.active a {
-  color: #333333;
+  color: #2E2C2F;
 }
 .topnav ul li.active a:before {
   width: 100%;
@@ -333,4 +352,12 @@ input[type=number]::-webkit-outer-spin-button {
   text-align: left;
   background-color: #32573d;
   color: white;
+}
+
+/*Footer*/
+footer {
+  width:100vw;
+  height: 150px;
+  margin-top: 10px;
+  background-color: #2E2C2F;
 }

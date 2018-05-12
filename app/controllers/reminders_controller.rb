@@ -1,4 +1,6 @@
 class RemindersController < ApplicationController
+    before_action :authorize_user!, only: [:create, :destroy]
+
   def create
     i = IndividualPlant.find params[:individual_plant_id]
     @reminder = Reminder.new({last_reminder: Time.now})
@@ -21,7 +23,18 @@ class RemindersController < ApplicationController
   end
 
   def destroy
-    # removing a reminder
+    r = Reminder.find params[:id]
+    r.destroy
+    redirect_to user_path(r.user)
+  end
+
+  private
+  def authorize_user!
+    @reminder = Reminder.find params[:id]
+    unless can?(:crud, @reminder)
+      flash[:alert] = 'Access Denied'
+      redirect_to plant_path(@reminder)
+    end
   end
 
 end
