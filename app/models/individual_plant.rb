@@ -66,7 +66,7 @@ class IndividualPlant < ApplicationRecord
     @client = Twilio::REST::Client.new account_sid, auth_token
     message = @client.messages.create(
         body: "Reminder to water #{plant.individual_name} today!",
-        to: "+1#{self.user.phone}",
+        to: "+1#{self.user.phone.gsub('-','')}",
         from: ENV['TWILIO_NUMBER'])
     "Reminder has been sent"
   end
