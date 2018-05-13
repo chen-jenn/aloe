@@ -12,11 +12,21 @@
 
   <body>
     <div class="top-banner">
-      <div></div>
-      <div>
-        aloe@reminders.ca???
+      <!-- <div class="top-banner-1">
+        <h1>aloe</h1>
+      </div> -->
+
+      <div class='top-banner-center'>
+        <!-- <div>
+          <%= link_to fa_icon("fa-facebook 2x"), home_path %>
+        </div>
+        <div>
+          aloe@reminders.ca
+        </div> -->
       </div>
-      <div></div>
+
+      <!-- <div class="top-banner-3">
+      </div> -->
     </div>
 
     <div class="navbar" id="navbar">
@@ -42,7 +52,8 @@
       <div></div>
   </div>
 
-    <div class="container-fluid">
+    <!-- <div class="container-fluid"> -->
+    <div>
       <div class="alert-div">
         <% flash.each do |type, msg| %>
           <div class="alert alert-<%= type == "alert" ? "danger" : "success" %> alert-dismissible fade show" role="alert">
@@ -59,6 +70,29 @@
     </div>
 
     <footer>
+      <div class="footer-center">
+        <div class="footer-center-top">
+          <div class="fc-l">
+            <h4 style="font-family: 'Open Sans', sans-serif">DISCLAIMER</h4>
+            <small>
+              While this app helps generate general plant care information based on user experience and Koppen-Geiger climate classification algorithms, it must also be noted that there are many more variables that need to be taken into account to calculate the optimal temperature or watering frequency of a plant (e.g. soil pH, soil volume, humidity, precipitation, and of course, genetics). This app does not claim to have the highest scientific accuracy and is best used only as a general guideline for houseplant care.
+            </small>
+          </div>
+
+          <div class="fc-r">
+            <h4 style="font-family: 'Open Sans', sans-serif">RESOURCES</h4>
+              <p>
+                <%= link_to "Köppen-Geiger Climate Zones", climate_zones_path, style:"color:white;" %><br>
+                <a href="https://github.com/chen-jenn/aloe" style="color:white;">Source Code</a>
+              </p>
+          </div>
+        </div>
+
+        <div class="footer-center-bottom">
+          5555 Haworthiop Street, Vancouver, Canada, V3A 1E7 <br>
+          &copy;2018 Aloe Organization
+        </div>
+      </div>
     </footer>
 
   </body>

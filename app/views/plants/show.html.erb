@@ -18,7 +18,7 @@
           </tr>
           <tr>
             <td>City/Region</td>
-            <td><%= @plant.city %></td>
+            <td><%= @plant.city.titleize %></td>
           </tr>
           <tr>
             <td>Country</td>
@@ -47,6 +47,53 @@
             </td>
           </tr>
         </table>
+
+        <!-- Rankings conditionals start-->
+          <% ranking = current_user&.ranking_for(@plant) %>
+          <div class="status-bar">
+              <% if ranking.nil? %>
+                <div class="status-item easy">
+                  <%= link_to 'Easy', plant_rankings_path(@plant, { ease_of_care: 'easy' }), method: :post %>
+                </div>
+                <div class="status-item moderate">
+                  <%= link_to 'Moderate', plant_rankings_path(@plant, { ease_of_care: 'moderate' }), method: :post %>
+                </div>
+                <div class="status-item hard">
+                  <%= link_to 'Hard', plant_rankings_path(@plant, { ease_of_care: 'hard' }), method: :post %>
+                </div>
+              <% elsif ranking == 'easy' %>
+                <div class="status-item easy">
+                  <%= link_to 'Easy', ranking_path(ranking), method: :delete %>
+                </div>
+                <div class="status-item moderate">
+                  <%= link_to 'Moderate', ranking_path(@plant, { ease_of_care: 'moderate' }), method: :patch %>
+                </div>
+                <div class="status-item hard">
+                  <%= link_to 'Hard', ranking_path(@plant, { ease_of_care: 'hard' }), method: :patch %>
+                </div>
+              <% elsif ranking == 'moderate' %>
+                <div class="status-item easy">
+                  <%= link_to 'Easy', ranking_path(@plant, { ease_of_care: 'easy' }), method: :patch %>
+                </div>
+                <div class="status-item moderate">
+                  <%= link_to 'Moderate', ranking_path(ranking), method: :delete %>
+                </div>
+                <div class="status-item hard">
+                  <%= link_to 'Hard', ranking_path(@plant, { ease_of_care: 'hard' }), method: :patch %>
+                </div>
+              <% elsif ranking == 'hard' %>
+                <div class="status-item easy">
+                  <%= link_to 'Easy', ranking_path(@plant, { ease_of_care: 'easy' }), method: :patch %>
+                </div>
+                <div class="status-item moderate">
+                  <%= link_to 'Moderate', ranking_path(@plant, { ease_of_care: 'moderate' }), method: :patch %>
+                </div>
+                <div class="status-item hard">
+                  <%= link_to 'Hard', ranking_path(ranking), method: :delete %>
+                </div>
+              <% end %>
+          </div>
+        <!-- Rankings conditionals end -->
       </div>
     </div>
 
@@ -83,56 +130,7 @@
     </div>
   </div>
 
-<!-- Rankings conditionals start-->
-  <% ranking = current_user&.ranking_for(@plant) %>
-  <div class="status-bar">
-      <% if ranking.nil? %>
-        <div class="status-item easy">
-          <%= link_to 'Easy', plant_rankings_path(@plant, { ease_of_care: 'easy' }), method: :post %>
-        </div>
-        <div class="status-item moderate">
-          <%= link_to 'Moderate', plant_rankings_path(@plant, { ease_of_care: 'moderate' }), method: :post %>
-        </div>
-        <div class="status-item hard">
-          <%= link_to 'Hard', plant_rankings_path(@plant, { ease_of_care: 'hard' }), method: :post %>
-        </div>
-      <% elsif ranking == 'easy' %>
-        <div class="status-item easy">
-          <%= link_to 'Easy', ranking_path(ranking), method: :delete %>
-        </div>
-        <div class="status-item moderate">
-          <%= link_to 'Moderate', ranking_path(@plant, { ease_of_care: 'moderate' }), method: :patch %>
-        </div>
-        <div class="status-item hard">
-          <%= link_to 'Hard', ranking_path(@plant, { ease_of_care: 'hard' }), method: :patch %>
-        </div>
-      <% elsif ranking == 'moderate' %>
-        <div class="status-item easy">
-          <%= link_to 'Easy', ranking_path(@plant, { ease_of_care: 'easy' }), method: :patch %>
-        </div>
-        <div class="status-item moderate">
-          <%= link_to 'Moderate', ranking_path(ranking), method: :delete %>
-        </div>
-        <div class="status-item hard">
-          <%= link_to 'Hard', ranking_path(@plant, { ease_of_care: 'hard' }), method: :patch %>
-        </div>
-      <% elsif ranking == 'hard' %>
-        <div class="status-item easy">
-          <%= link_to 'Easy', ranking_path(@plant, { ease_of_care: 'easy' }), method: :patch %>
-        </div>
-        <div class="status-item moderate">
-          <%= link_to 'Moderate', ranking_path(@plant, { ease_of_care: 'moderate' }), method: :patch %>
-        </div>
-        <div class="status-item hard">
-          <%= link_to 'Hard', ranking_path(ranking), method: :delete %>
-        </div>
-      <% end %>
-  </div>
-
-<!-- Rankings conditionals end -->
-
     <!-- Only the admin, mods, and user that created this is allowed to edit -->
-    <hr>
     <%= link_to "Edit Record", edit_plant_path(@plant) %>
     |
     <%= link_to "Delete Record", plant_path, method:"delete", data: {confirm: "Are you sure? There's no going back!!"} %>

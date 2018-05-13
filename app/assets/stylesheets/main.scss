@@ -12,21 +12,35 @@ body{
 
 .top-banner{
   display: flex;
+  justify-content: center;
+  align-items: center;
 
+  color: white;
   width:100vw;
   height: 60px;
+  overflow: hidden;
   background-color: #2E2C2F;
-  margin-top: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-bottom: 10px;
+  margin: 0px 0px 10px 0px;
+  padding: 0px;
 }
 
-// .top-banner:nth-child(2){
-//   color: white;
-//   width: 75vw;
-//   margin:auto;
+// .top-banner-1{
+//   width: calc(12.5vw);
+//   height: 60px;
 // }
+//
+// .top-banner-3{
+//   width: calc(12.5vw);
+//   height: 60px;
+// }
+
+.top-banner-center{
+  color: white;
+  height: 60px;
+  width: 75vw;
+  margin: 0px;
+  background-color: red;
+}
 
 .biggest-div{
   background-color: #f1ffb8;
@@ -34,10 +48,11 @@ body{
   height: auto;
   min-height: 100vh;
   vertical-align: top;
-  margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: auto;
+  margin:auto;
+  // margin-top: 10px;
+  // margin-left: auto;
+  // margin-right: auto;
+  // margin-bottom: auto;
   padding: 0px;
 }
 
@@ -381,7 +396,48 @@ input[type=number]::-webkit-outer-spin-button {
 /*Footer--------------------------------------------------------*/
 footer {
   width:100vw;
-  height: 150px;
+  height: 300px;
   margin-top: 10px;
   background-color: #2E2C2F;
+}
+
+.footer-center {
+  display: flex;
+  flex-direction: column;
+
+  width: 75vw;
+  height: 300px;
+  margin: auto;
+}
+
+.footer-center-top {
+  display: flex;
+  flex-wrap: wrap;
+  height: 80%;
+  width: 100%;
+}
+
+.footer-center-top .fc-l{
+  height: 100%; //100% of parent div
+  width: 70%;
+
+  color: white;
+  padding: 40px 30px 20px 30px;
+}
+
+.footer-center-top .fc-r {
+  height: 100%;
+  width: 30%;
+
+  color: white;
+  padding: 40px 30px 20px 30px;
+}
+
+.footer-center-bottom {
+  height: 20%;
+  width: 100%;
+
+  color: white;
+  text-align: center;
+  padding: 5px;
 }

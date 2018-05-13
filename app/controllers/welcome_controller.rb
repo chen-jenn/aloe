@@ -6,6 +6,7 @@ class WelcomeController < ApplicationController
       "You can't take care of plants if you haven't botany",
       "Brussels is the largest vegetable in Belgium",
       "After winter, trees are relieved",
+      "Just beet it",
       "Those who do not learn from history are doomed to rebeet it",
       "We took a lichen to these puns",
       "This website will Tilia about the basswood tree",
