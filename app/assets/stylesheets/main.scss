@@ -188,12 +188,25 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /*Nav bar--------------------------------------------------------*/
+.sticky{
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar{
+  height: 50px;
+  overflow: hidden;
+  background-color: #BACDB0;
+  padding: 0px;
+  z-index: 9; 
+}
+
 
 .topnav {
   // background: #539857;
   // background-color: #436931;
   background-color: #729B79;
-  // position: fixed;
   height: 50px;
   width: 75vw;
   margin: auto;
