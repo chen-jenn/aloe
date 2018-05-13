@@ -13,27 +13,27 @@
 
   <body>
     <div class="top-banner">
-
     </div>
 
-    <div class='topnav' id='navbar'>
-      <ul>
-         <li><%= link_to "Home", home_path %></li>
-         <li><%= link_to "Contact Us", contact_us_path %></li>
-         <li><%= link_to "Plants Database", plants_path %></li>
-         <li><%= link_to "Add Species", new_plant_path %></li>
-         <% if current_user.present? %>
-          <li><%= link_to "Your Profile", user_path(current_user) %></li>
-          <% if current_user.is_admin? %>
-            <li><%= link_to "Admin Panel", admin_dashboard_index_path %></li>
+      <div class='topnav' id='navbar'>
+        <ul>
+           <li><%= link_to "Home", home_path %></li>
+           <li><%= link_to "Contact Us", contact_us_path %></li>
+           <li><%= link_to "Plants Database", plants_path %></li>
+           <li><%= link_to "Add Species", new_plant_path %></li>
+           <% if current_user.present? %>
+            <li><%= link_to "Your Profile", user_path(current_user) %></li>
+            <% if current_user.is_admin? %>
+              <li><%= link_to "Admin Panel", admin_dashboard_index_path %></li>
+            <% end %>
+            <li class="last"><%= link_to "Sign Out", session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign In", new_session_path %></li>
+            <li class="last"><%= link_to "Sign Up", new_user_path %></li>
           <% end %>
-          <li class="last"><%= link_to "Sign Out", session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Sign In", new_session_path %></li>
-          <li class="last"><%= link_to "Sign Up", new_user_path %></li>
-        <% end %>
-      </ul>
-    </div>
+        </ul>
+      </div>
+
 
     <div class="container-fluid">
       <div class="alert-div">
@@ -54,15 +54,5 @@
     <footer>
     </footer>
 
-    <script>
-      function myFunction() {
-        var x = document.getElementById("navbar");
-        if (x.className === "topnav") {
-            x.className += " responsive";
-        } else {
-            x.className = "topnav";
-        }
-      }
-    </script>
   </body>
 </html>

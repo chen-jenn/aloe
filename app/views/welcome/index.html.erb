@@ -1,28 +1,43 @@
 <div class="biggest-div" style="background-color: #BACDB0;">
   <div class="home-top-section">
-    <div class="home-left"></div>
-    <div class="home-right"></div>
+    <div class="home-left">
+      <div class="header">
+        <h3>Aloe - Keep 'em growing!</h3>
+      </div>
+      <div class="body">
+        <p style="text-indent:50px;">
+          Ever wonder why it seems like everything you touch dies?
+          Have you ever accidentally killed a cactus?
+          Even though they are one of the easiest houseplants to take care of?
+        </p>
+        <p>
+          Fret no more! Aloe will do all that planning for you! All you really need is a phone to receive SMS reminder texts. Keep track of all your houseplants here, add them to your list, this site will generate the reminder times for you.
+        </p>
+          <!-- Aloe is an application that reminds you to water your houseplants in timely manner. The time frame for when a plant needs to be watered is based on the climate zone of its native location, as well as your location. It helps generate a watering schedule by comparing the climate zones of plant and your location and then sets up the reminder so you don't have to do any of the hard work. Stuff like remembering when to water which plant, and when was the last time you watered your many houseplants. Some of you may have so many plants it can be difficult to keep track of if they have varying needs!
+
+          A lot of this information is added into the database through continous research and with the help of users (like you!). The database can then help generate a customized watering schedule for each one of your houseplants. -->
+
+          Who needs a green thumb now?
+        </p>
+      </div>
+    </div>
+
+    <div class="home-right">
+      <div class="header">
+        <h3>Resources</h3>
+      </div>
+      <div class="body">
+        <%= link_to "Köppen-Geiger Climate Zones", climate_zones_path %><br>
+        <a href="https://github.com/chen-jenn/aloe">Source Code</a>
+      </div>
+    </div>
   </div>
   <div class="text-banner">
       <span><%= @puns.sample.upcase %></span>
   </div>
 
 
-  <h1>Hey there!</h1>
-  <p>A plant database geared towards common house plants across the globe, general guidelines for care according to species types and user location
-    <ul>
-      <li>emphasis on houseplants and outdoor ornamentals</li>
-      <li>plant location</li>
-      <li>user location to generate data for optimum temperature</li>
-      <li>shade/sun needs</li>
-      <li>temperature</li>
-      <li>water frequency</li>
-    </ul>
-
-  </p>
-
   <h2>How You Can Help</h2>
   <p>Add to the db yo</p>
 
-  <%= link_to "More on Koppen-Geiger Climate Classification", climate_zones_path %>
 </div>

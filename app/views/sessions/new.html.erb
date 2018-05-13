@@ -1,11 +1,12 @@
-<hr style="margin-left: 300px; margin-right:300px;">
-<div class="card mx-auto" style="width: 50rem;border-radius:5px;background-color:#f1ffb8;">
-  <div class="card-body">
-    <h2 class="card-title">Sign In</h2>
-      <%= simple_form_for :session, url: session_path do |f| %>
-      <%= f.input :email %>
-      <%= f.input :password %>
-      <%= f.submit "Sign In", class: 'btn btn-dark' %>
-      <% end %>
+<div class="biggest-div">
+  <div class="card mx-auto" style="width: 50rem;border-radius:5px;background-color:white;">
+    <div class="card-body">
+      <h2 class="card-title">Sign In</h2>
+        <%= simple_form_for :session, url: session_path do |f| %>
+        <%= f.input :email %>
+        <%= f.input :password %>
+        <%= f.submit "Sign In", class: 'btn btn-dark' %>
+        <% end %>
+    </div>
   </div>
 </div>
