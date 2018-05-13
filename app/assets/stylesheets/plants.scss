@@ -1,3 +1,54 @@
 .italic{
-  font-style: italic; 
+  font-style: italic;
+}
+
+.plant-show{
+  display: flex;
+  flex-wrap: wrap;
+  align-content:flex-start;
+
+  margin:auto;
+  width: 100%;
+}
+
+.plant-show .left {
+  background-color: red;
+  height: 50vh;
+  width: 65%;
+}
+
+.plant-show .right {
+  background-color: #f1ffb8;
+  height: 50vh;
+  width: 35%;
+}
+
+.plant-show-3{
+  height: 50vh;
+  width:100%;
+  background-color: yellow;
+}
+
+.plant-show-4{
+  height: 50vh;
+  width:100%;
+  background-color: chartreuse;
+}
+
+.plant-show-5{
+  height: 100vh;
+  width:100%;
+  background-color: green;
+}
+
+.plant-show-table {
+  border-collapse: collapse;
+  width:100%;
+  border: 2px solid black;
+  background-color: white;
+}
+
+.plant-show-table th {
+  background-color: #2E2C2F;
+  color: white;
 }

@@ -1,30 +1,87 @@
 <div class="biggest-div">
-  <div style="height:300px;width:300px;background-color:lightgrey;color:white;">
-    <% if @images.length > 0 %>
-      <div style="background-image: url(<%= @images[0].file.url(:large) %>); height:300px;width:300px;">
-      </div>
+  <div class='plant-show'>
+    <div class="left">
+      <% if @images.length > 0 %>
+        <div style="background-image: url(<%= @images[0].file.url(:large) %>); height:300px;width:300px;">
+        </div>
       <%= @images[0].description %>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="right">
+      <div style="margin:10px;">
+        <h3><strong><i><%= @plant.species_name %></i></strong></h3>
+        <p>Common names: <%= @common_names.map { |common_name| common_name.name }.join(', ') %></p>
+
+        <table class="plant-show-table">
+          <tr>
+            <th colspan="2">General</th>
+          </tr>
+          <tr>
+            <td>City/Region</td>
+            <td><%= @plant.city %></td>
+          </tr>
+          <tr>
+            <td>Country</td>
+            <td><%= @countries.map { |country| country.country_name }.join(', ') %></td>
+          </tr>
+          <tr>
+            <td>Climate Zone</td>
+            <td><%= @plant.climate_zone %></td>
+          </tr>
+          <tr>
+            <td>Sunlight</td>
+            <td><%= @plant.sunlight %></td>
+          </tr>
+          <tr>
+            <td>Temperature Range</td>
+            <td><%= @plant.temp_min %>-<%= @plant.temp_max %>&deg;C</td>
+          </tr>
+          <tr>
+            <td>Ease of Care</td>
+            <td>
+              <% if @plant.rankings.length > 0 %>
+                <%= @rank %>
+              <% else %>
+                Not enough data
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="plant-show-3">
+      <div style="margin:10px;">
+        <h3 style="font-family: 'Open Sans', sans-serif">Climate Zone - <%= @plant.climate_zone %></h3>
+      </div>
+    </div>
+
+    <div class="plant-show-4">
+      <div style="margin:10px;">
+        <h3 style="font-family: 'Open Sans', sans-serif">NOTES</h3>
+        <% if @plant.notes %>
+          <p><%= @plant.notes %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="plant-show-5">
+      <div style="margin:10px;">
+        <h3 style="font-family: 'Open Sans', sans-serif">GALLERY</h3>
+        <div class="card-container">
+          <% if @images.count > 0 %>
+            <% @images.each do |image| %>
+              <div class="card-indv">
+                <div class="thumb" style="background-image: url(<%= image.file.url(:medium) %>)"></div>
+              </div>
+            <% end %>
+          <% else %>
+            <p>Hmm, it appears this gallery is empty</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <h3><i><%= @plant.species_name %></i></h3>
-  <p>Common names: <%= @common_names.map { |common_name| common_name.name }.join(', ') %></p>
-
-  <h4>Origins</h4>
-  City/Region: <%= @plant.city %></br>
-  Country:  <%= @countries.map { |country| country.country_name }.join(', ') %>
-
-  <p>Climate Zone: <%= @plant.climate_zone %></p>
-  <p>Sunlight Needs: <%= @plant.sunlight %></p>
-  <p>Temperature Range: <%= @plant.temp_min %>-<%= @plant.temp_max %>&deg;C</p>
-
-  <p>Ease of Care (average):
-    <% if @plant.rankings.length > 0 %>
-      <%= @rank %>
-    <% else %>
-      Not enough data
-    <% end %>
-  </p>
 
 <!-- Rankings conditionals start-->
   <% ranking = current_user&.ranking_for(@plant) %>
@@ -74,28 +131,10 @@
 
 <!-- Rankings conditionals end -->
 
-  <% if @plant.notes && @plant.notes.length > 0 %>
-    <h4>Notes</h4>
-    <p><%= @plant.notes %></p>
-  <% end %>
+    <!-- Only the admin, mods, and user that created this is allowed to edit -->
+    <hr>
+    <%= link_to "Edit Record", edit_plant_path(@plant) %>
+    |
+    <%= link_to "Delete Record", plant_path, method:"delete", data: {confirm: "Are you sure? There's no going back!!"} %>
 
-  <hr>
-  <h2 style="font-family: 'Open Sans', sans-serif">GALLERY</h2>
-  <div class="card-container">
-    <% if @images.count > 0 %>
-      <% @images.each do |image| %>
-        <div class="card-indv">
-          <div class="thumb" style="background-image: url(<%= image.file.url(:medium) %>)"></div>
-        </div>
-      <% end %>
-    <% else %>
-      <p>Hmm, it appears this gallery is empty</p>
-    <% end %>
-  </div>
-
-  <!-- Only the admin, mods, and user that created this is allowed to edit -->
-  <hr>
-  <%= link_to "Edit Record", edit_plant_path(@plant) %>
-  |
-  <%= link_to "Delete Record", plant_path, method:"delete", data: {confirm: "Are you sure? There's no going back!!"} %>
 </div>
