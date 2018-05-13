@@ -24,22 +24,29 @@ body{
   padding: 0px;
 }
 
-// .top-banner-1{
-//   width: calc(12.5vw);
-//   height: 60px;
-// }
-//
-// .top-banner-3{
-//   width: calc(12.5vw);
-//   height: 60px;
-// }
+.top-banner a {
+  color:white;
+}
+
+.top-banner-1{
+  width: calc(12.5vw);
+  height: 60px;
+}
+
+.top-banner-3{
+  width: calc(12.5vw);
+  height: 60px;
+}
 
 .top-banner-center{
+  display: flex;
+  justify-content: space-between;
+
   color: white;
+  line-height: 60px;
   height: 60px;
   width: 75vw;
   margin: 0px;
-  background-color: red;
 }
 
 .biggest-div{
