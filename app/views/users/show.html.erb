@@ -1,74 +1,103 @@
 <div class="biggest-div">
-  <h2 style="font-family: 'Open Sans', sans-serif">ACCOUNT INFO</h2>
-  <small><%= @user.username %></small><br>
+  <div class="user-show-top">
+    <div class="left">
+      <h2 style="font-family: 'Open Sans', sans-serif">ACCOUNT INFO</h2>
+      <small style="display:block;">Don't worry, only you can see this page</small><br>
 
-  <hr>
-  <h2 style="font-family: 'Open Sans', sans-serif">YOUR PLANTS</h2>
-  <div class="card-container">
-    <% if @individual_plants.count > 0 %>
-      <% @individual_plants.each do |plant| %>
-        <div class="card-indv">
-          <div class="thumb" style="background-image: url(<%= plant.photo.url(:medium) %>)"></div>
-          <article>
-            <h1><strong><%= plant.individual_name %></strong></h1>
-            <p>
-              <%= plant.common_name %><br>
-              <strong>Species:</strong> <i><%= link_to plant.species_name, plant_path(Plant.where(species_name: plant.species_name).ids[0]) %></i><br>
+      <table class="user-info">
+        <tr>
+          <th colspan="2" style="color:white;background-color:#2E2C2F">General</th>
+        </tr>
+        <tr>
+          <td>Username</td>
+          <td><%= @user.username %></td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td><%= @user.full_name.titleize %></td>
+        </tr>
+        <tr>
+          <td>E-mail</td>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <td>Location</td>
+          <td><%= @user.city.titleize %>, <%= @user.country %></td>
+        </tr>
+        <tr>
+          <td>Climate Zone</td>
+          <td><%= @user.climate_zone %></td>
+        </tr>
+      </table>
+    </div>
 
-              <% if plant.sunlight %>
-                <strong>Sunlight:</strong> <%= plant.sunlight %><br>
-                <strong>Optimal Temperature:</strong> <%= plant.optimal_temp %>&deg;C<br>
-                <strong>Watering Frequency:</strong> <%= plant.water_frequency %><br>
-                <strong>Ease of Care:</strong> <%= plant.ranking %>
-              <% end %>
-            </p>
+    <div class="right">
+      <%= link_to 'Add Plant', new_individual_plant_path %><br>
 
-            <!-- if next watering day is the same as current day, display as red -->
-            <!-- Refactor!! -->
-            <% if plant.reminder == nil %>
-              <span><%= link_to 'Add Reminder', user_reminders_path(current_user, plant), method: :post %></span>
-            <% elsif plant.reminder.frequency == 'once a week'  %>
-              <span>
-                Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*7).strftime("%B %d, %Y") %><br>
-                <small><%= link_to 'Remove Reminder', reminder_path(plant.reminder), method: :delete %></small>
-              </span>
-            <% elsif plant.reminder.frequency == 'twice a week' %>
-              <span>
-                Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*3).strftime("%B %d, %Y") %><br>
-                <small><%= link_to 'Remove Reminder', reminder_path(plant.reminder), method: :delete %></small>
-              </span>
-            <% elsif plant.reminder.frequency == 'every other day' %>
-              <span>
-                Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*2).strftime("%B %d, %Y") %><br>
-                <small><%= link_to 'Remove Reminder', reminder_path(plant.reminder), method: :delete %></small>
-              </span>
-            <% end %>
-
-            <hr>
-
-            <small>
-              <%= link_to 'Edit', edit_individual_plant_path(plant) %>
-              |
-              <%= link_to 'Remove', individual_plant_path(plant), method: :delete, data: {confirm: 'Are you sure?'} %><br>
-              <% if plant.sunlight == nil %>
-                <%= link_to 'Generate Data!', generate_data_path(plant), method: :patch %>
-              <% end %>
-            </small>
-          </article>
-        </div>
-      <% end %>
-    <% else %>
-      <p>Hmm, it appears your gallery is empty</p>
-    <% end %>
+      <%= link_to "Edit Info", edit_user_path(current_user) %>
+      |
+      <%= link_to "Delete Account", user_path(current_user), method: :delete, data: {confirm: 'Are you sure?'} %>
+    </div>
   </div>
 
+  <div class="user-show-bottom">
+    <h2 style="font-family: 'Open Sans', sans-serif">YOUR PLANTS</h2>
+    <div class="card-container">
+      <% if @individual_plants.count > 0 %>
+      <% @individual_plants.each do |plant| %>
+      <div class="card-indv">
+        <div class="thumb" style="background-image: url(<%= plant.photo.url(:medium) %>)"></div>
+        <article>
+          <h1><strong><%= plant.individual_name %></strong></h1>
+          <p>
+            <%= plant.common_name %><br>
+            <strong>Species:</strong> <i><%= link_to plant.species_name, plant_path(Plant.where(species_name: plant.species_name).ids[0]) %></i><br>
 
-  <br>
-  <%= link_to 'Add Plant', new_individual_plant_path %>
+            <% if plant.sunlight %>
+            <strong>Sunlight:</strong> <%= plant.sunlight %><br>
+            <strong>Optimal Temperature:</strong> <%= plant.optimal_temp %>&deg;C<br>
+            <strong>Watering Frequency:</strong> <%= plant.water_frequency %><br>
+            <strong>Ease of Care:</strong> <%= plant.ranking %>
+            <% end %>
+          </p>
 
-  <!-- put this in the footer? -->
-  <hr>
-  <%= link_to "Edit Info", edit_user_path(current_user) %>
-  |
-  <%= link_to "Delete Account", user_path(current_user), method: :delete, data: {confirm: 'Are you sure?'} %>
+          <!-- if next watering day is the same as current day, display as red -->
+          <!-- Refactor!! -->
+          <% if plant.reminder == nil %>
+          <span><%= link_to 'Add Reminder', user_reminders_path(current_user, plant), method: :post %></span>
+          <% elsif plant.reminder.frequency == 'once a week'  %>
+          <span>
+            Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*7).strftime("%B %d, %Y") %><br>
+            <small><%= link_to 'Remove Reminder', reminder_path(plant.reminder), method: :delete %></small>
+          </span>
+          <% elsif plant.reminder.frequency == 'twice a week' %>
+          <span>
+            Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*3).strftime("%B %d, %Y") %><br>
+            <small><%= link_to 'Remove Reminder', reminder_path(plant.reminder), method: :delete %></small>
+          </span>
+          <% elsif plant.reminder.frequency == 'every other day' %>
+          <span>
+            Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*2).strftime("%B %d, %Y") %><br>
+            <small><%= link_to 'Remove Reminder', reminder_path(plant.reminder), method: :delete %></small>
+          </span>
+          <% end %>
+
+          <hr>
+
+          <small>
+            <%= link_to 'Edit', edit_individual_plant_path(plant) %>
+            |
+            <%= link_to 'Remove', individual_plant_path(plant), method: :delete, data: {confirm: 'Are you sure?'} %><br>
+            <% if plant.sunlight == nil %>
+            <%= link_to 'Generate Data!', generate_data_path(plant), method: :patch %>
+            <% end %>
+          </small>
+        </article>
+      </div>
+      <% end %>
+      <% else %>
+      <p>Hmm, it appears your gallery is empty</p>
+      <% end %>
+    </div>
+  </div>
 </div>

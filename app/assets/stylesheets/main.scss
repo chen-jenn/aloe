@@ -124,8 +124,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .topnav {
-  // background: #539857;
-  // background-color: #436931;
   background-color: #729B79;
   height: 44px;
   width: 75vw;
@@ -296,7 +294,16 @@ footer {
   width:100vw;
   height: 300px;
   margin-top: 10px;
+  color: white;
   background-color: #2E2C2F;
+}
+
+footer a {
+  color: white; 
+}
+
+footer a:hover{
+  color: #475B63;
 }
 
 .footer-center {

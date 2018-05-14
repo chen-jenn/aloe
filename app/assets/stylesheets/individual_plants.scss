@@ -1,3 +1,40 @@
+/*Account info section*/
+.user-show-top {
+  display: flex;
+  width: 100%;
+  height: 30vh;
+  padding: 15px;
+}
+
+.user-show-top .left{
+  width: 50%;
+  height: 100%;
+  padding: 10px;
+}
+
+.user-info {
+  border-collapse: collapse;
+  width:100%;
+  border: 2px solid black;
+  background-color: white;
+}
+
+.user-show-top .right {
+  width: 50%;
+  height: 100%;
+  padding: 10px;
+  background-color: pink;
+}
+
+.user-show-bottom {
+  width: 100%;
+  height: 70vh;
+  padding: 15px;
+
+  background-color: yellow;
+}
+
+
 /*individual plant photos--------------------------------------------------------*/
 .card-container{
   display: flex;
