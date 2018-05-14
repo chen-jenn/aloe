@@ -13,7 +13,7 @@
             <h1><strong><%= plant.individual_name %></strong></h1>
             <p>
               <%= plant.common_name %><br>
-              <strong>Species:</strong> <i><%= plant.species_name %></i><br>
+              <strong>Species:</strong> <i><%= link_to plant.species_name, plant_path(Plant.where(species_name: plant.species_name).ids[0]) %></i><br>
 
               <% if plant.sunlight %>
                 <strong>Sunlight:</strong> <%= plant.sunlight %><br>
