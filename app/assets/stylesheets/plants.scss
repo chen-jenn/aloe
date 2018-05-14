@@ -43,18 +43,27 @@
 
 .plant-show .left {
   background-color: #f1ffb8;
-  height: 50vh;
-  width: 65%;
+  height: 40vh;
+  width: 40%;
+}
+
+.ps-image-box {
+  display: inline-block;
+  height: 90%;
+  width: 90%;
+  padding: 10px;
+  margin:15px;
+
+  background-color: white;
 }
 
 .plant-show .right {
   background-color: #f1ffb8;
-  height: 50vh;
-  width: 35%;
+  height: 40vh;
+  width: 60%;
 }
 
 .plant-show-3{
-  height: 50vh;
   width:100%;
   background-color: #f1ffb8;
 }
@@ -79,4 +88,16 @@
 .plant-show-table th {
   background-color: #2E2C2F;
   color: white;
+}
+
+.x-button {
+  float: right;
+  padding-right: 10px;
+  font-size: 20px;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+.x-button:hover{
+  color: red;
+  cursor: pointer;
 }

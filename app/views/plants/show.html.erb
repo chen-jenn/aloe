@@ -1,14 +1,18 @@
 <div class="biggest-div">
+
   <div class='plant-show'>
     <div class="left">
-      <% if @images.length > 0 %>
-        <div style="background-image: url(<%= @images[0].file.url(:large) %>); height:300px;width:300px;">
-        </div>
-      <%= @images[0].description %>
-      <% end %>
+      <div class="ps-image-box">
+        <% if @images.length > 0 %>
+          <div style="background-image: url(<%= @images[0].file.url(:large) %>); height:100%;width:100%;">
+          </div>
+        <%= @images[0].description %>
+        <% end %>
+      </div>
     </div>
+
     <div class="right">
-      <div style="margin:10px;">
+      <div style="margin:15px;">
         <h3><strong><i><%= @plant.species_name %></i></strong></h3>
         <p>Common names: <%= @common_names.map { |common_name| common_name.name }.join(', ') %></p>
 
@@ -98,19 +102,25 @@
     </div>
 
     <div class="plant-show-3">
-      <div style="margin:10px;">
-        <h3 style="font-family: 'Open Sans', sans-serif">Climate Zone - <%= @plant.climate_zone %></h3>
+      <div style="margin:15px;">
+        <h3 style="font-family: 'Open Sans', sans-serif">NOTES</h3>
+        <% if @plant.notes %>
+        <p><%= @plant.notes %></p>
+        <% end %>
+        Lorem ipsum dolor sit amet, vix quando option epicuri an, nam ex dicam corrumpit. Paulo probatus iracundia sea te. Tempor menandri ut usu, ceteros copiosae voluptatum eu eos. Eu feugait evertitur eos, eam iuvaret noluisse adolescens an, solum bonorum dignissim an vim. Sumo assum putant vel ex, nec cu libris imperdiet torquatos. No vel postea commune atomorum, ea sea prima falli partiendo, ad sumo nulla moderatius has. Ea quaeque adipisci pro, ius no natum ipsum suscipiantur.
+        <br>
+        <br>
+        <br>
+        <br>
       </div>
     </div>
 
     <div class="plant-show-4">
-      <div style="margin:10px;">
-        <h3 style="font-family: 'Open Sans', sans-serif">NOTES</h3>
-        <% if @plant.notes %>
-          <p><%= @plant.notes %></p>
-        <% end %>
+      <div style="margin:15px;">
+        <h3 style="font-family: 'Open Sans', sans-serif">CLIMATE ZONE - <%= @plant.climate_zone %></h3>
       </div>
     </div>
+
 
     <div class="plant-show-5">
       <div style="margin:10px;">
@@ -119,7 +129,11 @@
           <% if @images.count > 0 %>
             <% @images.each do |image| %>
               <div class="card-indv">
-                <div class="thumb" style="background-image: url(<%= image.file.url(:medium) %>)"></div>
+                <div class="thumb" style="background-image: url(<%= image.file.url(:medium) %>)">
+                  <% if can? :manage, image %>
+                    <%= link_to "✖", image_path(image), class:"x-button", method:'delete' %>
+                  <% end %>
+                </div>
               </div>
             <% end %>
           <% else %>
@@ -131,8 +145,9 @@
   </div>
 
     <!-- Only the admin, mods, and user that created this is allowed to edit -->
-    <%= link_to "Edit Record", edit_plant_path(@plant) %>
-    |
-    <%= link_to "Delete Record", plant_path, method:"delete", data: {confirm: "Are you sure? There's no going back!!"} %>
-
+    <% if can? :manage, @plant %>
+      <%= link_to "Edit Record", edit_plant_path(@plant) %>
+      |
+      <%= link_to "Delete Record", plant_path, method:"delete", data: {confirm: "Are you sure? There's no going back!!"} %>
+    <% end %>
 </div>
