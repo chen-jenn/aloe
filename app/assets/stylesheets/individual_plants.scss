@@ -2,7 +2,6 @@
 .user-show-top {
   display: flex;
   width: 100%;
-  height: 30vh;
   padding: 15px;
 }
 
@@ -23,15 +22,29 @@
   width: 50%;
   height: 100%;
   padding: 10px;
-  background-color: pink;
+}
+
+.add-button {
+  display: block;
+  text-align: center;
+  background-color: #2E2C2F;
+  height: 50px;
+  line-height: 50px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.add-button a {
+  color: white;
+}
+
+.add-button a:hover {
+  color: #475B63;
 }
 
 .user-show-bottom {
   width: 100%;
   height: 70vh;
   padding: 15px;
-
-  background-color: yellow;
 }
 
 

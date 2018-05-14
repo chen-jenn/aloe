@@ -3,7 +3,9 @@
     <div class="left">
       <h2 style="font-family: 'Open Sans', sans-serif">ACCOUNT INFO</h2>
       <small style="display:block;">Don't worry, only you can see this page</small><br>
-
+      <%= link_to "Edit Info", edit_user_path(current_user) %>
+      |
+      <%= link_to "Delete Account", user_path(current_user), method: :delete, data: {confirm: 'Are you sure? No retrieval methods!'} %>
       <table class="user-info">
         <tr>
           <th colspan="2" style="color:white;background-color:#2E2C2F">General</th>
@@ -29,14 +31,14 @@
           <td><%= @user.climate_zone %></td>
         </tr>
       </table>
+      <div class="add-button">
+        <%= link_to 'ADD PLANT', new_individual_plant_path %><br>
+      </div>
     </div>
 
     <div class="right">
-      <%= link_to 'Add Plant', new_individual_plant_path %><br>
 
-      <%= link_to "Edit Info", edit_user_path(current_user) %>
-      |
-      <%= link_to "Delete Account", user_path(current_user), method: :delete, data: {confirm: 'Are you sure?'} %>
+
     </div>
   </div>
 
