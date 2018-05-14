@@ -2,7 +2,7 @@
   <div class="user-show-top">
     <div class="left">
       <h2 style="font-family: 'Open Sans', sans-serif">ACCOUNT INFO</h2>
-      <small style="display:block;">Don't worry, only you can see this page</small><br>
+      <small style="display:block;">Don't worry, only you can see your own profile page</small><br>
       <%= link_to "Edit Info", edit_user_path(current_user) %>
       |
       <%= link_to "Delete Account", user_path(current_user), method: :delete, data: {confirm: 'Are you sure? No retrieval methods!'} %>
@@ -37,69 +37,72 @@
     </div>
 
     <div class="right">
-
-
+      <h4><strong>Tips</strong></h4>
+      <p style="text-indent:2.0em;">
+        Here is a listing of all your lovely plants! To get started, add a plant and you will see it show up in the listing below. Hit 'Generate Data' to see the magic happen. If you need to change the species information of your houseplant, make sure to re-click the link so that your plant info will be updated properly.
+      </p>
     </div>
   </div>
 
+  <hr>
+
   <div class="user-show-bottom">
-    <h2 style="font-family: 'Open Sans', sans-serif">YOUR PLANTS</h2>
-    <div class="card-container">
+    <h2 style="font-family: 'Open Sans', sans-serif;">YOUR PLANTS</h2>
+    <div class="indv-grid">
       <% if @individual_plants.count > 0 %>
-      <% @individual_plants.each do |plant| %>
-      <div class="card-indv">
-        <div class="thumb" style="background-image: url(<%= plant.photo.url(:medium) %>)"></div>
-        <article>
-          <h1><strong><%= plant.individual_name %></strong></h1>
-          <p>
-            <%= plant.common_name %><br>
-            <strong>Species:</strong> <i><%= link_to plant.species_name, plant_path(Plant.where(species_name: plant.species_name).ids[0]) %></i><br>
+        <% @individual_plants.each do |plant| %>
+          <div class="card-indv">
+            <div class="thumb" style="background-image: url(<%= plant.photo.url(:medium) %>)"></div>
+            <article>
+              <h1><strong><%= plant.individual_name %></strong></h1>
+              <p>
+                <%= plant.common_name %><br>
+                <strong>Species:</strong> <i><%= link_to plant.species_name, plant_path(Plant.where(species_name: plant.species_name).ids[0]) %></i><br>
 
-            <% if plant.sunlight %>
-            <strong>Sunlight:</strong> <%= plant.sunlight %><br>
-            <strong>Optimal Temperature:</strong> <%= plant.optimal_temp %>&deg;C<br>
-            <strong>Watering Frequency:</strong> <%= plant.water_frequency %><br>
-            <strong>Ease of Care:</strong> <%= plant.ranking %>
-            <% end %>
-          </p>
+                <% if plant.sunlight %>
+                <strong>Sunlight:</strong> <%= plant.sunlight %><br>
+                <strong>Optimal Temperature:</strong> <%= plant.optimal_temp %>&deg;C<br>
+                <strong>Watering Frequency:</strong> <%= plant.water_frequency %><br>
+                <strong>Ease of Care:</strong> <%= plant.ranking %>
+                <% end %>
+              </p>
 
-          <!-- if next watering day is the same as current day, display as red -->
-          <!-- Refactor!! -->
-          <% if plant.reminder == nil %>
-          <span><%= link_to 'Add Reminder', user_reminders_path(current_user, plant), method: :post %></span>
-          <% elsif plant.reminder.frequency == 'once a week'  %>
-          <span>
-            Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*7).strftime("%B %d, %Y") %><br>
-            <small><%= link_to 'Remove Reminder', reminder_path(plant.reminder), method: :delete %></small>
-          </span>
-          <% elsif plant.reminder.frequency == 'twice a week' %>
-          <span>
-            Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*3).strftime("%B %d, %Y") %><br>
-            <small><%= link_to 'Remove Reminder', reminder_path(plant.reminder), method: :delete %></small>
-          </span>
-          <% elsif plant.reminder.frequency == 'every other day' %>
-          <span>
-            Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*2).strftime("%B %d, %Y") %><br>
-            <small><%= link_to 'Remove Reminder', reminder_path(plant.reminder), method: :delete %></small>
-          </span>
-          <% end %>
+              <!-- if next watering day is the same as current day, display as red -->
+              <!-- Refactor!! -->
+              <% if plant.reminder == nil %>
+              <span><%= link_to 'Add Reminder', user_reminders_path(current_user, plant), method: :post %></span>
+              <% elsif plant.reminder.frequency == 'once a week'  %>
+              <span>
+                Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*7).strftime("%B %d, %Y") %><br>
+                <small><%= link_to 'Remove Reminder', reminder_path(plant.reminder), method: :delete %></small>
+              </span>
+              <% elsif plant.reminder.frequency == 'twice a week' %>
+              <span>
+                Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*3).strftime("%B %d, %Y") %><br>
+                <small><%= link_to 'Remove Reminder', reminder_path(plant.reminder), method: :delete %></small>
+              </span>
+              <% elsif plant.reminder.frequency == 'every other day' %>
+              <span>
+                Next watering day: <%= (plant.reminder.last_reminder + 60*60*24*2).strftime("%B %d, %Y") %><br>
+                <small><%= link_to 'Remove Reminder', reminder_path(plant.reminder), method: :delete %></small>
+              </span>
+              <% end %>
 
-          <hr>
+              <hr>
 
-          <small>
-            <%= link_to 'Edit', edit_individual_plant_path(plant) %>
-            |
-            <%= link_to 'Remove', individual_plant_path(plant), method: :delete, data: {confirm: 'Are you sure?'} %><br>
-            <% if plant.sunlight == nil %>
-            <%= link_to 'Generate Data!', generate_data_path(plant), method: :patch %>
-            <% end %>
-          </small>
-        </article>
-      </div>
-      <% end %>
+              <small>
+                <%= link_to 'Edit', edit_individual_plant_path(plant) %>
+                |
+                <%= link_to 'Remove', individual_plant_path(plant), method: :delete, data: {confirm: 'Are you sure?'} %><br>
+                <%= link_to 'Generate Data!', generate_data_path(plant), method: :patch %>
+              </small>
+            </article>
+          </div>
+        <% end %>
       <% else %>
-      <p>Hmm, it appears your gallery is empty</p>
+        <p>Hmm, it appears your gallery is empty</p>
       <% end %>
+
     </div>
   </div>
 </div>
