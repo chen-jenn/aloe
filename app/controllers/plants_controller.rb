@@ -5,7 +5,7 @@ class PlantsController < ApplicationController
 
   def index
     # @plants = Plant.order(species_name: :asc)
-    @plants = Plant.paginate(:page => params[:page], :per_page => 10).search(params[:term])
+    @plants = Plant.paginate(:page => params[:page], :per_page => 12).search(params[:term])
   end
 
   def show

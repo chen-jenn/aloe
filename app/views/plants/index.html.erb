@@ -1,23 +1,34 @@
 <div class="biggest-div">
-  <div style="font-family: 'Open Sans', sans-serif; margin-bottom:10px; font-size:30px;">PLANT SEARCH</div>
+  <div class="plants-index">
+    <div style="font-family: 'Open Sans', sans-serif; margin-bottom:10px; font-size:30px;">PLANT SEARCH</div>
 
-  <%= form_tag(plants_path, method: :get, class:'mb-2') do %>
-    <%= text_field_tag :term, params[:term] %>
-    <%= submit_tag 'Search', name: nil %>
-  <% end %>
+    <%= form_tag(plants_path, method: :get, class:'mb-2') do %>
+      <%= text_field_tag :term, params[:term] %>
+      <%= submit_tag 'Search', name: nil %>
+    <% end %>
 
-  <div class="paginate-div">
-    <%= will_paginate @plants %>
-  </div>
-
-  <% @plants.each do |plant|%>
-    <div class="card mb-2">
-      <div class="card-header">
-        <strong><%= link_to plant.species_name, plant_path(plant.id), class:"italic" %></strong>
-      </div>
-      <div class="card-body">
-        <p class="card-text"><%= plant.common_names.map { |c| c.name }.to_sentence %></p>
-      </div>
+    <div class="paginate-div">
+      <%= will_paginate @plants %>
     </div>
-  <% end %>
+
+    <div class="plant-index-items">
+      <% @plants.each do |plant| %>
+        <div>
+
+          <div class="plant-image">
+            <% if plant.images.count > 0 %>
+            <!-- just display the last image uploaded -->
+              <%= image_tag plant.images[plant.images.length - 1].file.url(:large), style:"width:100%;height:100%;" %>
+            <% else %>
+              <%= image_tag "default-image.png", style:"max-width:100%;max-height:100%" %>
+            <% end %>
+          </div>
+
+          <h5><strong><%= link_to plant.species_name, plant_path(plant.id), class:"italic" %></strong></h5>
+          <%= plant.common_names.map { |c| c.name }.to_sentence %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
 </div>

@@ -1,7 +1,8 @@
+// Home Page
 .home-top-section{
   display: flex;
   font-family: Verdana, sans-serif;
-  font-weight: lighter;  
+  font-weight: lighter;
   background-color: #BACDB0;
   width: 100%;
   margin:auto;
@@ -49,4 +50,29 @@
 
   line-height: 50px;
   text-align: center;
+}
+
+// Contact Us Page
+.contact-us{
+  display: flex;
+  flex-direction: column;
+
+  width: 75vw;
+  height: 100vh;
+  margin: auto;
+}
+
+.contact-top {
+  height: 30%;
+  width: 100%; // 100% of parent
+  color: white;
+  background-color: #2E2C2F;
+  margin: 0px;
+}
+
+.contact-bottom {
+  height: 70%;
+  width: 100%;
+  background-color: #f1ffb8;
+  margin: 15px 0px 0px 0px;
 }

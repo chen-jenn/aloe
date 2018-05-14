@@ -1,8 +1,38 @@
-.italic{
+//Plant index
+.plants-index { //left-right margins outsourced to biggest-div class
+  width: 75vw;
+  padding: 15px;
+}
+
+.plant-index-items {
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  margin-top: 8px;
+}
+
+.plant-index-items > * {
+  height: 400px;
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.plant-image {
+  width: 100%;
+  height: 80%;
+  background-color: #e7e7e7;
+  margin-bottom: 5px;
+}
+
+// Plant show page
+.italic {
   font-style: italic;
 }
 
-.plant-show{
+.plant-show {
   display: flex;
   flex-wrap: wrap;
   align-content:flex-start;
