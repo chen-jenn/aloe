@@ -25,6 +25,10 @@
   <%= f.input :temp_max, label: 'Max' %>
 </div>
 
+<% if can?(:manage, @plant) %>
+  <%= f.input :climate_zone, label: 'Climate Zone*', as: :string, hint: '*Automatically generated, this field is only for editing purposes'  %><br>
+<% end %>
+
 <hr>
 <h2>Other</h2>
 <%= f.input :notes, label: 'Notes (list any plant care tips here)' %>

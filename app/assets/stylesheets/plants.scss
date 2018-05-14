@@ -27,6 +27,46 @@
   margin-bottom: 5px;
 }
 
+/*Plant index pagination nav--------------------------------------------------------*/
+.paginate-div{
+  display:flex;
+  justify-content: center;
+}
+
+.pagination {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.pagination > * {
+  margin-right: 0.1em;
+  padding: 0.3em 0.4em;
+  border-radius: 1px;
+  background-color: white;
+  border: solid white 2px;
+}
+
+.pagination a:hover {
+  background: rgb(221, 221, 221) none repeat scroll 0 0;
+  border: solid rgb(221, 221, 221) 2px;
+  text-shadow: none;
+  text-decoration: none;
+}
+
+.pagination a:active {
+  text-shadow: none;
+  border: solid blue 2px;
+}
+
+.pagination .current {
+    border: solid blue 2px;
+    text-shadow: none;
+}
+
+.pagination .disabled {
+    color: #C0C0C0;
+}
+
 // Plant show page
 .italic {
   font-style: italic;

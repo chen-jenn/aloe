@@ -12,12 +12,10 @@
  *
  */
  @import "bootstrap";
- @import "font-awesome"; 
+ @import "font-awesome";
  @import "chosen";
- @import "plants";
+
  @import "main";
  @import "welcome";
-
-html{
-  margin: 10px;
-}
+ @import "plants";
+ @import "individual_plants";
