@@ -123,13 +123,12 @@
 
 
     <div class="plant-show-5">
-      <div style="margin:10px;">
-        <h3 style="font-family: 'Open Sans', sans-serif">GALLERY</h3>
-        <div class="card-container">
+      <h3 style="font-family: 'Open Sans', sans-serif">GALLERY</h3>
+        <div class="ps-5-grid">
           <% if @images.count > 0 %>
             <% @images.each do |image| %>
-              <div class="card-indv">
-                <div class="thumb" style="background-image: url(<%= image.file.url(:medium) %>)">
+              <div>
+                <div style="background-image: url(<%= image.file.url(:large) %>);width:100%;height:100%;object-fit: contain;">
                   <% if can? :manage, image %>
                     <%= link_to "✖", image_path(image), class:"x-button", method:'delete' %>
                   <% end %>
@@ -141,13 +140,13 @@
           <% end %>
         </div>
       </div>
-    </div>
   </div>
 
-    <!-- Only the admin, mods, and user that created this is allowed to edit -->
+  <div style="display:block;padding:10px;">
     <% if can? :manage, @plant %>
-      <%= link_to "Edit Record", edit_plant_path(@plant) %>
-      |
-      <%= link_to "Delete Record", plant_path, method:"delete", data: {confirm: "Are you sure? There's no going back!!"} %>
+    <%= link_to "Edit Record", edit_plant_path(@plant) %>
+    |
+    <%= link_to "Delete Record", plant_path, method:"delete", data: {confirm: "Are you sure? There's no going back!!"} %>
     <% end %>
+  </div>
 </div>

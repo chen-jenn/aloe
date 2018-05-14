@@ -58,8 +58,6 @@
   margin-top: 8px;
 }
 
-
-// rmeove this nonsense later-----------------
 .card-indv {
   background: white;
   text-decoration: none;
@@ -72,15 +70,10 @@
   width: 100%;
   margin: 5px;
 
-  // /*hover*/
-  // position: relative;
-  // top: 0;
-  // transition: all .1s ease-in;
-  //
-  // &:hover {
-  //   top: -2px;
-  //   box-shadow: 0 4px 5px rgba(0,0,0,0.2);
-  // }
+  &:hover{
+    top: -2px;
+    box-shadow: 0 4px 5px gray;
+  }
 
   article {
     padding: 20px;
