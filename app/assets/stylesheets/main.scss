@@ -67,30 +67,6 @@ body{
   margin-bottom: auto;
 }
 
-.status-bar{
-  display: flex;
-}
-
-.status-item{
-  margin: 1px;
-  padding: 8px;
-  border-radius: 2px;
-  width: 100px;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.easy{
-  border: 1.5px solid green;
-}
-
-.moderate{
-  border: 1.5px solid orange;
-}
-
-.hard{
-  border: 1.5px solid red;
-}
 
 a:hover{
   text-decoration: none;
@@ -299,7 +275,7 @@ footer {
 }
 
 footer a {
-  color: white; 
+  color: white;
 }
 
 footer a:hover{

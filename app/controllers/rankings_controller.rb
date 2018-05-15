@@ -11,14 +11,14 @@ class RankingsController < ApplicationController
     end
   end
 
-  def update 
+  def update
     ranking = Ranking.find params[:id]
-    ranking.update()
+    ranking.update({ease_of_care: params[:ease_of_care]})
     redirect_to plant_path(ranking.plant), notice: "Input changed"
   end
 
   def destroy
-    ranking = Vote.find params[:id]
+    ranking = Ranking.find params[:id]
     ranking.destroy
     redirect_to plant_path(ranking.plant), notice: 'Input revoked'
 

@@ -52,51 +52,56 @@
           </tr>
         </table>
 
+        <h5 style="margin-top:10px;"><strong>What you ranked the ease of care as:</strong></h5>
         <!-- Rankings conditionals start-->
-          <% ranking = current_user&.ranking_for(@plant) %>
-          <div class="status-bar">
-              <% if ranking.nil? %>
-                <div class="status-item easy">
-                  <%= link_to 'Easy', plant_rankings_path(@plant, { ease_of_care: 'easy' }), method: :post %>
+        <% ranking = current_user&.ranking_for(@plant) %>
+        <div class="status-bar">
+            <% if ranking.nil? %>
+              <div class="status-item easy">
+                <%= link_to 'Easy', plant_rankings_path(@plant, { ease_of_care: 'easy' }), method: :post %>
+              </div>
+              <div class="status-item moderate">
+                <%= link_to 'Moderate', plant_rankings_path(@plant, { ease_of_care: 'moderate' }), method: :post %>
+              </div>
+              <div class="status-item hard">
+                <%= link_to 'Hard', plant_rankings_path(@plant, { ease_of_care: 'hard' }), method: :post %>
+              </div>
+            <% else %>
+              <% if ranking.ease_of_care == 'easy' %>
+                <div class="status-item easy" style="background-color:green;">
+                  <%= link_to 'Easy', ranking_path(ranking), method: :delete, style:'color:white;' %>
                 </div>
                 <div class="status-item moderate">
-                  <%= link_to 'Moderate', plant_rankings_path(@plant, { ease_of_care: 'moderate' }), method: :post %>
+                  <%= link_to 'Moderate', ranking_path(ranking, { ease_of_care: 'moderate' }), method: :patch %>
                 </div>
                 <div class="status-item hard">
-                  <%= link_to 'Hard', plant_rankings_path(@plant, { ease_of_care: 'hard' }), method: :post %>
+                  <%= link_to 'Hard', ranking_path(ranking, { ease_of_care: 'hard' }), method: :patch %>
                 </div>
-              <% elsif ranking == 'easy' %>
+
+              <% elsif ranking.ease_of_care == 'moderate' %>
                 <div class="status-item easy">
-                  <%= link_to 'Easy', ranking_path(ranking), method: :delete %>
+                  <%= link_to 'Easy', ranking_path(ranking, { ease_of_care: 'easy' }), method: :patch %>
+                </div>
+                <div class="status-item moderate" style="background-color:orange;">
+                  <%= link_to 'Moderate', ranking_path(ranking), method: :delete, style:'color:white;' %>
+                </div>
+                <div class="status-item hard">
+                  <%= link_to 'Hard', ranking_path(ranking, { ease_of_care: 'hard' }), method: :patch %>
+                </div>
+
+              <% elsif ranking.ease_of_care == 'hard' %>
+                <div class="status-item easy">
+                  <%= link_to 'Easy', ranking_path(ranking, { ease_of_care: 'easy' }), method: :patch %>
                 </div>
                 <div class="status-item moderate">
-                  <%= link_to 'Moderate', ranking_path(@plant, { ease_of_care: 'moderate' }), method: :patch %>
+                  <%= link_to 'Moderate', ranking_path(ranking, { ease_of_care: 'moderate' }), method: :patch %>
                 </div>
-                <div class="status-item hard">
-                  <%= link_to 'Hard', ranking_path(@plant, { ease_of_care: 'hard' }), method: :patch %>
-                </div>
-              <% elsif ranking == 'moderate' %>
-                <div class="status-item easy">
-                  <%= link_to 'Easy', ranking_path(@plant, { ease_of_care: 'easy' }), method: :patch %>
-                </div>
-                <div class="status-item moderate">
-                  <%= link_to 'Moderate', ranking_path(ranking), method: :delete %>
-                </div>
-                <div class="status-item hard">
-                  <%= link_to 'Hard', ranking_path(@plant, { ease_of_care: 'hard' }), method: :patch %>
-                </div>
-              <% elsif ranking == 'hard' %>
-                <div class="status-item easy">
-                  <%= link_to 'Easy', ranking_path(@plant, { ease_of_care: 'easy' }), method: :patch %>
-                </div>
-                <div class="status-item moderate">
-                  <%= link_to 'Moderate', ranking_path(@plant, { ease_of_care: 'moderate' }), method: :patch %>
-                </div>
-                <div class="status-item hard">
-                  <%= link_to 'Hard', ranking_path(ranking), method: :delete %>
+                <div class="status-item hard" style="background-color:red;">
+                  <%= link_to 'Hard', ranking_path(ranking), method: :delete, style:'color:white;' %>
                 </div>
               <% end %>
-          </div>
+            <% end %>
+        </div>
         <!-- Rankings conditionals end -->
       </div>
     </div>
@@ -120,7 +125,6 @@
         <h3 style="font-family: 'Open Sans', sans-serif">CLIMATE ZONE - <%= @plant.climate_zone %></h3>
       </div>
     </div>
-
 
     <div class="plant-show-5">
       <h3 style="font-family: 'Open Sans', sans-serif">GALLERY</h3>
