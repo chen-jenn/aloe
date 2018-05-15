@@ -70,11 +70,6 @@
   width: 100%;
   margin: 5px;
 
-  &:hover{
-    top: -2px;
-    box-shadow: 0 4px 5px gray;
-  }
-
   article {
     padding: 20px;
     flex: 1;
@@ -109,4 +104,8 @@
     background-size: cover;
     background-position: center center;
   }
+}
+
+.card-indv:hover{
+  box-shadow: 0 4px 5px gray;
 }
