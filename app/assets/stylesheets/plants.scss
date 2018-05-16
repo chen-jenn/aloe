@@ -158,6 +158,10 @@
   cursor: pointer;
 }
 
+.ps-grid-item:hover {
+  cursor: pointer; 
+}
+
 // Ranking status
 .status-bar{
   display: flex;
@@ -200,10 +204,29 @@
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color:black;
-  opacity: 0.75;
+  background-color: rgb(0,0,0); //if no browser support for rgba
+  background-color: rgba(0,0,0,0.75);
 }
 
+.modal-content {
+  width: 50vw;
+  margin: auto;
+  background-color: pink;
+  padding: 0px;
+}
+
+.slides {
+  display: none;
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
 
 .close{
   color: white;
@@ -223,4 +246,33 @@
 
 .cursor{
   cursor: pointer;
+}
+
+// Left right buttons
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
 }

@@ -142,6 +142,7 @@
             <% @images.each do |image| %>
               <div>
                 <div
+                class="ps-grid-item"
                 style="background-image: url(<%= image.file.url(:large) %>);width:100%;height:100%;object-fit: fill;"
                 onClick="openModal();currentSlide(<%= @images.index(image) + 1 %>)"
                 >
@@ -161,7 +162,19 @@
 
   <!-- Modal Display-->
   <div id="ps-modal">
-      <span class="close cursor" onClick="closeModal()">&times;</span>
+    <span class="close cursor" onClick="closeModal()">&times;</span>
+    <div class="modal-content">
+      <% if @images.count > 0 %>
+        <% @images.each do |image| %>
+          <div class="slides">
+            <div class="numbertext"><%= @images.index(image) + 1 %>/<%= @images.count %></div>
+            <img src="<%= image.file.url(:large) %>" style="width:100%;border:10px solid lightgray;">
+          </div>
+          <a class="prev" onclick="plusSlides(-1)" style="color:white;">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)" style="color:white;">&#10095;</a>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
   <div style="display:block;padding:10px;">
@@ -182,7 +195,34 @@
     document.getElementById('ps-modal').style.display = "none";
   }
 
-  // function currentSlide(n){
-  //
-  // }
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("slides");
+    let dots = document.getElementsByClassName("demo");
+    let captionText = document.getElementById("caption");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    captionText.innerHTML = dots[slideIndex-1].alt;
+  }
 </script>
