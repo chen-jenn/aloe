@@ -3,7 +3,7 @@
     <div class="card-body">
       <h2>Add one of your plants!</h2>
       <%= simple_form_for @individual_plant do |f| %>
-        <%= f.input :species_name, hint: 'Make sure the species name spelling is exactly the same as in the database' %>
+        <%= f.input :species_name, :collection => (Plant.order(species_name: :asc).pluck :species_name), hint: 'Make sure the species name spelling is exactly the same as in the database' %>
         <%= f.input :common_name %>
         <%= f.input :individual_name %>
         <%= f.input :description %>
@@ -11,5 +11,5 @@
         <%= f.submit "Submit", class:'btn btn-dark' %>
       <% end %>
     </div>
-  </div> 
+  </div>
 </div>

@@ -34,7 +34,6 @@ class Plant < ApplicationRecord
       .where('common_names.name ILIKE ? OR species_name ILIKE ?', "%#{term}%", "%#{term}%")
   end
 
-
   private
   #to populate the climate_zone column before saving record
   def send_request
