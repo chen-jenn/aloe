@@ -141,7 +141,7 @@
           <% if @images.count > 0 %>
             <% @images.each do |image| %>
               <div>
-                <div style="background-image: url(<%= image.file.url(:large) %>);width:100%;height:100%;object-fit: contain;">
+                <div style="background-image: url(<%= image.file.url(:large) %>);width:100%;height:100%;object-fit: fill;">
                   <% if can? :manage, image %>
                     <%= link_to "✖", image_path(image), class:"x-button", method:'delete' %>
                   <% end %>

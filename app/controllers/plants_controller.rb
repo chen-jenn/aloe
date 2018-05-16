@@ -4,8 +4,11 @@ class PlantsController < ApplicationController
   before_action :authorize_user!, only: [:edit, :update] # only admins allowed to destroy
 
   def index
-    # @plants = Plant.order(species_name: :asc)
-    @plants = Plant.paginate(:page => params[:page], :per_page => 12).search(params[:term])
+    if params[:term]
+      @plants = Plant.paginate(:page => params[:page], :per_page => 12).search(params[:term]).order(species_name: :asc)
+    else
+      @plants = Plant.paginate(:page => params[:page], :per_page => 12).order(species_name: :asc)
+    end
   end
 
   def show

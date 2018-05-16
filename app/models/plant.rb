@@ -30,11 +30,8 @@ class Plant < ApplicationRecord
   end
 
   def self.search(term)
-    if term
-      where('species_name ILIKE ?', "%#{term}%").order('species_name ASC')
-    else
-      order('species_name ASC')
-    end
+    Plant.joins(:common_names)
+      .where('common_names.name ILIKE ? OR species_name ILIKE ?', "%#{term}%", "%#{term}%")
   end
 
 
