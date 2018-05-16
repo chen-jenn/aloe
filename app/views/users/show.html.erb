@@ -53,7 +53,7 @@
         <% @individual_plants.each do |plant| %>
           <div class="card-indv">
             <div class="thumb" style="background-image: url(<%= plant.photo.url(:medium) %>)"></div>
-            <article>
+            <div class="not-article">
               <h1><strong><%= plant.individual_name %></strong></h1>
               <p>
                 <%= plant.common_name %><br>
@@ -96,7 +96,7 @@
                 <%= link_to 'Remove', individual_plant_path(plant), method: :delete, data: {confirm: 'Are you sure?'} %><br>
                 <%= link_to 'Generate Data!', generate_data_path(plant), method: :patch %>
               </small>
-            </article>
+            </div>
           </div>
         <% end %>
       <% else %>

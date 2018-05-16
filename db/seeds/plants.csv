@@ -1,4 +1,4 @@
-species_name,city,climate_zone,latitude,longitude,sunlight,temp_min,temp_max 
+species_name,city,climate_zone,latitude,longitude,sunlight,temp_min,temp_max
 Acer saccharum,nova scotia,Dfb,44.397128,-65.212657,full,-10,30,sugar maple
 Acer palmatum,Tokyo,Cfa,35.704492,139.684289,full,-10,30,Japanese maple
 Adromischus cristatus,eastern cape,BSk,-32.464405,26.517603,full,10,30,crinkle leaf plant
@@ -37,12 +37,12 @@ Echeveria secunda,San Luis Potosi,BSk,22.137789,-100.972660,full,10,21,blue eche
 Echeveria setosa,San Luis Potosi,BSk,22.137789,-100.972660,full,10,21,Mexican fire cracker
 Echeveria shaviana,San Luis Potosi,BSk,22.137789,-100.972660,full,10,21, Mexican hens and chicks
 Euphorbia milii,Antananarivo,Cwb,-18.879544,47.511825,full,10,25,crown of thorns
-Euphorbia pulcherrima,
-Euphorbia tortilis,
-Euphorbia trigona,
-Ficus benjamina,,,,,,partial,18,24
-Gasteria brevifolia,
-Gasteria fuscopunctata,
+Euphorbia pulcherrima,Chiapas,Cwb,16.847160,-92.929077,partial,13,18,poinsettia
+Euphorbia tortilis,Mumbai,Aw,19.288415,73.265368,full,10,30,spiral cactus
+Euphorbia trigona,Bangui,Aw,6.176331,20.712669,full,10,30,African milk tree
+Ficus benjamina,Bangkok,Aw,13.829810,100.664636,partial,18,24,weeping fig
+Gasteria brevifolia,Eastern Cape,BSk,-32.464405,26.517603,full,18,26,cow-tongue
+Gasteria fuscopunctata,Eastern Cape,BSk,-32.464405,26.517603,full,18,26,ox-tongue
 Ginkgo biloba,Kyoto,Cfa,34.981097,135.734123,full,10,25,ginkgo
 Haworthia acuminata,
 Haworthia coarctata,
