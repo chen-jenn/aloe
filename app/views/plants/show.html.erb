@@ -30,7 +30,7 @@
           </tr>
           <tr>
             <td>Climate Zone</td>
-            <td><%= @plant.climate_zone %></td>
+            <td><%= @plant.climate_zone %>&nbsp;<small><%= link_to "(details)", climate_zones_path %></small></td>
           </tr>
           <tr>
             <td>Sunlight</td>
@@ -58,7 +58,7 @@
         <% else %>
           <h5 style="margin-top:10px;"><strong>What you ranked the ease of care as:</strong></h5>
         <% end %>
-        
+
         <!-- Rankings conditionals start-->
         <div class="status-bar">
             <% if ranking.nil? %>
@@ -130,7 +130,7 @@
         <h3 style="font-family: 'Open Sans', sans-serif">CLIMATE ZONE - <%= @plant.climate_zone %></h3>
         <p>*Note that the climate zone is not the same as the species distribution</p>
         <div style="width:100%;height:700px;background-color:#2E2C2F;padding:10px;margin-top:15px;">
-            <%= image_tag "#{@plant.climate_zone}.jpg", style:"width:100%;height:100%" %>
+          <%= image_tag "#{@plant.climate_zone}.jpg", style:"width:100%;height:100%" %>
         </div>
       </div>
     </div>
