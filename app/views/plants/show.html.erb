@@ -52,9 +52,14 @@
           </tr>
         </table>
 
-        <h5 style="margin-top:10px;"><strong>What you ranked the ease of care as:</strong></h5>
-        <!-- Rankings conditionals start-->
         <% ranking = current_user&.ranking_for(@plant) %>
+        <% if ranking.nil? %>
+          <h5 style="margin-top:10px;"><strong>How easy is this plant to take care of?</strong></h5>
+        <% else %>
+          <h5 style="margin-top:10px;"><strong>What you ranked the ease of care as:</strong></h5>
+        <% end %>
+        
+        <!-- Rankings conditionals start-->
         <div class="status-bar">
             <% if ranking.nil? %>
               <div class="status-item easy">

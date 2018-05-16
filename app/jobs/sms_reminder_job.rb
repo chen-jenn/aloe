@@ -8,7 +8,7 @@ class SmsReminderJob < ApplicationJob
     if reminder.frequency == 'once a week' && (reminder.last_reminder + 60*60*24*7) > Time.now
       i.send_text(i)
       reminder.last_reminder = Time.now
-      reminder.save
+      reminder.save 
     elsif reminder.frequency == 'twice a week' && (reminder.last_reminder + 60*60*24*7) > Time.now
       i.send_text(i)
       reminder.last_reminder == Time.now

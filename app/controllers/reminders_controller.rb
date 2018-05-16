@@ -29,8 +29,8 @@ class RemindersController < ApplicationController
   end
 
   private
+
   def authorize_user!
-    @reminder = Reminder.find params[:id]
     unless can?(:crud, @reminder)
       flash[:alert] = 'Access Denied'
       redirect_to plant_path(@reminder)

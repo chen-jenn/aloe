@@ -1,4 +1,4 @@
-species_name,city,climate_zone,latitude,longitude,sunlight,temp_min,temp_max
+species_name,city,climate_zone,latitude,longitude,sunlight,temp_min,temp_max 
 Acer saccharum,nova scotia,Dfb,44.397128,-65.212657,full,-10,30,sugar maple
 Acer palmatum,Tokyo,Cfa,35.704492,139.684289,full,-10,30,Japanese maple
 Adromischus cristatus,eastern cape,BSk,-32.464405,26.517603,full,10,30,crinkle leaf plant
