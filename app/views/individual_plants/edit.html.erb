@@ -1,11 +1,15 @@
 <div class='biggest-div'>
-  <h2>Edit <%= @individual_plant.individual_name %>'s information</h2>
-  <%= simple_form_for @individual_plant do |f| %>
-    <%= f.input :species_name %>
-    <%= f.input :common_name %>
-    <%= f.input :individual_name %>
-    <%= f.input :description %>
-    <%= f.input :photo %>
-    <%= f.submit "Submit", class:'btn btn-dark' %>
-  <% end %>
+  <div class="card mx-auto" style="width: 50rem;border-radius:5px;background-color:white;border:solid rgb(168, 154, 69) 1px;">
+    <div class="card-body">
+    <h2>Edit <%= @individual_plant.individual_name %>'s information</h2>
+    <%= simple_form_for @individual_plant do |f| %>
+      <%= f.input :species_name %>
+      <%= f.input :common_name %>
+      <%= f.input :individual_name %>
+      <%= f.input :description %>
+      <%= f.input :photo %>
+      <%= f.submit "Submit", class:'btn btn-dark' %>
+    <% end %>
+    </div>
+  </div>
 </div>

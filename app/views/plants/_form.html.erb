@@ -1,7 +1,7 @@
 <%= simple_form_for @plant, html: { multipart: true } do |f| %>
 
 <h2>Taxonomy</h2>
-<%= f.input :species_name, as: :string, required: false %>
+<%= f.input :species_name, as: :string %>
 <%= f.simple_fields_for :common_names do |c| %>
   <%= render 'common_name_fields', f: c %>
 <% end %>

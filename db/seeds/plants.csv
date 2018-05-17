@@ -16,6 +16,7 @@ Asparagus densiflorus,Cape of good Hope,Csb,-34.353399,18.475476,partial,18,24,f
 Aspidistra elatior,Hualien County,Cfb,23.972359,121.459102,shade,7,29,cast-iron-plant
 Beaucarnea recurvata,Tamaullipa,BSh,23.573929,-98.679794,full,16,21,ponytail palm
 Calathea makoyana,State of Amazonas,Af,-5.175967,-65.314439,partial,18,27,peacock plant
+Cannabis sativa,Caucasus Mountains,Dfc,42.647756,44.156649,partial,20,25,hemp
 Carex buchananii,Christchurch,Cfb,-43.549884,172.599758,full,0,25,red rooster
 Coriandrum sativum,Agrinio,Csa,38.611983,21.423456,partial,15,25,coriander
 Cotyledon orbiculata,Cape Town,Csb,-34.221006,18.437603,full,15,25,round-leafed navel-wort
@@ -55,47 +56,10 @@ Huernia zebrina,Harare,Cwb,-17.960060,31.215775,full,14,25,lifesaver plant
 Hyacinthus orientalis,Kayseri,Csb,38.723380,35.487008,full,10,19,hyacinth
 Kalanchoe blossfeldiana,Antananarivo,Cwb,-18.879544,47.511825,full,10,25,flaming Katy
 Kalanchoe farinacea,Socotra,Bwh,12.463824,53.975673,partial,16,25,kalanchoe farinacea
-Kalanchoe fedtschenkoi,
-Kalanchoe thyrsiflora,
-Kalanchoe tomentosa,
-Lamprocapnos spectabilis,
-Lavandula dentata,
-Lavandula pedunculata,
-Lavandula stoechas,
-Ledebouria socialis,
-Mammillaria crinita,
-Maranta leuconeura,
-Melissa officinalis,
-Mentha piperita,
-Monstera deliciosa,
-Nephrolepis cordifolia,Honolulu,As,21.310161,-157.845653,partial,15,25,sword fern
-Ocimum basilicum,
-Opuntia microdasys,Monterrey,BSh,25.568295,-100.220571,full,21,37,bunny ear cactus
-Origanum vulgare,
-Oxalis triangularis,State of Amazonas,Af,-5.175967,-65.314439,partial,15,25,false shamrock
-Pachira aquatica,Bogota,Cfb,4.586620,-74.092692,partial,0,37,guiana chestnut
-Parodia magnifica,
-Peperomia pellucida,,,,shade,15,24
-Persea americana,
-Petroselinum crispum,
-Phalaenopsis amabilis,
-Phalaenopsis pulcherrima,
-Philodendron hederaceum,Bayamo,Aw,20.162871,-76.494723,partial,24,27,heartleaf philodendron
-Rosmarinus officinalis,
-Salvia officinalis,
-Sansevieria laurentii,
-Sansevieria trifasciata,
-Sedum morganianum,
-Sedum spurium,
-Sedum treleasei,
-Sempervivum tectorum,
-Senecio crassissimus,
-Senecio ficoides,
-Senecio radicans,
-Senecio vitalis,
-Sesamum indicum,
-Solanum lycopersicum,
-Solanum tuberosum,
-Spathiphyllum wallisii,,,,partial,18,30
-Strelitzia nicolai,
-Thymus vulgaris,
+Kalanchoe fedtschenkoi,Antananarivo,Cwb,-18.879544,47.511825,full,10,25,lavender scallops
+Kalanchoe thyrsiflora,Antananarivo,Cwb,-18.879544,47.511825,full,10,25,flapjacks
+Kalanchoe tomentosa,Antananarivo,Cwb,-18.879544,47.511825,full,10,25,panda plant
+Lamprocapnos spectabilis,Ulaanbaatar,BSk,47.877677,106.926227,partial,5,25,bleeding heart
+Lavandula dentata,Arabian Peninsula,BWh,22.704788,45.604600,partial,10,25,fringed lavender
+Lavandula pedunculata,Arabian Peninsula,BWh,22.704788,45.604600,partial,10,25,French lavender
+Lavandula stoechas,Arabian Peninsula,BWh,22.704788,45.604600,partial,10,25,Spanish lavender 

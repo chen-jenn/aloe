@@ -4,21 +4,23 @@ Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|
   load seed
 end
 
+file = File.open(File.join(Rails.root, 'app/assets/images/default-image.png'))
+
 # climate_zones = ['Af', 'Am', 'As', 'Aw', 'BWk', 'BWh', 'BSk', 'BSh', 'Cfa', 'Cfb', 'Cfc', 'Csa', 'Csb', 'Csc', 'Cwa', 'Cwb', 'Cwc', 'Dfa', 'Dfb', 'Dfc', 'Dfd', 'Dsa', 'Dsb', 'Dsc', 'Dsd', 'Dwa', 'Dwb', 'Dwc', 'Dwd', 'EF', 'ET']
 
 # 1. Country Table Generated Once (static reference table)
-# COUNTRIES.each do |country| #a one time seed as this table will never change
-#   Country.create( country_name: country )
-# end
+COUNTRIES.each do |country| #a one time seed as this table will never change
+  Country.create( country_name: country )
+end
 
 # 2. Zone comparison table Generated Once (static reference table)
-# CSV.foreach(Rails.root.join('db/seeds/zone_comparison.csv'), headers:true) do |row|
-#   ZoneComparison.create do |instance|
-#     instance.user_zone = row[0]
-#     instance.plant_zone = row[1]
-#     instance.water_freq = row[2]
-#   end
-# end
+CSV.foreach(Rails.root.join('db/seeds/zone_comparison.csv'), headers:true) do |row|
+  ZoneComparison.create do |instance|
+    instance.user_zone = row[0]
+    instance.plant_zone = row[1]
+    instance.water_freq = row[2]
+  end
+end
 
 User.destroy_all
 Plant.destroy_all
@@ -47,6 +49,7 @@ super_user = User.create(
     email: "#{first_name.downcase}.#{last_name.downcase}@example.com",
     city: 'Vancouver',
     country: 'Canada',
+    phone: '555-555-5555'
     password: PASSWORD
     #comment out after_validation :send_request in user.rb because don't need to send API request when seeding
   )
@@ -68,6 +71,7 @@ CSV.foreach(Rails.root.join('db/seeds/plants.csv'), headers:true) do |row|
 
   pl.plant_countries.create(country_id: 39) # YOU ALL BELONG TO CANADA NOW
   pl.common_names.create(name: row[8])
+  pl.images.create(file: file)
 end
 
 plants = Plant.all
@@ -75,14 +79,3 @@ users = User.all
 puts Cowsay.say "Created #{users.count} users", :tux
 puts Cowsay.say "Added #{plants.count} plants!", :dragon
 puts "Login with  #{super_user.email} and password of '#{PASSWORD}'"
-
-# Creating one record sample
-# p = Plant.create(
-#   species_name: "Doggo doggos",
-#   city: "Vancouver",
-#   climate_zone: "Dfa",
-#   notes: Faker::HitchHikersGuideToTheGalaxy.quote
-# )
-#
-# p.plant_countries.create(country_id: 17)
-# p.common_names.create(name: Faker::Pokemon.name)
