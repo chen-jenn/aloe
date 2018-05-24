@@ -137,12 +137,12 @@
 .plant-show-table {
   border-collapse: collapse;
   width:100%;
-  border: 2px solid black;
+  border: 2px solid #635e66;
   background-color: white;
 }
 
 .plant-show-table th {
-  background-color: #2E2C2F;
+  background-color: #635e66;
   color: white;
 }
 
@@ -159,7 +159,7 @@
 }
 
 .ps-grid-item:hover {
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 // Ranking status
