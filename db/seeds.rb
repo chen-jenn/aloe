@@ -56,6 +56,17 @@ super_user = User.create(
   )
 end
 
+User.create(
+  username: 'guest',
+  first_name: 'Guest',
+  last_name: 'Log-in',
+  city: 'Vancouver',
+  country: 'Canada',
+  email: 'guest@login.ca',
+  password: 'password',
+  phone: '555-555-5555'
+)
+
 CSV.foreach(Rails.root.join('db/seeds/plants.csv'), headers:true) do |row|
   pl = Plant.create do |instance|
     instance.species_name = row[0]
