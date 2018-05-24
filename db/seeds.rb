@@ -9,7 +9,8 @@ file = File.open(File.join(Rails.root, 'app/assets/images/default-image.png'))
 # climate_zones = ['Af', 'Am', 'As', 'Aw', 'BWk', 'BWh', 'BSk', 'BSh', 'Cfa', 'Cfb', 'Cfc', 'Csa', 'Csb', 'Csc', 'Cwa', 'Cwb', 'Cwc', 'Dfa', 'Dfb', 'Dfc', 'Dfd', 'Dsa', 'Dsb', 'Dsc', 'Dsd', 'Dwa', 'Dwb', 'Dwc', 'Dwd', 'EF', 'ET']
 
 # 1. Country Table Generated Once (static reference table)
-COUNTRIES.each do |country| #a one time seed as this table will never change
+#a one time seed as this table will never change
+COUNTRIES.each do |country|
   Country.create( country_name: country )
 end
 
@@ -35,7 +36,7 @@ super_user = User.create(
   country: 'Canada',
   password: PASSWORD,
   is_admin: true,
-  phone: '+12505550149' #fake phone number
+  phone: '250-555-0149' #fake phone number
 )
 
 10.times.each do

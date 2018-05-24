@@ -14,8 +14,15 @@ class SessionsController < ApplicationController
     end
   end
 
+  def as_guest
+    user = User.find_by(email: 'guest@login.ca')
+    session[:user_id] = user.id
+    redirect_to home_path
+  end
+
   def destroy
     session[:user_id] = nil
     redirect_to home_path
   end
+
 end

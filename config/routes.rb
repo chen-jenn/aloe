@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   end
 
   resource :session, only: [:new, :create, :destroy]
+  post '/session/as_guest', to:'sessions#as_guest', as: 'as_guest'
   resources :users, except: [:index]
 
   post '/users/:user_id/reminders/:individual_plant_id', to:'reminders#create', as: 'user_reminders'
   delete '/reminders/:id', to:'reminders#destroy', as: 'reminder'
 
-  #the 'index' is on user profile, and the show should be in a modal
   resources :individual_plants, except: [:index, :show]
   patch '/individual_plants/:id/generate', to:'individual_plants#generate_data', as: 'generate_data'
 
