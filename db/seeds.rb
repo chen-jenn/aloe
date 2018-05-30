@@ -25,7 +25,7 @@ end
 
 User.destroy_all
 Plant.destroy_all
-# PASSWORD = 'password'
+PASSWORD = 'password'
 
 super_user = User.create(
   username: 'jonsnow',
@@ -62,7 +62,7 @@ User.create(
   last_name: 'Log-in',
   city: 'Vancouver',
   country: 'Canada',
-  email: 'guest@login.ca',  
+  email: 'guest@login.ca',
   password: PASSWORD,
   phone: '5555555555'
 )
