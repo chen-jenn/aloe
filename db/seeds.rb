@@ -25,7 +25,7 @@ end
 
 User.destroy_all
 Plant.destroy_all
-PASSWORD = 'password'
+# PASSWORD = 'password'
 
 super_user = User.create(
   username: 'jonsnow',
@@ -50,7 +50,7 @@ super_user = User.create(
     email: "#{first_name.downcase}.#{last_name.downcase}@example.com",
     city: 'Vancouver',
     country: 'Canada',
-    phone: '555-555-5555'
+    phone: '5555555555',
     password: PASSWORD
     #comment out after_validation :send_request in user.rb because don't need to send API request when seeding
   )
@@ -62,9 +62,9 @@ User.create(
   last_name: 'Log-in',
   city: 'Vancouver',
   country: 'Canada',
-  email: 'guest@login.ca',
-  password: 'password',
-  phone: '555-555-5555'
+  email: 'guest@login.ca',  
+  password: PASSWORD,
+  phone: '5555555555'
 )
 
 CSV.foreach(Rails.root.join('db/seeds/plants.csv'), headers:true) do |row|

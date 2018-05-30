@@ -23,7 +23,7 @@ class User < ApplicationRecord
 
   geocoded_by :location
   before_validation :geocode
-  after_validation :send_request
+  # after_validation :send_request
 
   def location
       "#{city}, #{country}"
