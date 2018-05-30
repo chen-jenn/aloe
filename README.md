@@ -11,7 +11,8 @@ System dependencies:
 
 1. Navigate to the project directory and run `bundle`
 2. Database creation: `rails db:create`
-3. Seeding data: `rails db:seed`
+3. Create database tables: `rails db:schema:load` 
+4. Seeding data: `rails db:seed`
 
 ## How It Works
 1. User adds a new plant that they own, for example, named 'George'
@@ -24,7 +25,7 @@ System dependencies:
 Used by this application to retrieve the Koppen-Geiger climate zone data for a particular plant species, based on the latitude and longitude of their native habitats.
 
 #### Twilio API
-Used to set up reminder texts for individual plants and when to water them next 
+Used to set up reminder texts for individual plants and when to water them next
 
 ### Disclaimer
 While this app helps generate general plant care information based on user experience and Koppen-Geiger climate classification algorithms, it must also be noted that there are many more variables that need to be taken into account to calculate the optimal temperature or watering frequency of a plant (e.g. soil pH, soil volume, humidity, precipitation, and of course, genetics). This app does not claim to have the highest scientific accuracy and is best used only as a general guideline for houseplant care.
