@@ -1,3 +1,6 @@
 ENV['TWILIO_NUMBER'] = '+1twilio_number'
 ENV['TWILIO_SID'] = 'put Twilio account_sid here'
 ENV['TWILIO_AUTH_TOKEN'] = 'put Twilio auth_token here'
+ENV['AWS_ACCESS_KEY_ID'] = 'put aws access key here'
+ENV['AWS_SECRET_ACCESS_KEY'] = 'put aws secret access key here'
+ENV['S3_BUCKET'] = 'put s3 bucket name here'
