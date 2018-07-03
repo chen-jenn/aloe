@@ -45,24 +45,21 @@
   </div>
 
   <div class="home-bottom">
-    <!-- <div class="header">
-      <h3>How To Help</h3>
-    </div> -->
-    <div>
-      <div class="header">Tips</div>
+    <div style="background-image: url(<%= asset_path 'tips.jpg' %>);background-size:cover;">
+      <div class="header"><%= link_to "Tips", home_path %></div>
     </div>
 
-    <div>
-      <div class="header">Plants</div>
+    <div style="background-image: url(<%= asset_path 'zebra-haworthia.jpg' %>);background-size:cover;">
+      <div class="header"><%= link_to "Plants", plants_path %></div>
+      <!-- <%= image_tag "zebra-haworthia.jpg", style:"max-height:100%;" %> -->
     </div>
 
-    <div>
-      <div class="header">Join Us</div>
+    <div style="background-image: url(<%= asset_path 'gardening.jpg' %>);background-size:cover;">
+      <div class="header"><%= link_to "Join Us", home_path %></div>
     </div>
 
-    <div>
+    <div style="background-image: url(<%= asset_path 'world.jpg' %>);background-size:cover;">
       <div class="header"><%= link_to "Climate Zones", climate_zones_path %></div>
-      <%= image_tag "world.jpg", style:"max-height:100%;max-width:100%;" %>
     </div>
 
     <!-- <div class="body" style="font-size:18px;">
