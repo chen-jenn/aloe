@@ -47,23 +47,37 @@
   font-family: monospace;
   font-weight: bold;
   font-size: 14px;
-
   line-height: 50px;
   text-align: center;
 }
 
 .home-bottom {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
   width: 100%;
-  height: 60vh;
-  background-color: #f1ffb8;
 }
 
-.home-bottom > .header{
+.home-bottom > * {
+  background-color: #f1ffb8;
+  width: 100%;
+  height: 300px;
+}
+
+.home-bottom div>.header{
   background-color: #2E2C2F;
   color: white;
   width: 100%;
-  // height: 10%;
-  padding: 15px;
+  font-size: 25px;
+  padding: 10px 15px 10px 15px;
+
+  a {
+    color: white;
+  }
+
+  a:hover {
+    color: #475B63; 
+  }
 }
 
 .home-bottom > .body{
@@ -105,7 +119,7 @@
   margin: 0px;
 }
 
-.climate-bottom { 
+.climate-bottom {
   width: 100%;
   margin-top: 15px;
   background-color: white;
