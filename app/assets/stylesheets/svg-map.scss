@@ -1,0 +1,53 @@
+#svg2 {
+  fill-opacity: 0.6;
+}
+
+.tooltip{
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  padding: 8px;
+  font: 20px sans-serif;
+  color: white;
+  background: darkgray;
+  border: solid black 3px;
+  pointer-events: none;
+}
+
+/*Has to be a more efficient way of doing this hmmmmm*/
+#Af {fill: #960000;}
+#Am {fill: #ff0000;}
+#As {fill: #ea8d8d;}
+#Aw {fill: #ffcccc;}
+#BWk {fill: #ffff64;}
+#BWh {fill: #ffcc00;}
+#BSk {fill: #ccaa54;}
+#BSh {fill: #cc8d14;}
+#Cfa {fill: #003200;}
+#Cfb {fill: #005000;}
+#Cfc {fill: #007800;}
+#Csa {fill: #00ff00;}
+#Csb {fill: #96ff00;}
+#Csc {fill: #c8ff00;}
+#Cwa {fill: #b46400;}
+#Cwb {fill: #966400;}
+#Cwc {fill: #5a3c00;}
+#Dfa {fill: #320032;}
+#Dfb {fill: #640064;}
+#Dfc {fill: #c800c8;}
+#Dfc {fill: #c800c8;}
+#Dfd {fill: #c71585;}
+#Dsa {fill: #ff6dff;}
+#Dsb {fill: #ffb4ff;}
+#Dsc {fill: #e6c8ff;}
+#Dsd {fill: #c8c8c8;}
+#Dwa {fill: #c8b4ff;}
+#Dwb {fill: #9a7fb3;}
+#Dwc {fill: #8859b3;}
+#Dwd {fill: #6f24b3;}
+#EF {fill: #6496ff;}
+#ET {fill: #64ffff;}
+
+.highlight {
+  fill-opacity: 1;
+}
