@@ -87,6 +87,8 @@ GEM
       sort_alphabetical (~> 1.0)
     cowsay (0.3.0)
     crass (1.0.4)
+    d3-rails (5.4.0)
+      railties (>= 3.1)
     delayed_job (4.1.4)
       activesupport (>= 3.0, < 5.2)
     delayed_job_active_record (4.1.2)
@@ -432,6 +434,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   country_select
   cowsay
+  d3-rails
   delayed_job_active_record
   faker
   fog
