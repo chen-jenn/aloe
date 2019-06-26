@@ -11,7 +11,7 @@ System dependencies:
 
 1. Navigate to the project directory and run `bundle`
 2. Database creation: `rails db:create`
-3. Create database tables: `rake db:schema:load` 
+3. Create database tables: `rake db:schema:load`
 4. Seeding data: `rails db:seed`
 
 ## How It Works
